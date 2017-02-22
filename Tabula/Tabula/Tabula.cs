@@ -19,5 +19,7 @@ namespace Tabula
         {
             InitializeComponent();
         }
+
+        //Action Class Methods. See UML (Also, general functions that aren't Tool-specific.)
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tabula
 {
-    class MainMenu
+    class ImageEffects
     {
     }
 }

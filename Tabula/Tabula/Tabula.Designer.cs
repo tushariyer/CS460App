@@ -71,7 +71,7 @@
             this.toolsButton});
             this.topMenuBar.Location = new System.Drawing.Point(0, 0);
             this.topMenuBar.Name = "topMenuBar";
-            this.topMenuBar.Size = new System.Drawing.Size(1830, 42);
+            this.topMenuBar.Size = new System.Drawing.Size(1830, 37);
             this.topMenuBar.TabIndex = 0;
             this.topMenuBar.Text = "topMenuBar";
             // 
@@ -85,7 +85,7 @@
             this.aboutButton,
             this.exitButton});
             this.fileButton.Name = "fileButton";
-            this.fileButton.Size = new System.Drawing.Size(60, 38);
+            this.fileButton.Size = new System.Drawing.Size(60, 33);
             this.fileButton.Text = "File";
             // 
             // newFileButton
@@ -121,14 +121,14 @@
             // saveAsBitmap
             // 
             this.saveAsBitmap.Name = "saveAsBitmap";
-            this.saveAsBitmap.Size = new System.Drawing.Size(269, 38);
+            this.saveAsBitmap.Size = new System.Drawing.Size(182, 38);
             this.saveAsBitmap.Text = "Bitmap";
             this.saveAsBitmap.Click += new System.EventHandler(this.saveAsBitmap_Click);
             // 
             // saveAsPNG
             // 
             this.saveAsPNG.Name = "saveAsPNG";
-            this.saveAsPNG.Size = new System.Drawing.Size(269, 38);
+            this.saveAsPNG.Size = new System.Drawing.Size(182, 38);
             this.saveAsPNG.Text = "PNG";
             this.saveAsPNG.Click += new System.EventHandler(this.saveAsPNG_Click);
             // 
@@ -160,43 +160,43 @@
             this.pasteButton,
             this.transformButton});
             this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(64, 38);
+            this.editButton.Size = new System.Drawing.Size(64, 33);
             this.editButton.Text = "Edit";
             // 
             // undoButton
             // 
             this.undoButton.Name = "undoButton";
-            this.undoButton.Size = new System.Drawing.Size(210, 38);
+            this.undoButton.Size = new System.Drawing.Size(269, 38);
             this.undoButton.Text = "Undo";
             // 
             // redoButton
             // 
             this.redoButton.Name = "redoButton";
-            this.redoButton.Size = new System.Drawing.Size(210, 38);
+            this.redoButton.Size = new System.Drawing.Size(269, 38);
             this.redoButton.Text = "Redo";
             // 
             // cutButton
             // 
             this.cutButton.Name = "cutButton";
-            this.cutButton.Size = new System.Drawing.Size(210, 38);
+            this.cutButton.Size = new System.Drawing.Size(269, 38);
             this.cutButton.Text = "Cut";
             // 
             // copyButton
             // 
             this.copyButton.Name = "copyButton";
-            this.copyButton.Size = new System.Drawing.Size(210, 38);
+            this.copyButton.Size = new System.Drawing.Size(269, 38);
             this.copyButton.Text = "Copy";
             // 
             // pasteButton
             // 
             this.pasteButton.Name = "pasteButton";
-            this.pasteButton.Size = new System.Drawing.Size(210, 38);
+            this.pasteButton.Size = new System.Drawing.Size(269, 38);
             this.pasteButton.Text = "Paste";
             // 
             // transformButton
             // 
             this.transformButton.Name = "transformButton";
-            this.transformButton.Size = new System.Drawing.Size(210, 38);
+            this.transformButton.Size = new System.Drawing.Size(269, 38);
             this.transformButton.Text = "Transform";
             // 
             // effectsButton
@@ -205,7 +205,7 @@
             this.sepiaEffect,
             this.invertEffect});
             this.effectsButton.Name = "effectsButton";
-            this.effectsButton.Size = new System.Drawing.Size(88, 38);
+            this.effectsButton.Size = new System.Drawing.Size(88, 33);
             this.effectsButton.Text = "Effects";
             // 
             // sepiaEffect
@@ -223,7 +223,7 @@
             // colorButton
             // 
             this.colorButton.Name = "colorButton";
-            this.colorButton.Size = new System.Drawing.Size(78, 38);
+            this.colorButton.Size = new System.Drawing.Size(78, 33);
             this.colorButton.Text = "Color";
             // 
             // toolsButton
@@ -232,7 +232,7 @@
             this.selectToolButton,
             this.penToolButton});
             this.toolsButton.Name = "toolsButton";
-            this.toolsButton.Size = new System.Drawing.Size(76, 38);
+            this.toolsButton.Size = new System.Drawing.Size(76, 33);
             this.toolsButton.Text = "Tools";
             // 
             // selectToolButton
@@ -250,9 +250,9 @@
             // baseCanvas
             // 
             this.baseCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.baseCanvas.Location = new System.Drawing.Point(0, 42);
+            this.baseCanvas.Location = new System.Drawing.Point(0, 37);
             this.baseCanvas.Name = "baseCanvas";
-            this.baseCanvas.Size = new System.Drawing.Size(1830, 1168);
+            this.baseCanvas.Size = new System.Drawing.Size(1830, 1173);
             this.baseCanvas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.baseCanvas.TabIndex = 1;
             this.baseCanvas.TabStop = false;

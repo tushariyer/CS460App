@@ -1,6 +1,6 @@
 ﻿namespace Tabula
 {
-    partial class Form1
+    partial class Tabula
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // Form1
+            // Tabula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1996, 1163);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Tabula";
+            this.Text = "Tabula";
             this.ResumeLayout(false);
 
         }

@@ -10,9 +10,12 @@ using System.Windows.Forms;
 
 namespace Tabula
 {
-    public partial class Form1 : Form
+    public partial class Tabula : Form
     {
-        public Form1()
+        public static Stack<Image> GlobalUndoStack;
+        public static Stack<Image> GlobalRedoStack;
+
+        public Tabula()
         {
             InitializeComponent();
         }

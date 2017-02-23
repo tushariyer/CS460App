@@ -54,6 +54,7 @@
             this.selectToolButton = new System.Windows.Forms.ToolStripMenuItem();
             this.penToolButton = new System.Windows.Forms.ToolStripMenuItem();
             this.baseCanvas = new System.Windows.Forms.PictureBox();
+            this.availableColors = new System.Windows.Forms.ColorDialog();
             this.topMenuBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.baseCanvas)).BeginInit();
             this.SuspendLayout();
@@ -71,7 +72,7 @@
             this.toolsButton});
             this.topMenuBar.Location = new System.Drawing.Point(0, 0);
             this.topMenuBar.Name = "topMenuBar";
-            this.topMenuBar.Size = new System.Drawing.Size(1830, 37);
+            this.topMenuBar.Size = new System.Drawing.Size(1830, 42);
             this.topMenuBar.TabIndex = 0;
             this.topMenuBar.Text = "topMenuBar";
             // 
@@ -85,7 +86,7 @@
             this.aboutButton,
             this.exitButton});
             this.fileButton.Name = "fileButton";
-            this.fileButton.Size = new System.Drawing.Size(60, 33);
+            this.fileButton.Size = new System.Drawing.Size(60, 38);
             this.fileButton.Text = "File";
             // 
             // newFileButton
@@ -93,11 +94,12 @@
             this.newFileButton.Name = "newFileButton";
             this.newFileButton.Size = new System.Drawing.Size(269, 38);
             this.newFileButton.Text = "New File";
+            this.newFileButton.Click += new System.EventHandler(this.newFileButton_Click);
             // 
             // openFileButton
             // 
             this.openFileButton.Name = "openFileButton";
-            this.openFileButton.Size = new System.Drawing.Size(269, 38);
+            this.openFileButton.Size = new System.Drawing.Size(205, 38);
             this.openFileButton.Text = "Open File";
             this.openFileButton.Click += new System.EventHandler(this.openFileButton_Click);
             // 
@@ -108,7 +110,7 @@
             this.saveAsBitmap,
             this.saveAsPNG});
             this.saveFileSave.Name = "saveFileSave";
-            this.saveFileSave.Size = new System.Drawing.Size(269, 38);
+            this.saveFileSave.Size = new System.Drawing.Size(205, 38);
             this.saveFileSave.Text = "Save File";
             // 
             // saveAsJPEG
@@ -135,19 +137,19 @@
             // optionsButton
             // 
             this.optionsButton.Name = "optionsButton";
-            this.optionsButton.Size = new System.Drawing.Size(269, 38);
+            this.optionsButton.Size = new System.Drawing.Size(205, 38);
             this.optionsButton.Text = "Options";
             // 
             // aboutButton
             // 
             this.aboutButton.Name = "aboutButton";
-            this.aboutButton.Size = new System.Drawing.Size(269, 38);
+            this.aboutButton.Size = new System.Drawing.Size(205, 38);
             this.aboutButton.Text = "About";
             // 
             // exitButton
             // 
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(269, 38);
+            this.exitButton.Size = new System.Drawing.Size(205, 38);
             this.exitButton.Text = "Exit";
             // 
             // editButton
@@ -166,37 +168,37 @@
             // undoButton
             // 
             this.undoButton.Name = "undoButton";
-            this.undoButton.Size = new System.Drawing.Size(269, 38);
+            this.undoButton.Size = new System.Drawing.Size(210, 38);
             this.undoButton.Text = "Undo";
             // 
             // redoButton
             // 
             this.redoButton.Name = "redoButton";
-            this.redoButton.Size = new System.Drawing.Size(269, 38);
+            this.redoButton.Size = new System.Drawing.Size(210, 38);
             this.redoButton.Text = "Redo";
             // 
             // cutButton
             // 
             this.cutButton.Name = "cutButton";
-            this.cutButton.Size = new System.Drawing.Size(269, 38);
+            this.cutButton.Size = new System.Drawing.Size(210, 38);
             this.cutButton.Text = "Cut";
             // 
             // copyButton
             // 
             this.copyButton.Name = "copyButton";
-            this.copyButton.Size = new System.Drawing.Size(269, 38);
+            this.copyButton.Size = new System.Drawing.Size(210, 38);
             this.copyButton.Text = "Copy";
             // 
             // pasteButton
             // 
             this.pasteButton.Name = "pasteButton";
-            this.pasteButton.Size = new System.Drawing.Size(269, 38);
+            this.pasteButton.Size = new System.Drawing.Size(210, 38);
             this.pasteButton.Text = "Paste";
             // 
             // transformButton
             // 
             this.transformButton.Name = "transformButton";
-            this.transformButton.Size = new System.Drawing.Size(269, 38);
+            this.transformButton.Size = new System.Drawing.Size(210, 38);
             this.transformButton.Text = "Transform";
             // 
             // effectsButton
@@ -225,6 +227,7 @@
             this.colorButton.Name = "colorButton";
             this.colorButton.Size = new System.Drawing.Size(78, 33);
             this.colorButton.Text = "Color";
+            this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // toolsButton
             // 
@@ -250,9 +253,9 @@
             // baseCanvas
             // 
             this.baseCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.baseCanvas.Location = new System.Drawing.Point(0, 37);
+            this.baseCanvas.Location = new System.Drawing.Point(0, 42);
             this.baseCanvas.Name = "baseCanvas";
-            this.baseCanvas.Size = new System.Drawing.Size(1830, 1173);
+            this.baseCanvas.Size = new System.Drawing.Size(1830, 1168);
             this.baseCanvas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.baseCanvas.TabIndex = 1;
             this.baseCanvas.TabStop = false;
@@ -307,6 +310,7 @@
         private System.Windows.Forms.ToolStripMenuItem sepiaEffect;
         private System.Windows.Forms.ToolStripMenuItem invertEffect;
         private System.Windows.Forms.PictureBox baseCanvas;
+        private System.Windows.Forms.ColorDialog availableColors;
     }
 }
 

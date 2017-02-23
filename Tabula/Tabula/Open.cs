@@ -12,11 +12,17 @@ namespace Tabula
 {
     class Open
     {
+        /**
+         * Constructor
+         */
         public Open()
         {
 
         }
 
+        /**
+         * Uses OpenFileDialog to import an image and store it in an Image object.
+         */
         public Image importImage()
         {
             //Opens a dialog box to choose a file
@@ -24,7 +30,7 @@ namespace Tabula
             openFile.Filter = "All Files (*.*)|*.*";
             openFile.FilterIndex = 1;
 
-            string fileName = "";
+            string fileName = ""; //Includes path to file
 
             if (openFile.ShowDialog() == DialogResult.OK)
             {
@@ -33,10 +39,10 @@ namespace Tabula
             else
             {
                 MessageBox.Show("Please select an image to import.");
-                return null; //K
+                return null; // Because why not
             }
 
-            return Image.FromFile(fileName);
+            return Image.FromFile(fileName); //Send it back to Tabula handler. it will get assigned to the PictureBox there.
         }
     }
 }

@@ -12,11 +12,17 @@ namespace Tabula
 {
     class SavePicture
     {
+        /**
+         * Constructor
+         */
         public SavePicture()
         {
-            //Constructor
+            
         }
 
+        /**
+         * Save File as JPEG
+         */
         public void saveJpeg(Image current) // Image imageToSave)
         {
             SaveFileDialog saveFile = new SaveFileDialog();
@@ -37,6 +43,9 @@ namespace Tabula
             MessageBox.Show("Saved as JPEG");
         }
 
+        /**
+         * Save File as Bitmap
+         */
         public void saveBitmap(Image current)
         {
             SaveFileDialog saveFile = new SaveFileDialog();
@@ -57,6 +66,9 @@ namespace Tabula
             MessageBox.Show("Saved as Bitmap Image");
         }
 
+        /**
+         * Save File as PNG
+         */
         public void savePng(Image current)
         {
             SaveFileDialog saveFile = new SaveFileDialog();

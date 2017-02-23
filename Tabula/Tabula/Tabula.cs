@@ -84,6 +84,17 @@ namespace Tabula
             newBlank.importTemplate();
         }
 
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GlobalRedoStack.Push(baseCanvas.Image);
+            baseCanvas.Image = GlobalUndoStack.Pop();
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            baseCanvas.Image = GlobalRedoStack.Pop();
+        }
+
         //Action Class Methods. See UML (Also, general functions that aren't Tool-specific.)
     }
 }

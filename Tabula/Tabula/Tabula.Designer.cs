@@ -39,6 +39,8 @@
             this.optionsButton = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutButton = new System.Windows.Forms.ToolStripMenuItem();
             this.exitButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editButton = new System.Windows.Forms.ToolStripMenuItem();
             this.undoButton = new System.Windows.Forms.ToolStripMenuItem();
             this.redoButton = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,7 +74,7 @@
             this.toolsButton});
             this.topMenuBar.Location = new System.Drawing.Point(0, 0);
             this.topMenuBar.Name = "topMenuBar";
-            this.topMenuBar.Size = new System.Drawing.Size(1830, 42);
+            this.topMenuBar.Size = new System.Drawing.Size(1830, 30);
             this.topMenuBar.TabIndex = 0;
             this.topMenuBar.Text = "topMenuBar";
             // 
@@ -84,22 +86,24 @@
             this.saveFileSave,
             this.optionsButton,
             this.aboutButton,
-            this.exitButton});
+            this.exitButton,
+            this.undoToolStripMenuItem,
+            this.redoToolStripMenuItem});
             this.fileButton.Name = "fileButton";
-            this.fileButton.Size = new System.Drawing.Size(60, 38);
+            this.fileButton.Size = new System.Drawing.Size(47, 26);
             this.fileButton.Text = "File";
             // 
             // newFileButton
             // 
             this.newFileButton.Name = "newFileButton";
-            this.newFileButton.Size = new System.Drawing.Size(269, 38);
+            this.newFileButton.Size = new System.Drawing.Size(161, 30);
             this.newFileButton.Text = "New File";
             this.newFileButton.Click += new System.EventHandler(this.newFileButton_Click);
             // 
             // openFileButton
             // 
             this.openFileButton.Name = "openFileButton";
-            this.openFileButton.Size = new System.Drawing.Size(205, 38);
+            this.openFileButton.Size = new System.Drawing.Size(161, 30);
             this.openFileButton.Text = "Open File";
             this.openFileButton.Click += new System.EventHandler(this.openFileButton_Click);
             // 
@@ -110,47 +114,61 @@
             this.saveAsBitmap,
             this.saveAsPNG});
             this.saveFileSave.Name = "saveFileSave";
-            this.saveFileSave.Size = new System.Drawing.Size(205, 38);
+            this.saveFileSave.Size = new System.Drawing.Size(161, 30);
             this.saveFileSave.Text = "Save File";
             // 
             // saveAsJPEG
             // 
             this.saveAsJPEG.Name = "saveAsJPEG";
-            this.saveAsJPEG.Size = new System.Drawing.Size(182, 38);
+            this.saveAsJPEG.Size = new System.Drawing.Size(145, 30);
             this.saveAsJPEG.Text = "JPEG";
             this.saveAsJPEG.Click += new System.EventHandler(this.saveAsJPEG_Click);
             // 
             // saveAsBitmap
             // 
             this.saveAsBitmap.Name = "saveAsBitmap";
-            this.saveAsBitmap.Size = new System.Drawing.Size(182, 38);
+            this.saveAsBitmap.Size = new System.Drawing.Size(145, 30);
             this.saveAsBitmap.Text = "Bitmap";
             this.saveAsBitmap.Click += new System.EventHandler(this.saveAsBitmap_Click);
             // 
             // saveAsPNG
             // 
             this.saveAsPNG.Name = "saveAsPNG";
-            this.saveAsPNG.Size = new System.Drawing.Size(182, 38);
+            this.saveAsPNG.Size = new System.Drawing.Size(145, 30);
             this.saveAsPNG.Text = "PNG";
             this.saveAsPNG.Click += new System.EventHandler(this.saveAsPNG_Click);
             // 
             // optionsButton
             // 
             this.optionsButton.Name = "optionsButton";
-            this.optionsButton.Size = new System.Drawing.Size(205, 38);
+            this.optionsButton.Size = new System.Drawing.Size(161, 30);
             this.optionsButton.Text = "Options";
             // 
             // aboutButton
             // 
             this.aboutButton.Name = "aboutButton";
-            this.aboutButton.Size = new System.Drawing.Size(205, 38);
+            this.aboutButton.Size = new System.Drawing.Size(161, 30);
             this.aboutButton.Text = "About";
             // 
             // exitButton
             // 
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(205, 38);
+            this.exitButton.Size = new System.Drawing.Size(161, 30);
             this.exitButton.Text = "Exit";
+            // 
+            // undoToolStripMenuItem
+            // 
+            this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(161, 30);
+            this.undoToolStripMenuItem.Text = "Undo";
+            this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
+            // 
+            // redoToolStripMenuItem
+            // 
+            this.redoToolStripMenuItem.Name = "redoToolStripMenuItem";
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(161, 30);
+            this.redoToolStripMenuItem.Text = "Redo";
+            this.redoToolStripMenuItem.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
             // 
             // editButton
             // 
@@ -162,43 +180,43 @@
             this.pasteButton,
             this.transformButton});
             this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(64, 33);
+            this.editButton.Size = new System.Drawing.Size(50, 26);
             this.editButton.Text = "Edit";
             // 
             // undoButton
             // 
             this.undoButton.Name = "undoButton";
-            this.undoButton.Size = new System.Drawing.Size(210, 38);
+            this.undoButton.Size = new System.Drawing.Size(168, 30);
             this.undoButton.Text = "Undo";
             // 
             // redoButton
             // 
             this.redoButton.Name = "redoButton";
-            this.redoButton.Size = new System.Drawing.Size(210, 38);
+            this.redoButton.Size = new System.Drawing.Size(168, 30);
             this.redoButton.Text = "Redo";
             // 
             // cutButton
             // 
             this.cutButton.Name = "cutButton";
-            this.cutButton.Size = new System.Drawing.Size(210, 38);
+            this.cutButton.Size = new System.Drawing.Size(168, 30);
             this.cutButton.Text = "Cut";
             // 
             // copyButton
             // 
             this.copyButton.Name = "copyButton";
-            this.copyButton.Size = new System.Drawing.Size(210, 38);
+            this.copyButton.Size = new System.Drawing.Size(168, 30);
             this.copyButton.Text = "Copy";
             // 
             // pasteButton
             // 
             this.pasteButton.Name = "pasteButton";
-            this.pasteButton.Size = new System.Drawing.Size(210, 38);
+            this.pasteButton.Size = new System.Drawing.Size(168, 30);
             this.pasteButton.Text = "Paste";
             // 
             // transformButton
             // 
             this.transformButton.Name = "transformButton";
-            this.transformButton.Size = new System.Drawing.Size(210, 38);
+            this.transformButton.Size = new System.Drawing.Size(168, 30);
             this.transformButton.Text = "Transform";
             // 
             // effectsButton
@@ -207,25 +225,25 @@
             this.sepiaEffect,
             this.invertEffect});
             this.effectsButton.Name = "effectsButton";
-            this.effectsButton.Size = new System.Drawing.Size(88, 33);
+            this.effectsButton.Size = new System.Drawing.Size(71, 26);
             this.effectsButton.Text = "Effects";
             // 
             // sepiaEffect
             // 
             this.sepiaEffect.Name = "sepiaEffect";
-            this.sepiaEffect.Size = new System.Drawing.Size(169, 38);
+            this.sepiaEffect.Size = new System.Drawing.Size(136, 30);
             this.sepiaEffect.Text = "Sepia";
             // 
             // invertEffect
             // 
             this.invertEffect.Name = "invertEffect";
-            this.invertEffect.Size = new System.Drawing.Size(169, 38);
+            this.invertEffect.Size = new System.Drawing.Size(136, 30);
             this.invertEffect.Text = "Invert";
             // 
             // colorButton
             // 
             this.colorButton.Name = "colorButton";
-            this.colorButton.Size = new System.Drawing.Size(78, 33);
+            this.colorButton.Size = new System.Drawing.Size(62, 26);
             this.colorButton.Text = "Color";
             this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
             // 
@@ -235,27 +253,27 @@
             this.selectToolButton,
             this.penToolButton});
             this.toolsButton.Name = "toolsButton";
-            this.toolsButton.Size = new System.Drawing.Size(76, 33);
+            this.toolsButton.Size = new System.Drawing.Size(60, 26);
             this.toolsButton.Text = "Tools";
             // 
             // selectToolButton
             // 
             this.selectToolButton.Name = "selectToolButton";
-            this.selectToolButton.Size = new System.Drawing.Size(170, 38);
+            this.selectToolButton.Size = new System.Drawing.Size(137, 30);
             this.selectToolButton.Text = "Select";
             // 
             // penToolButton
             // 
             this.penToolButton.Name = "penToolButton";
-            this.penToolButton.Size = new System.Drawing.Size(170, 38);
+            this.penToolButton.Size = new System.Drawing.Size(137, 30);
             this.penToolButton.Text = "Pen";
             // 
             // baseCanvas
             // 
             this.baseCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.baseCanvas.Location = new System.Drawing.Point(0, 42);
+            this.baseCanvas.Location = new System.Drawing.Point(0, 30);
             this.baseCanvas.Name = "baseCanvas";
-            this.baseCanvas.Size = new System.Drawing.Size(1830, 1168);
+            this.baseCanvas.Size = new System.Drawing.Size(1830, 1180);
             this.baseCanvas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.baseCanvas.TabIndex = 1;
             this.baseCanvas.TabStop = false;
@@ -263,7 +281,7 @@
             // 
             // Tabula
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 26F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1830, 1210);
@@ -311,6 +329,8 @@
         private System.Windows.Forms.ToolStripMenuItem invertEffect;
         private System.Windows.Forms.PictureBox baseCanvas;
         private System.Windows.Forms.ColorDialog availableColors;
+        private System.Windows.Forms.ToolStripMenuItem undoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem redoToolStripMenuItem;
     }
 }
 

@@ -61,6 +61,7 @@
             this.squareToolButton = new System.Windows.Forms.ToolStripMenuItem();
             this.lineToolButton = new System.Windows.Forms.ToolStripMenuItem();
             this.triangleToolButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.printButton = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenuBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.baseCanvas)).BeginInit();
             this.SuspendLayout();
@@ -90,6 +91,7 @@
             this.saveFileSave,
             this.optionsButton,
             this.aboutButton,
+            this.printButton,
             this.exitButton});
             this.fileButton.Name = "fileButton";
             this.fileButton.Size = new System.Drawing.Size(60, 33);
@@ -304,6 +306,13 @@
             this.triangleToolButton.Size = new System.Drawing.Size(269, 38);
             this.triangleToolButton.Text = "Triangle";
             // 
+            // printButton
+            // 
+            this.printButton.Name = "printButton";
+            this.printButton.Size = new System.Drawing.Size(269, 38);
+            this.printButton.Text = "Print";
+            this.printButton.Click += new System.EventHandler(this.printButton_Click);
+            // 
             // Tabula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 26F);
@@ -359,6 +368,7 @@
         private System.Windows.Forms.ToolStripMenuItem squareToolButton;
         private System.Windows.Forms.ToolStripMenuItem lineToolButton;
         private System.Windows.Forms.ToolStripMenuItem triangleToolButton;
+        private System.Windows.Forms.ToolStripMenuItem printButton;
     }
 }
 

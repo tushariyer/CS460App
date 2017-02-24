@@ -95,6 +95,12 @@ namespace Tabula
             baseCanvas.Image = GlobalRedoStack.Pop();
         }
 
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            Print printer = new Print();
+            printer.PrepPicture(baseCanvas.Image);
+        }
+
         //Action Class Methods. See UML (Also, general functions that aren't Tool-specific.)
     }
 }

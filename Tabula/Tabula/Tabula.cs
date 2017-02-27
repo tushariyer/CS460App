@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,13 +9,36 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+enum ETools
+{
+    None,
+    Select,
+    Pen
+};
+
 namespace Tabula
 {
     public partial class Tabula : Form
     {
+        //Global Stacks
         public static Stack<Image> GlobalUndoStack;
         public static Stack<Image> GlobalRedoStack;
+
+        //Colour currently selected
         private Color selectedColor;
+
+        //Select variables
+        private int[] BeginningMousePos = { 0, 0 };
+        private int[] EndMousePos = { 0, 0 };
+        protected Graphics SelectionArea;
+        private ETools CurrentTool;
+
+        private bool bSelected;
+
+        //Get & Set for stacks
+        public Stack<Image> GetUndoStack() { return GlobalUndoStack; }
+        public Stack<Image> GetRedoStack() { return GlobalRedoStack; }
 
 
         public Tabula()
@@ -99,6 +123,138 @@ namespace Tabula
         {
             Print printer = new Print();
             printer.PrepPicture(baseCanvas.Image);
+        }
+
+        private void selectToolButton_Click(object sender, EventArgs e)
+        {
+            CurrentTool = ETools.Select;
+        }
+
+        public void SetMousePoss(int[] DesiredArray, int x, int y)
+        {
+            DesiredArray[0] = x;
+            DesiredArray[1] = y;
+        }
+        private void baseCanvas_MouseDown(object sender, MouseEventArgs e)
+        {
+            switch (CurrentTool)
+            {
+                case (ETools.Select):
+                    BeginningMousePos[0] = e.Location.X;
+                    BeginningMousePos[1] = e.Location.Y;
+                    bSelected = true;
+                    break;
+                case (ETools.Pen):
+                    break;
+                default:
+                    break;
+            }
+
+        }
+        private void baseCanvas_MouseUp(object sender, MouseEventArgs e)
+        {
+            switch (CurrentTool)
+            {
+                case (ETools.Select):
+                    EndMousePos[0] = e.Location.X;
+                    EndMousePos[1] = e.Location.Y;
+                    bSelected = false;
+                    DrawSelectArea(EndMousePos, BeginningMousePos);
+                    break;
+                case (ETools.Pen):
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void baseCanvas_MouseMove(object sender, MouseEventArgs e)
+        {
+            switch (CurrentTool)
+            {
+                case (ETools.Select):
+                    if (bSelected)
+                    {
+                        int[] CurrentPos = { e.X, e.Y };
+                        //handles the [1 -1] vector
+                        if (CurrentPos[0] > BeginningMousePos[0] && CurrentPos[1] > BeginningMousePos[1])
+                        {
+                            DrawSelectArea(CurrentPos, BeginningMousePos);
+                        }
+                        //handles the [-1 1] vector
+                        else if (CurrentPos[0] < BeginningMousePos[0] && CurrentPos[1] < BeginningMousePos[1])
+                        {
+                            DrawSelectArea(BeginningMousePos, CurrentPos);
+                        }
+                        //handles the [1, 1] vector
+                        else if (CurrentPos[0] > BeginningMousePos[0] && CurrentPos[1] < BeginningMousePos[1])
+                        {
+                            using (SelectionArea = this.baseCanvas.CreateGraphics())
+                            {
+                                SelectionArea.Clear(BackColor);
+                                PictureBox SelectLayer = new PictureBox();
+                                SelectLayer.BringToFront();
+                                System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
+                                Brush brush = new SolidBrush(SelectLayer.BackColor);
+                                SelectionArea.DrawRectangle(pen, BeginningMousePos[0], CurrentPos[1], CurrentPos[0] - BeginningMousePos[0], BeginningMousePos[1] - CurrentPos[1]);
+                                //
+                            }
+                        }
+                        else
+                        {
+                            using (SelectionArea = this.baseCanvas.CreateGraphics())
+                            {
+                                SelectionArea.Clear(BackColor);
+                                PictureBox SelectLayer = new PictureBox();
+                                SelectLayer.BringToFront();
+                                System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
+                                Brush brush = new SolidBrush(SelectLayer.BackColor);
+                                SelectionArea.DrawRectangle(pen, CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
+                                //
+                            }
+                        }
+                    }
+                    break;
+                case (ETools.Pen):
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void DrawSelectArea(int[] End, int[] Origin)
+        {
+            using (SelectionArea = this.baseCanvas.CreateGraphics())
+            {
+                SelectionArea.Clear(BackColor);
+                PictureBox SelectLayer = new PictureBox();
+                SelectLayer.BringToFront();
+                System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
+                Brush brush = new SolidBrush(SelectLayer.BackColor);
+                SelectionArea.DrawRectangle(pen, Origin[0], Origin[1], End[0] - Origin[0], End[1] - Origin[1]);
+                //
+            }
+        }
+        private void DrawSelectArea(int EndX, int EndY, int OriginX, int OriginY)
+        {
+            using (SelectionArea = this.baseCanvas.CreateGraphics())
+            {
+                SelectionArea.Clear(BackColor);
+                PictureBox SelectLayer = new PictureBox();
+                SelectLayer.BringToFront();
+                System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
+                Brush brush = new SolidBrush(SelectLayer.BackColor);
+                SelectionArea.DrawRectangle(pen, OriginX, EndY, EndX - OriginX, OriginY - EndY);
+                //
+            }
+        }
+
+        private void penToolButton_Click(object sender, EventArgs e)
+        {
+            CurrentTool = ETools.Pen;
+        }
+
+        private void deselectButton_Click(object sender, EventArgs e)
+        {
+            CurrentTool = ETools.None;
         }
 
         //Action Class Methods. See UML (Also, general functions that aren't Tool-specific.)

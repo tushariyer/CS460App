@@ -60,9 +60,9 @@
             this.squareToolButton = new System.Windows.Forms.ToolStripMenuItem();
             this.lineToolButton = new System.Windows.Forms.ToolStripMenuItem();
             this.triangleToolButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.deselectButton = new System.Windows.Forms.ToolStripMenuItem();
             this.baseCanvas = new System.Windows.Forms.PictureBox();
             this.availableColors = new System.Windows.Forms.ColorDialog();
-            this.deselectButton = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenuBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.baseCanvas)).BeginInit();
             this.SuspendLayout();
@@ -280,30 +280,40 @@
             this.shapesToolButton.Name = "shapesToolButton";
             this.shapesToolButton.Size = new System.Drawing.Size(269, 38);
             this.shapesToolButton.Text = "Shapes";
+            this.shapesToolButton.Click += new System.EventHandler(this.shapesToolButton_Click);
             // 
             // circleToolButton
             // 
             this.circleToolButton.Name = "circleToolButton";
-            this.circleToolButton.Size = new System.Drawing.Size(190, 38);
+            this.circleToolButton.Size = new System.Drawing.Size(269, 38);
             this.circleToolButton.Text = "Circle";
+            this.circleToolButton.Click += new System.EventHandler(this.circleToolButton_Click);
             // 
             // squareToolButton
             // 
             this.squareToolButton.Name = "squareToolButton";
-            this.squareToolButton.Size = new System.Drawing.Size(190, 38);
+            this.squareToolButton.Size = new System.Drawing.Size(269, 38);
             this.squareToolButton.Text = "Square";
             // 
             // lineToolButton
             // 
             this.lineToolButton.Name = "lineToolButton";
-            this.lineToolButton.Size = new System.Drawing.Size(190, 38);
+            this.lineToolButton.Size = new System.Drawing.Size(269, 38);
             this.lineToolButton.Text = "Line";
+            this.lineToolButton.Click += new System.EventHandler(this.lineToolButton_Click);
             // 
             // triangleToolButton
             // 
             this.triangleToolButton.Name = "triangleToolButton";
-            this.triangleToolButton.Size = new System.Drawing.Size(190, 38);
+            this.triangleToolButton.Size = new System.Drawing.Size(269, 38);
             this.triangleToolButton.Text = "Triangle";
+            // 
+            // deselectButton
+            // 
+            this.deselectButton.Name = "deselectButton";
+            this.deselectButton.Size = new System.Drawing.Size(269, 38);
+            this.deselectButton.Text = "Deselect All";
+            this.deselectButton.Click += new System.EventHandler(this.deselectButton_Click);
             // 
             // baseCanvas
             // 
@@ -319,13 +329,6 @@
             this.baseCanvas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.baseCanvas_MouseDown);
             this.baseCanvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.baseCanvas_MouseMove);
             this.baseCanvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.baseCanvas_MouseUp);
-            // 
-            // deselectButton
-            // 
-            this.deselectButton.Name = "deselectButton";
-            this.deselectButton.Size = new System.Drawing.Size(269, 38);
-            this.deselectButton.Text = "Deselect All";
-            this.deselectButton.Click += new System.EventHandler(this.deselectButton_Click);
             // 
             // Tabula
             // 

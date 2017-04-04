@@ -19,6 +19,7 @@ namespace Tabula
         {
             target = current;
             bm = (Bitmap)target;
+            ActivateTool();
         }
 
         //Takes in a new height for the Image in this object

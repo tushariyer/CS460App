@@ -15,18 +15,18 @@ namespace Tabula
         protected string ToolTitle;
         protected bool IsActive;
 
-        public MultiTool()
+        protected MultiTool()
         {
             //Constructor
         }
 
-        private void ActivateTool()
+        protected void ActivateTool()
         {
             IsActive = true;
             //Add stuff here to make the tool the focus on screen.
         }
 
-        private void DeactivateTool()
+        protected void DeactivateTool()
         {
             IsActive = false;
             //Add stuff here to make the default cursor active.

@@ -50,6 +50,8 @@ namespace Tabula
 
             //MessageBox.Show("Currently Broken trying to fix :)");
 
+            //Throw exception here
+
         }
     }
 }

@@ -28,14 +28,15 @@ namespace Tabula
         public static int[] BeginningMousePos = { 0, 0 };
         private int[] EndMousePos = { 0, 0 };
         public static int[] CurrentMosusePos = { 0, 0 };
+        //Form Tools
         public Graphics SelectionArea;
         private ETools CurrentTool;
         private EShapes shapeSelected;
         private bool bSelected;
         //Get & Set for stacks
-        //
         public Stack<Image> GetUndoStack() { return GlobalUndoStack; }
         public Stack<Image> GetRedoStack() { return GlobalRedoStack; }
+        //Constructor
         public Tabula()
         {
             InitializeComponent();
@@ -81,40 +82,64 @@ namespace Tabula
         private void baseCanvas_Click(object sender, EventArgs e)
         {
         }
+        /**
+         * Colour button.
+         */
         private void colorButton_Click(object sender, EventArgs e)
         {
             ColorSelector colorGrid = new ColorSelector();
             //Passes the ColorDialog from the form to ColorSelector so it can allow the user to choose. Stores the value in selectedColor. Other methods can use it.
             selectedColor = colorGrid.displayShades(availableColors);
         }
+        /**
+         * New File Button
+         */
         private void newFileButton_Click(object sender, EventArgs e)
         {
             NewCreation newBlank = new NewCreation();
             newBlank.importTemplate();
         }
+        /**
+         * Button for Undo
+         */
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GlobalRedoStack.Push(baseCanvas.Image);
             baseCanvas.Image = GlobalUndoStack.Pop();
         }
+        /**
+         * Redo Button
+         */
         private void redoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             baseCanvas.Image = GlobalRedoStack.Pop();
         }
+        /**
+         * Print Button
+         */
         private void printButton_Click(object sender, EventArgs e)
         {
             Print printer = new Print();
             printer.PrepPicture(baseCanvas.Image);
         }
+        /**
+         * Select Button
+         */
         private void selectToolButton_Click(object sender, EventArgs e)
         {
             CurrentTool = ETools.Select;
         }
+        /**
+         * Redo Button
+         */
         public void SetMousePoss(int[] DesiredArray, int x, int y)
         {
             DesiredArray[0] = x;
             DesiredArray[1] = y;
         }
+        /**
+         * Canvas Click and hold Button
+         */
         private void baseCanvas_MouseDown(object sender, MouseEventArgs e)
         {
             BeginningMousePos[0] = e.Location.X;
@@ -130,6 +155,9 @@ namespace Tabula
                     break;
             }
         }
+        /**
+         * Canvas release-click Button
+         */
         private void baseCanvas_MouseUp(object sender, MouseEventArgs e)
         {
             EndMousePos[0] = e.Location.X;
@@ -155,6 +183,9 @@ namespace Tabula
                     break;
             }
         }
+        /**
+         * Canvas drag Button
+         */
         private void baseCanvas_MouseMove(object sender, MouseEventArgs e)
         {
             CurrentMosusePos[0] = e.X;
@@ -212,6 +243,9 @@ namespace Tabula
                     break;
             }
         }
+        /**
+         * Draw Tool Button
+         */
         private void DrawSelectArea(int[] End, int[] Origin)
         {
             using (SelectionArea = this.baseCanvas.CreateGraphics())

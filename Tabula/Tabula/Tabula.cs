@@ -33,6 +33,7 @@ namespace Tabula
         private EShapes shapeSelected;
         private bool bSelected;
         //Get & Set for stacks
+        //
         public Stack<Image> GetUndoStack() { return GlobalUndoStack; }
         public Stack<Image> GetRedoStack() { return GlobalRedoStack; }
         public Tabula()

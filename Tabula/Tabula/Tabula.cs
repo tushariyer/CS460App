@@ -41,6 +41,13 @@ namespace Tabula
         {
             InitializeComponent();
         }
+
+        //Use this whenever a tool is called to make sure the undo stack always gets updated
+        private void savePrevImage()
+        {
+            GlobalUndoStack.Push(baseCanvas.Image);
+        }
+
         /**
          * File Import Object created here. Redirects to Open.cs
          */

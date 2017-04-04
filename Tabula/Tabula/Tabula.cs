@@ -309,6 +309,12 @@ namespace Tabula
             shapeSelected = EShapes.Circle;
         }
 
+        private void sepiaEffect_Click(object sender, EventArgs e)
+        {
+            ImageEffects sepia = new ImageEffects();
+            sepia.useSepia(baseCanvas.Image, EndMousePos[]);
+        }
+
         //Action Class Methods. See UML (Also, general functions that aren't Tool-specific.)
     }
 }

@@ -20,10 +20,7 @@ namespace Tabula
 
         public void beginQuit(PictureBox canvas)
         {
-            if (canvas.Image != null)
-            {
-                DialogResult WaitASec = MessageBox.Show("Are you sure you want to quit?", "Save your work!", MessageBoxButtons.OKCancel);
-            }
+            DialogResult WaitASec = MessageBox.Show("Are you sure you want to quit?", "Save your work!", MessageBoxButtons.OKCancel);
 
             switch (WaitASec)
             {

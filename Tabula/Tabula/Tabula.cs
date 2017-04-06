@@ -330,6 +330,12 @@ namespace Tabula
             //sepia.useSepia(baseCanvas.Image, EndMousePos[0]);
         }
 
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            QuitApp die = new QuitApp();
+            die.beginQuit(baseCanvas);
+        }
+
         //Action Class Methods. See UML (Also, general functions that aren't Tool-specific.)
     }
 }

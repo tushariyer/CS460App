@@ -8,5 +8,10 @@ namespace Tabula
 {
     class QuitApp
     {
+
+        private static void ByeBye()
+        {
+            Environment.Exit(0);
+        }
     }
 }

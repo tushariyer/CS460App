@@ -101,14 +101,14 @@
             // newFileButton
             // 
             this.newFileButton.Name = "newFileButton";
-            this.newFileButton.Size = new System.Drawing.Size(205, 38);
+            this.newFileButton.Size = new System.Drawing.Size(269, 38);
             this.newFileButton.Text = "New File";
             this.newFileButton.Click += new System.EventHandler(this.newFileButton_Click);
             // 
             // openFileButton
             // 
             this.openFileButton.Name = "openFileButton";
-            this.openFileButton.Size = new System.Drawing.Size(205, 38);
+            this.openFileButton.Size = new System.Drawing.Size(269, 38);
             this.openFileButton.Text = "Open File";
             this.openFileButton.Click += new System.EventHandler(this.openFileButton_Click);
             // 
@@ -119,7 +119,7 @@
             this.saveAsBitmap,
             this.saveAsPNG});
             this.saveFileSave.Name = "saveFileSave";
-            this.saveFileSave.Size = new System.Drawing.Size(205, 38);
+            this.saveFileSave.Size = new System.Drawing.Size(269, 38);
             this.saveFileSave.Text = "Save File";
             // 
             // saveAsJPEG
@@ -146,27 +146,28 @@
             // optionsButton
             // 
             this.optionsButton.Name = "optionsButton";
-            this.optionsButton.Size = new System.Drawing.Size(205, 38);
+            this.optionsButton.Size = new System.Drawing.Size(269, 38);
             this.optionsButton.Text = "Options";
             // 
             // aboutButton
             // 
             this.aboutButton.Name = "aboutButton";
-            this.aboutButton.Size = new System.Drawing.Size(205, 38);
+            this.aboutButton.Size = new System.Drawing.Size(269, 38);
             this.aboutButton.Text = "About";
             // 
             // printButton
             // 
             this.printButton.Name = "printButton";
-            this.printButton.Size = new System.Drawing.Size(205, 38);
+            this.printButton.Size = new System.Drawing.Size(269, 38);
             this.printButton.Text = "Print";
             this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
             // exitButton
             // 
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(205, 38);
+            this.exitButton.Size = new System.Drawing.Size(269, 38);
             this.exitButton.Text = "Exit";
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // editButton
             // 
@@ -229,14 +230,14 @@
             // sepiaEffect
             // 
             this.sepiaEffect.Name = "sepiaEffect";
-            this.sepiaEffect.Size = new System.Drawing.Size(269, 38);
+            this.sepiaEffect.Size = new System.Drawing.Size(169, 38);
             this.sepiaEffect.Text = "Sepia";
             this.sepiaEffect.Click += new System.EventHandler(this.sepiaEffect_Click);
             // 
             // invertEffect
             // 
             this.invertEffect.Name = "invertEffect";
-            this.invertEffect.Size = new System.Drawing.Size(269, 38);
+            this.invertEffect.Size = new System.Drawing.Size(169, 38);
             this.invertEffect.Text = "Invert";
             // 
             // colorButton
@@ -260,14 +261,14 @@
             // selectToolButton
             // 
             this.selectToolButton.Name = "selectToolButton";
-            this.selectToolButton.Size = new System.Drawing.Size(269, 38);
+            this.selectToolButton.Size = new System.Drawing.Size(226, 38);
             this.selectToolButton.Text = "Select";
             this.selectToolButton.Click += new System.EventHandler(this.selectToolButton_Click);
             // 
             // penToolButton
             // 
             this.penToolButton.Name = "penToolButton";
-            this.penToolButton.Size = new System.Drawing.Size(269, 38);
+            this.penToolButton.Size = new System.Drawing.Size(226, 38);
             this.penToolButton.Text = "Pen";
             this.penToolButton.Click += new System.EventHandler(this.penToolButton_Click);
             // 
@@ -279,7 +280,7 @@
             this.lineToolButton,
             this.triangleToolButton});
             this.shapesToolButton.Name = "shapesToolButton";
-            this.shapesToolButton.Size = new System.Drawing.Size(269, 38);
+            this.shapesToolButton.Size = new System.Drawing.Size(226, 38);
             this.shapesToolButton.Text = "Shapes";
             this.shapesToolButton.Click += new System.EventHandler(this.shapesToolButton_Click);
             // 
@@ -312,7 +313,7 @@
             // deselectButton
             // 
             this.deselectButton.Name = "deselectButton";
-            this.deselectButton.Size = new System.Drawing.Size(269, 38);
+            this.deselectButton.Size = new System.Drawing.Size(226, 38);
             this.deselectButton.Text = "Deselect All";
             this.deselectButton.Click += new System.EventHandler(this.deselectButton_Click);
             // 

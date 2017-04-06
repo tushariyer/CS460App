@@ -24,7 +24,7 @@ namespace Tabula
             //Note: If no picture is in the picturebox, Tabula will crash if you try to print
             toPrint = new Bitmap(toPrint);
 
-            System.Drawing.Graphics formGraphics = System.Drawing.Graphics.FromImage(toPrint);
+            Graphics formGraphics = Graphics.FromImage(toPrint);
 
             PrintPicture(toPrint);
 

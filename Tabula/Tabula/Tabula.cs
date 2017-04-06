@@ -183,7 +183,19 @@ namespace Tabula
                         case (EShapes.Line):
                             Equations.DrawLine(this.baseCanvas, new System.Drawing.Pen(Color.Azure, 2), BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
                             break;
-                            //add case for circle
+                        case (EShapes.Circle):
+                            Equations.DrawCircle(this.baseCanvas, new System.Drawing.Pen(Color.Azure, 2), BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
+                            break;
+                        case (EShapes.Square):
+                            Equations.DrawSquare(this.baseCanvas, new System.Drawing.Pen(Color.Azure, 2), BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
+                            break;
+                        case (EShapes.Triangle):
+                            Equations.DrawTriangle(this.baseCanvas, new System.Drawing.Pen(Color.Azure, 2), BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
+                            break;
+                            /* case (EShapes.Star):
+                                 Equations.DrawStar(this.baseCanvas, new System.Drawing.Pen(Color.Azure, 2), BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
+                                 break;*/
+
                     }
                     break;
                 default:
@@ -294,8 +306,11 @@ namespace Tabula
             {
                 case (EShapes.Line):
                     CurrentTool = ETools.Shapes;
+                    //Equations.DrawLine(this.baseCanvas, new System.Drawing.Pen(Color.Azure, 2), BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
+
                     break;
                 case (EShapes.Circle):
+
                     break;
 
             }
@@ -312,7 +327,7 @@ namespace Tabula
         private void sepiaEffect_Click(object sender, EventArgs e)
         {
             ImageEffects sepia = new ImageEffects();
-            sepia.useSepia(baseCanvas.Image, EndMousePos[]);
+            //sepia.useSepia(baseCanvas.Image, EndMousePos[0]);
         }
 
         //Action Class Methods. See UML (Also, general functions that aren't Tool-specific.)

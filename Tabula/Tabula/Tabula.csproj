@@ -70,6 +70,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextInput.cs" />
+    <Compile Include="TranslateMedia.cs" />
     <Compile Include="Zoom.cs" />
     <EmbeddedResource Include="Tabula.resx">
       <DependentUpon>Tabula.cs</DependentUpon>

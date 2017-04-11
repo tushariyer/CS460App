@@ -8,7 +8,8 @@ enum ETools
     None,
     Select,
     Shapes,
-    Pen
+    Pen,
+    Move
 };
 namespace Tabula
 {
@@ -25,9 +26,13 @@ namespace Tabula
         public static int[] CurrentMosusePos = { 0, 0 };
         //Form Tools
         public Graphics SelectionArea;
+        //Rectangle selected
+        Rectangle SelectRect;
+        private bool bInSelectedRect;
+        //Current tool/shape selected
         private ETools CurrentTool;
         private EShapes shapeSelected;
-        private bool bSelected;
+        public bool bSelected;
         //Get & Set for stacks
         public Stack<Image> GetUndoStack() { return GlobalUndoStack; }
         public Stack<Image> GetRedoStack() { return GlobalRedoStack; }
@@ -155,6 +160,16 @@ namespace Tabula
                     break;
                 case (ETools.Pen):
                     break;
+                case (ETools.Move):
+                    if (SelectRect.Contains(new Point(e.X, e.Y)))
+                    {
+                        bInSelectedRect = true;
+                    }
+                    else
+                    {
+                        bInSelectedRect = false;
+                    }
+                    break;
                 default:
                     break;
             }
@@ -219,6 +234,14 @@ namespace Tabula
                     break;
                 case (ETools.Shapes):
                     break;
+                case (ETools.Move):
+                    if (bInSelectedRect)
+                    {
+                        TranslateMedia TempMoving = new TranslateMedia(SelectRect, e.X, e.Y);
+                        TempMoving.Move();
+                        DrawSelectArea(e.X, e.Y);
+                    }
+                    break;
                 default:
                     break;
             }
@@ -250,8 +273,8 @@ namespace Tabula
                 {
                     System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
                     Brush brush = new SolidBrush(SelectLayer.BackColor);
-                    SelectionArea.DrawRectangle(pen, CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
-                    //
+                    SelectRect = new Rectangle(CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
+                    SelectionArea.DrawRectangle(pen, SelectRect);
                 }
             }
             //handles the [-1 1] vector
@@ -261,7 +284,8 @@ namespace Tabula
                 {
                     System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
                     Brush brush = new SolidBrush(SelectLayer.BackColor);
-                    SelectionArea.DrawRectangle(pen, CurrentPos[0], CurrentPos[1], BeginningMousePos[0] - CurrentPos[0], BeginningMousePos[1] - CurrentPos[1]);
+                    SelectRect = new Rectangle(CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
+                    SelectionArea.DrawRectangle(pen, SelectRect);
                 }
             }
             //handles the [1, 1] vector
@@ -271,7 +295,8 @@ namespace Tabula
                 {
                     System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
                     Brush brush = new SolidBrush(SelectLayer.BackColor);
-                    SelectionArea.DrawRectangle(pen, BeginningMousePos[0], CurrentPos[1], CurrentPos[0] - BeginningMousePos[0], BeginningMousePos[1] - CurrentPos[1]);
+                    SelectRect = new Rectangle(CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
+                    SelectionArea.DrawRectangle(pen, SelectRect);
                 }
             }
             //handles the [-1,-1] vector
@@ -281,7 +306,8 @@ namespace Tabula
                 {
                     System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
                     Brush brush = new SolidBrush(SelectLayer.BackColor);
-                    SelectionArea.DrawRectangle(pen, CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
+                    SelectRect = new Rectangle(CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
+                    SelectionArea.DrawRectangle(pen, SelectRect);
                 }
             }
 
@@ -289,7 +315,8 @@ namespace Tabula
             {
                 System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
                 Brush brush = new SolidBrush(SelectLayer.BackColor);
-                SelectionArea.DrawRectangle(pen, BeginningMousePos[0], BeginningMousePos[1], CurrentPos[0] - BeginningMousePos[0], CurrentPos[1] - BeginningMousePos[1]);
+                SelectRect = new Rectangle(CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
+                SelectionArea.DrawRectangle(pen, SelectRect);
             }
         }
         private void penToolButton_Click(object sender, EventArgs e)
@@ -337,6 +364,9 @@ namespace Tabula
             die.beginQuit(baseCanvas);
         }
 
-        //Action Class Methods. See UML (Also, general functions that aren't Tool-specific.)
+        private void moveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CurrentTool = ETools.Move;
+        }
     }
 }

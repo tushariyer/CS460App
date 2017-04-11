@@ -36,6 +36,8 @@ namespace Tabula
         //Get & Set for stacks
         public Stack<Image> GetUndoStack() { return GlobalUndoStack; }
         public Stack<Image> GetRedoStack() { return GlobalRedoStack; }
+
+        private PictureBox SelectLayer = new PictureBox();
         //Constructor
         public Tabula()
         {
@@ -173,7 +175,7 @@ namespace Tabula
             {
                 case (ETools.Select):
                     bSelected = false;
-                    DrawSelectArea(EndMousePos, BeginningMousePos);
+                    DrawSelectArea(e.X, e.Y);
                     break;
                 case (ETools.Pen):
                     break;
@@ -214,44 +216,8 @@ namespace Tabula
                 case (ETools.Select):
                     if (bSelected)
                     {
-                        int[] CurrentPos = { e.X, e.Y };
-                        //handles the [1 -1] vector
-                        if (CurrentPos[0] > BeginningMousePos[0] && CurrentPos[1] > BeginningMousePos[1])
-                        {
-                            DrawSelectArea(CurrentPos, BeginningMousePos);
-                        }
-                        //handles the [-1 1] vector
-                        else if (CurrentPos[0] < BeginningMousePos[0] && CurrentPos[1] < BeginningMousePos[1])
-                        {
-                            DrawSelectArea(BeginningMousePos, CurrentPos);
-                        }
-                        //handles the [1, 1] vector
-                        else if (CurrentPos[0] > BeginningMousePos[0] && CurrentPos[1] < BeginningMousePos[1])
-                        {
-                            using (SelectionArea = this.baseCanvas.CreateGraphics())
-                            {
-                                SelectionArea.Clear(BackColor);
-                                PictureBox SelectLayer = new PictureBox();
-                                SelectLayer.BringToFront();
-                                System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
-                                Brush brush = new SolidBrush(SelectLayer.BackColor);
-                                SelectionArea.DrawRectangle(pen, BeginningMousePos[0], CurrentPos[1], CurrentPos[0] - BeginningMousePos[0], BeginningMousePos[1] - CurrentPos[1]);
-                                //
-                            }
-                        }
-                        else
-                        {
-                            using (SelectionArea = this.baseCanvas.CreateGraphics())
-                            {
-                                SelectionArea.Clear(BackColor);
-                                PictureBox SelectLayer = new PictureBox();
-                                SelectLayer.BringToFront();
-                                System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
-                                Brush brush = new SolidBrush(SelectLayer.BackColor);
-                                SelectionArea.DrawRectangle(pen, CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
-                                //
-                            }
-                        }
+                        DrawSelectArea(e.X, e.Y);
+                        baseCanvas.Invalidate();
                     }
                     break;
                 case (ETools.Pen):
@@ -278,17 +244,57 @@ namespace Tabula
                 //
             }
         }
-        private void DrawSelectArea(int EndX, int EndY, int OriginX, int OriginY)
+        private void DrawSelectArea(int X, int Y)
         {
+
+            int[] CurrentPos = { X, Y };
+            //handles the [1 -1] vector
+            if (CurrentPos[0] > BeginningMousePos[0] && CurrentPos[1] > BeginningMousePos[1])
+            {
+                using (SelectionArea = this.baseCanvas.CreateGraphics())
+                {
+                    System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
+                    Brush brush = new SolidBrush(SelectLayer.BackColor);
+                    SelectionArea.DrawRectangle(pen, CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
+                    //
+                }
+            }
+            //handles the [-1 1] vector
+            else if (CurrentPos[0] < BeginningMousePos[0] && CurrentPos[1] < BeginningMousePos[1])
+            {
+                using (SelectionArea = this.baseCanvas.CreateGraphics())
+                {
+                    System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
+                    Brush brush = new SolidBrush(SelectLayer.BackColor);
+                    SelectionArea.DrawRectangle(pen, CurrentPos[0], CurrentPos[1], BeginningMousePos[0] - CurrentPos[0], BeginningMousePos[1] - CurrentPos[1]);
+                }
+            }
+            //handles the [1, 1] vector
+            else if (CurrentPos[0] > BeginningMousePos[0] && CurrentPos[1] < BeginningMousePos[1])
+            {
+                using (SelectionArea = this.baseCanvas.CreateGraphics())
+                {
+                    System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
+                    Brush brush = new SolidBrush(SelectLayer.BackColor);
+                    SelectionArea.DrawRectangle(pen, BeginningMousePos[0], CurrentPos[1], CurrentPos[0] - BeginningMousePos[0], BeginningMousePos[1] - CurrentPos[1]);
+                }
+            }
+            //handles the [-1,-1] vector
+            else
+            {
+                using (SelectionArea = this.baseCanvas.CreateGraphics())
+                {
+                    System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
+                    Brush brush = new SolidBrush(SelectLayer.BackColor);
+                    SelectionArea.DrawRectangle(pen, CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
+                }
+            }
+
             using (SelectionArea = this.baseCanvas.CreateGraphics())
             {
-                SelectionArea.Clear(BackColor);
-                PictureBox SelectLayer = new PictureBox();
-                SelectLayer.BringToFront();
                 System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
                 Brush brush = new SolidBrush(SelectLayer.BackColor);
-                SelectionArea.DrawRectangle(pen, OriginX, EndY, EndX - OriginX, OriginY - EndY);
-                //
+                SelectionArea.DrawRectangle(pen, BeginningMousePos[0], BeginningMousePos[1], CurrentPos[0] - BeginningMousePos[0], CurrentPos[1] - BeginningMousePos[1]);
             }
         }
         private void penToolButton_Click(object sender, EventArgs e)

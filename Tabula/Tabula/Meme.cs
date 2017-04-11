@@ -17,7 +17,7 @@ namespace Tabula
         public Meme(Image image)
         {
             //Check to see if the user wants default meme text or nah
-
+            
             //Get text from user if needed
             userInput1 = TextInput.TextDialog("Top Text", "Enter your text");
             userInput2 = TextInput.TextDialog("Bottom Text", "Enter your text");
@@ -29,14 +29,29 @@ namespace Tabula
         }
 
         //Method to handle setting default text
+        private void SetTextDefault()
+        {
+
+        }
 
 
         //Method to handle setting user text
+        private void SetTextUser()
+        {
 
+        }
 
         //Method to handle formatting
+        private void FormatTextBox()
+        {
 
+        }
 
         //Method to render image without editable text boxes
+        private Image RenderMeme()
+        {
+
+        }
+
     }
 }

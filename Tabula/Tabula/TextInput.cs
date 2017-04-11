@@ -35,6 +35,7 @@ namespace Tabula
             popUp.AcceptButton = ok;
 
             //Returns string hopefully
-            return popUp.ShowDialog() == DialogResult.OK ? textBox.Text : "";        }
+            return popUp.ShowDialog() == DialogResult.OK ? textBox.Text : "";
+        }
     }
 }

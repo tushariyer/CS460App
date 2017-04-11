@@ -26,6 +26,7 @@ namespace Tabula
             Label popupTitle = new Label() { Left = 20, Top = 10, Text = title};
             TextBox textBox = new TextBox() {Left = 20, Top = 50, Width = 200 };
             Button ok = new Button() {Text = "Enter", Left = 150, Top = 90, Width = 50, DialogResult = DialogResult.OK};
+            ok.Click += (sender, e) => { popUp.Close(); };
 
             //Adds the buttons to the actual form
             popUp.Controls.Add(popupTitle);
@@ -34,8 +35,6 @@ namespace Tabula
             popUp.AcceptButton = ok;
 
             //Returns string hopefully
-            return textBox.Text;
-        }
-
+            return popUp.ShowDialog() == DialogResult.OK ? textBox.Text : "";        }
     }
 }

@@ -14,5 +14,6 @@ namespace Tabula
             this.ToolTitle = "Rotater";
             this.IsActive = false;
         }
+
     }
 }

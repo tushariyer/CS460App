@@ -10,12 +10,21 @@ namespace Tabula
     class TranslateMedia
     {
         Rectangle ImageSelected;
+        int CurrentX;
+        int CurrentY;
 
-
-        public TranslateMedia(Rectangle ImageSelected)
+        public TranslateMedia(Rectangle ImageSelected, int CurrentX, int CurrentY)
         {
             this.ImageSelected = ImageSelected;
+            this.CurrentX = CurrentX;
+            this.CurrentY = CurrentY;
 
+
+        }
+
+        public void Move()
+        {
+            ImageSelected.Location = new Point(CurrentX, CurrentY);
         }
 
     }

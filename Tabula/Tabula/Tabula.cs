@@ -178,16 +178,16 @@ namespace Tabula
                     switch (shapeSelected)
                     {
                         case (EShapes.Line):
-                            Equations.DrawLine(this.baseCanvas, new System.Drawing.Pen(Color.Azure, 2), BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
+                            Equations.DrawLine(this.baseCanvas, new System.Drawing.Pen(selectedColor, 2), BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
                             break;
                         case (EShapes.Circle):
-                            Equations.DrawCircle(this.baseCanvas, new System.Drawing.Pen(Color.Azure, 2), BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
+                            Equations.DrawCircle(this.baseCanvas, new System.Drawing.Pen(selectedColor, 2), BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
                             break;
                         case (EShapes.Square):
-                            Equations.DrawSquare(this.baseCanvas, new System.Drawing.Pen(Color.Azure, 2), BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
+                            Equations.DrawSquare(this.baseCanvas, new System.Drawing.Pen(selectedColor, 2), BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
                             break;
                         case (EShapes.Triangle):
-                            Equations.DrawTriangle(this.baseCanvas, new System.Drawing.Pen(Color.Azure, 2), BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
+                            Equations.DrawTriangle(this.baseCanvas, new System.Drawing.Pen(selectedColor, 2), BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
                             break;
                             /* case (EShapes.Star):
                                  Equations.DrawStar(this.baseCanvas, new System.Drawing.Pen(Color.Azure, 2), BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);

@@ -284,7 +284,7 @@ namespace Tabula
                 {
                     System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
                     Brush brush = new SolidBrush(SelectLayer.BackColor);
-                    SelectRect = new Rectangle(CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
+                    SelectRect = new Rectangle(CurrentPos[0], CurrentPos[1], BeginningMousePos[0] - CurrentPos[0], BeginningMousePos[1] - CurrentPos[1]);
                     SelectionArea.DrawRectangle(pen, SelectRect);
                 }
             }
@@ -295,7 +295,7 @@ namespace Tabula
                 {
                     System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
                     Brush brush = new SolidBrush(SelectLayer.BackColor);
-                    SelectRect = new Rectangle(CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
+                    SelectRect = new Rectangle(BeginningMousePos[0], CurrentPos[1], CurrentPos[0] - BeginningMousePos[0], BeginningMousePos[1] - CurrentPos[1]);
                     SelectionArea.DrawRectangle(pen, SelectRect);
                 }
             }
@@ -315,7 +315,7 @@ namespace Tabula
             {
                 System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
                 Brush brush = new SolidBrush(SelectLayer.BackColor);
-                SelectRect = new Rectangle(CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
+                SelectRect = new Rectangle(BeginningMousePos[0], BeginningMousePos[1], CurrentPos[0] - BeginningMousePos[0], CurrentPos[1] - BeginningMousePos[1]);
                 SelectionArea.DrawRectangle(pen, SelectRect);
             }
         }

@@ -51,6 +51,7 @@
     <Compile Include="FillColor.cs" />
     <Compile Include="FontModifier.cs" />
     <Compile Include="ImageEffects.cs" />
+    <Compile Include="Meme.cs" />
     <Compile Include="MultiTool.cs" />
     <Compile Include="NewCreation.cs" />
     <Compile Include="Open.cs" />
@@ -68,6 +69,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextInput.cs" />
     <Compile Include="Zoom.cs" />
     <EmbeddedResource Include="Tabula.resx">
       <DependentUpon>Tabula.cs</DependentUpon>
@@ -81,6 +83,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

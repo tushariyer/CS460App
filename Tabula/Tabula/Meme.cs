@@ -48,10 +48,10 @@ namespace Tabula
         }
 
         //Method to render image without editable text boxes
-        private Image RenderMeme()
-        {
+        //private Image RenderMeme()
+        //{
 
-        }
+        //}
 
     }
 }

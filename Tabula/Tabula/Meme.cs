@@ -19,7 +19,7 @@ namespace Tabula
         {
             //Check to see if the user wants default meme text or nah
 
-            string messageBoxText = "Would you like to enter your own text for this meme?";
+            string messageBoxText = "Would you like to choose the font for this meme?";
             string caption = "Meme Generator";
             MessageBoxButtons button = MessageBoxButtons.YesNoCancel;
             DialogResult result = MessageBox.Show(messageBoxText, caption, button);

@@ -56,10 +56,9 @@ namespace Tabula
             StringFormat format = new StringFormat();
             format.Alignment = StringAlignment.Center;
 
-            Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput1,textFont,Brushes.White, imageOnCanvas.Image.Width/2 , 0, format);
-            Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput2, textFont, Brushes.White, 0, 0,format);
+            Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput1, textFont, Brushes.White, imageOnCanvas.Image.Width / 2, 0);
+            Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput2, textFont, Brushes.White, (imageOnCanvas.Image.Width / 2), imageOnCanvas.Image.Height - textFont.Height);
             imageOnCanvas.Refresh();
-            
         }
 
 

@@ -13,12 +13,14 @@ namespace Tabula
     {
         private TextBox topText, bottomText;
         private string userInput1,userInput2;
+        private PictureBox imageOnCanvas;
+        private Font textFont;
 
         //Takes in image from the main form and sets up meme(TM) text
-        public Meme(Image image)
+        public Meme(PictureBox image)
         {
+            imageOnCanvas = image;
             //Check to see if the user wants default meme text or nah
-
             string messageBoxText = "Would you like to choose the font for this meme?";
             string caption = "Meme Generator";
             MessageBoxButtons button = MessageBoxButtons.YesNoCancel;
@@ -47,7 +49,14 @@ namespace Tabula
         //Method to handle setting default text
         private void SetTextDefault()
         {
+            userInput1 = TextInput.TextDialog("Top Text", "Enter your text");
+            userInput2 = TextInput.TextDialog("Bottom Text", "Enter your text");
 
+            textFont = new Font("Impact", 50);
+
+           Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput1,textFont,Brushes.White, new Point(10,10));
+           imageOnCanvas.Refresh();
+            
         }
 
 

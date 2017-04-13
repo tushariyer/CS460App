@@ -371,7 +371,7 @@ namespace Tabula
 
         private void memeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Meme meme = new Meme(baseCanvas.Image);
+            Meme meme = new Meme(baseCanvas);
         }
     }
 }

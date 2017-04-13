@@ -53,9 +53,12 @@ namespace Tabula
             userInput2 = TextInput.TextDialog("Bottom Text", "Enter your text");
 
             textFont = new Font("Impact", 50);
+            StringFormat format = new StringFormat();
+            format.Alignment = StringAlignment.Center;
 
-           Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput1,textFont,Brushes.White, new Point(10,10));
-           imageOnCanvas.Refresh();
+            Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput1,textFont,Brushes.White, imageOnCanvas.Image.Width/2 , 0, format);
+            Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput2, textFont, Brushes.White, 0, 0,format);
+            imageOnCanvas.Refresh();
             
         }
 

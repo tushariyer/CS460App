@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Tabula
 {
@@ -22,9 +23,15 @@ namespace Tabula
 
         }
 
-        public void Move()
+        public void Move(PictureBox Layer)
         {
-            ImageSelected.Location = new Point(CurrentX, CurrentY);
+
+            Bitmap bmp = new Bitmap(ImageSelected.Width, ImageSelected.Height);
+
+            Graphics g = Graphics.FromImage(bmp);
+
+            //g.DrawImage(ImageSelected, 0, 0, 100, 100);
+
         }
 
     }

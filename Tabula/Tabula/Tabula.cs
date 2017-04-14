@@ -26,7 +26,7 @@ namespace Tabula
         public static int[] CurrentMosusePos = { 0, 0 };
 
         public int[] BeforeLocation = { 0, 0 };
-
+        public Bitmap CopiedImage;
 
         //Form Tools
         public Graphics SelectionArea;
@@ -47,6 +47,29 @@ namespace Tabula
         public Tabula()
         {
             InitializeComponent();
+
+        }
+
+        public Bitmap CropImage(Image SourceImage)
+        {
+            Rectangle CroppedImage = SelectRect;
+            Bitmap bmp = new Bitmap(SelectRect.Width, SelectRect.Height);
+            Graphics g = Graphics.FromImage(SourceImage);
+
+            CopiedImage = bmp;  
+
+            return bmp;
+        }
+
+        public void Paste(Bitmap ImageToPaste, Image SourceImage)
+        {
+            //savePrevImage();
+
+            Graphics g = Graphics.FromImage(SourceImage);
+
+            g.DrawImage(SourceImage, new Rectangle(0, 0, ImageToPaste.Width, ImageToPaste.Height), SelectRect, GraphicsUnit.Pixel);
+            g.Dispose();
+            baseCanvas.Refresh();
         }
 
         //Use this whenever a tool is called to make sure the undo stack always gets updated
@@ -254,7 +277,7 @@ namespace Tabula
                     if (bInSelectedRect)
                     {
                         TranslateMedia TempMoving = new TranslateMedia(SelectRect, e.X, e.Y);
-                        TempMoving.Move();
+                        //TempMoving.Move();
                         DrawSelectArea(e.X, e.Y);
                     }
                     break;
@@ -390,6 +413,16 @@ namespace Tabula
         private void memeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Meme meme = new Meme(baseCanvas);
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CropImage(baseCanvas.Image);
+        }
+
+        private void pasteButton_Click(object sender, EventArgs e)
+        {
+            Paste(CopiedImage, baseCanvas.Image);
         }
     }
 }

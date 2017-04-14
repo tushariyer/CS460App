@@ -11,7 +11,6 @@ namespace Tabula
 {
     class Meme
     {
-        private TextBox topText, bottomText;
         private string userInput1,userInput2;
         private PictureBox imageOnCanvas;
         private Font textFont;
@@ -81,13 +80,13 @@ namespace Tabula
             //Measures first text size
             textSize = TextRenderer.MeasureText(userInput1, textFont);
             //Draws text at top of screen and centered
-            //Width / 2 - textWidth / 2
-            Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput1, textFont, Brushes.White, (imageOnCanvas.Image.Width) / 2 - (textSize.Width / 2), 0);
+            //Width / 2 - textWidth
+            Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput1, textFont, Brushes.White, (imageOnCanvas.Image.Width) / 2 - (textSize.Width), 0);
             //Draws text at bottom of screen and centered
-            //Width / 2 - textWidth / 2
+            //Width / 2 - textWidth
             //85% of the way down the canvas
             textSize = TextRenderer.MeasureText(userInput2, textFont);
-            Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput2, textFont, Brushes.White, (imageOnCanvas.Image.Width / 2) - (textSize.Width / 2), imageOnCanvas.Image.Height * 0.85f);
+            Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput2, textFont, Brushes.White, (imageOnCanvas.Image.Width / 2) - (textSize.Width), imageOnCanvas.Image.Height * 0.85f);
 
             //Refreshes pictureBox
             imageOnCanvas.Refresh();

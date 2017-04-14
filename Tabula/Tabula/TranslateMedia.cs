@@ -25,7 +25,13 @@ namespace Tabula
 
         public void Move(PictureBox Layer)
         {
-            
+
+            Bitmap bmp = new Bitmap(ImageSelected.Width, ImageSelected.Height);
+
+            Graphics g = Graphics.FromImage(bmp);
+
+            //g.DrawImage(ImageSelected, 0, 0, 100, 100);
+
         }
 
     }

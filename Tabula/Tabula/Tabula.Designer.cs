@@ -65,6 +65,7 @@
             this.memeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.baseCanvas = new System.Windows.Forms.PictureBox();
             this.availableColors = new System.Windows.Forms.ColorDialog();
+            this.MousePos = new System.Windows.Forms.Label();
             this.topMenuBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.baseCanvas)).BeginInit();
             this.SuspendLayout();
@@ -187,19 +188,19 @@
             // undoButton
             // 
             this.undoButton.Name = "undoButton";
-            this.undoButton.Size = new System.Drawing.Size(128, 22);
+            this.undoButton.Size = new System.Drawing.Size(152, 22);
             this.undoButton.Text = "Undo";
             // 
             // redoButton
             // 
             this.redoButton.Name = "redoButton";
-            this.redoButton.Size = new System.Drawing.Size(128, 22);
+            this.redoButton.Size = new System.Drawing.Size(152, 22);
             this.redoButton.Text = "Redo";
             // 
             // cutButton
             // 
             this.cutButton.Name = "cutButton";
-            this.cutButton.Size = new System.Drawing.Size(128, 22);
+            this.cutButton.Size = new System.Drawing.Size(152, 22);
             this.cutButton.Text = "Cut";
             // 
             // copyButton
@@ -219,7 +220,7 @@
             // transformButton
             // 
             this.transformButton.Name = "transformButton";
-            this.transformButton.Size = new System.Drawing.Size(128, 22);
+            this.transformButton.Size = new System.Drawing.Size(152, 22);
             this.transformButton.Text = "Transform";
             // 
             // effectsButton
@@ -352,12 +353,22 @@
             this.baseCanvas.MouseMove += new System.Windows.Forms.MouseEventHandler(this.baseCanvas_MouseMove);
             this.baseCanvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.baseCanvas_MouseUp);
             // 
+            // MousePos
+            // 
+            this.MousePos.AutoSize = true;
+            this.MousePos.Location = new System.Drawing.Point(1604, 8);
+            this.MousePos.Name = "MousePos";
+            this.MousePos.Size = new System.Drawing.Size(37, 13);
+            this.MousePos.TabIndex = 2;
+            this.MousePos.Text = "label1";
+            // 
             // Tabula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(5F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1653, 1029);
+            this.Controls.Add(this.MousePos);
             this.Controls.Add(this.baseCanvas);
             this.Controls.Add(this.topMenuBar);
             this.Font = new System.Drawing.Font("Calibri", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -411,6 +422,7 @@
         private System.Windows.Forms.ToolStripMenuItem deselectButton;
         private System.Windows.Forms.ToolStripMenuItem moveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem memeToolStripMenuItem;
+        private System.Windows.Forms.Label MousePos;
     }
 }
 

@@ -53,8 +53,8 @@ namespace Tabula
         public Bitmap CropImage(Image SourceImage)
         {
             Rectangle CroppedImage = SelectRect;
-            Bitmap bmp = new Bitmap(SelectRect.Width, SelectRect.Height);
-            Graphics g = Graphics.FromImage(SourceImage);
+            Bitmap bmp = new Bitmap(Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height));
+            //Graphics g = Graphics.FromImage(SourceImage);
 
             CopiedImage = bmp;  
 
@@ -67,7 +67,7 @@ namespace Tabula
 
             Graphics g = Graphics.FromImage(SourceImage);
 
-            g.DrawImage(SourceImage, new Rectangle(0, 0, ImageToPaste.Width, ImageToPaste.Height), SelectRect, GraphicsUnit.Pixel);
+            g.DrawImage(SourceImage, new Rectangle(baseCanvas.Location.X, baseCanvas.Location.Y, Math.Abs(ImageToPaste.Width), Math.Abs(ImageToPaste.Height)), SelectRect.Left, SelectRect.Top, SelectRect.Width, SelectRect.Height, GraphicsUnit.Pixel);
             g.Dispose();
             baseCanvas.Refresh();
         }
@@ -249,6 +249,9 @@ namespace Tabula
          */
         private void baseCanvas_MouseMove(object sender, MouseEventArgs e)
         {
+
+            MousePos.Text = e.X + ", " + e.Y;
+
             CurrentMosusePos[0] = e.X;
             CurrentMosusePos[1] = e.Y;
 

@@ -55,9 +55,10 @@ namespace Tabula
             textFont = new Font("Impact", 50);
             StringFormat format = new StringFormat();
             format.Alignment = StringAlignment.Center;
+            
 
             Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput1, textFont, Brushes.White, imageOnCanvas.Image.Width / 2, 0);
-            Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput2, textFont, Brushes.White, (imageOnCanvas.Image.Width / 2), imageOnCanvas.Image.Height - textFont.Height);
+            Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput2, textFont, Brushes.White, (imageOnCanvas.Image.Width / 2), imageOnCanvas.Image.Height * 0.85f);
             imageOnCanvas.Refresh();
         }
 

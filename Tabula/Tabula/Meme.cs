@@ -49,25 +49,14 @@ namespace Tabula
         //Method to handle setting default text
         private void SetTextDefault()
         {
-            userInput1 = TextInput.TextDialog("Top Text", "Enter your text");
-            userInput2 = TextInput.TextDialog("Bottom Text", "Enter your text");
-
-            textFont = new Font("Impact", 50);
-            StringFormat format = new StringFormat();
-            format.Alignment = StringAlignment.Center;
-            
-
-            Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput1, textFont, Brushes.White, imageOnCanvas.Image.Width / 2, 0);
-            Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput2, textFont, Brushes.White, (imageOnCanvas.Image.Width / 2), imageOnCanvas.Image.Height * 0.85f);
-            imageOnCanvas.Refresh();
+            DrawText("Impact",50);
         }
 
 
         //Method to handle setting user text
         private void SetTextUser()
         {
-            userInput1 = TextInput.TextDialog("Top Text", "Enter your text");
-            userInput2 = TextInput.TextDialog("Bottom Text", "Enter your text");
+            
         }
 
         //Method to handle formatting
@@ -76,11 +65,32 @@ namespace Tabula
 
         }
 
-        //Method to render image without editable text boxes
-        //private Image RenderMeme()
-        //{
+        private void DrawText(String fontStyle, int fontSize)
+        {
+            //Takes in user input for top and bottom text
+            userInput1 = TextInput.TextDialog("Top Text", "Enter your text");
+            userInput2 = TextInput.TextDialog("Bottom Text", "Enter your text");
 
-        //}
+            //Sets font stlye, size, and centers it in the "text box"
+            textFont = new Font(fontStyle, fontSize);
+            StringFormat format = new StringFormat();
+            format.Alignment = StringAlignment.Center;
 
+            //Size object to test string width
+            Size textSize = new Size();
+            //Measures first text size
+            textSize = TextRenderer.MeasureText(userInput1, textFont);
+            //Draws text at top of screen and centered
+            //Width / 2 - textWidth / 2
+            Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput1, textFont, Brushes.White, (imageOnCanvas.Image.Width) / 2 - (textSize.Width / 2), 0);
+            //Draws text at bottom of screen and centered
+            //Width / 2 - textWidth / 2
+            //85% of the way down the canvas
+            textSize = TextRenderer.MeasureText(userInput2, textFont);
+            Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput2, textFont, Brushes.White, (imageOnCanvas.Image.Width / 2) - (textSize.Width / 2), imageOnCanvas.Image.Height * 0.85f);
+
+            //Refreshes pictureBox
+            imageOnCanvas.Refresh();
+        }
     }
 }

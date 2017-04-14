@@ -67,7 +67,8 @@ namespace Tabula
 
             Graphics g = Graphics.FromImage(SourceImage);
 
-            g.DrawImage(SourceImage, new Rectangle(baseCanvas.Location.X, baseCanvas.Location.Y, Math.Abs(ImageToPaste.Width), Math.Abs(ImageToPaste.Height)), SelectRect.Left, SelectRect.Top, SelectRect.Width, SelectRect.Height, GraphicsUnit.Pixel);
+            g.DrawImage(SourceImage, new Rectangle(200, 200, Math.Abs(SelectRect.Width), 
+                Math.Abs(SelectRect.Height)), SelectRect.Left, SelectRect.Top, ImageToPaste.Width, ImageToPaste.Height, GraphicsUnit.Pixel);
             g.Dispose();
             baseCanvas.Refresh();
         }
@@ -249,7 +250,7 @@ namespace Tabula
          */
         private void baseCanvas_MouseMove(object sender, MouseEventArgs e)
         {
-
+            //mouse cords indicator on the screen
             MousePos.Text = e.X + ", " + e.Y;
 
             CurrentMosusePos[0] = e.X;

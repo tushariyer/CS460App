@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows;
 using System.Drawing;
 
 namespace Tabula
@@ -12,15 +13,32 @@ namespace Tabula
     {
         private TextBox topText, bottomText;
         private string userInput1,userInput2;
+        private PictureBox imageOnCanvas;
+        private Font textFont;
 
         //Takes in image from the main form and sets up meme(TM) text
-        public Meme(Image image)
+        public Meme(PictureBox image)
         {
+            imageOnCanvas = image;
             //Check to see if the user wants default meme text or nah
-            
-            //Get text from user if needed
-            userInput1 = TextInput.TextDialog("Top Text", "Enter your text");
-            userInput2 = TextInput.TextDialog("Bottom Text", "Enter your text");
+            string messageBoxText = "Would you like to choose the font for this meme?";
+            string caption = "Meme Generator";
+            MessageBoxButtons button = MessageBoxButtons.YesNoCancel;
+            DialogResult result = MessageBox.Show(messageBoxText, caption, button);
+
+            switch(result)
+            {
+                case DialogResult.Yes:
+                    SetTextUser();
+                    break;
+                case DialogResult.No:
+                    SetTextDefault();
+                    break;
+                case DialogResult.Cancel:
+                    break;
+                default:
+                    break;
+            }
 
             //Set text boxes to have text from user/default 
             //Also formatting text box size,position,etc. here
@@ -31,14 +49,22 @@ namespace Tabula
         //Method to handle setting default text
         private void SetTextDefault()
         {
+            userInput1 = TextInput.TextDialog("Top Text", "Enter your text");
+            userInput2 = TextInput.TextDialog("Bottom Text", "Enter your text");
 
+            textFont = new Font("Impact", 50);
+
+           Graphics.FromImage(imageOnCanvas.Image).DrawString(userInput1,textFont,Brushes.White, new Point(10,10));
+           imageOnCanvas.Refresh();
+            
         }
 
 
         //Method to handle setting user text
         private void SetTextUser()
         {
-
+            userInput1 = TextInput.TextDialog("Top Text", "Enter your text");
+            userInput2 = TextInput.TextDialog("Bottom Text", "Enter your text");
         }
 
         //Method to handle formatting

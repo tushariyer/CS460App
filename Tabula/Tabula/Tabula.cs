@@ -19,11 +19,15 @@ namespace Tabula
         public static Stack<Image> GlobalUndoStack;
         public static Stack<Image> GlobalRedoStack;
         //Colour currently selected
-        private Color selectedColor;
+        private Color selectedColor = Color.Azure;
         //Select variables
         public static int[] BeginningMousePos = { 0, 0 };
         private int[] EndMousePos = { 0, 0 };
         public static int[] CurrentMosusePos = { 0, 0 };
+
+        public int[] BeforeLocation = { 0, 0 };
+
+
         //Form Tools
         public Graphics SelectionArea;
         //Rectangle selected
@@ -33,6 +37,7 @@ namespace Tabula
         private ETools CurrentTool;
         private EShapes shapeSelected;
         public bool bSelected;
+        public bool bCanDraw;
         //Get & Set for stacks
         public Stack<Image> GetUndoStack() { return GlobalUndoStack; }
         public Stack<Image> GetRedoStack() { return GlobalRedoStack; }
@@ -159,6 +164,7 @@ namespace Tabula
                     bSelected = true;
                     break;
                 case (ETools.Pen):
+                    bCanDraw = true;
                     break;
                 case (ETools.Move):
                     if (SelectRect.Contains(new Point(e.X, e.Y)))
@@ -188,6 +194,7 @@ namespace Tabula
                     DrawSelectArea(e.X, e.Y);
                     break;
                 case (ETools.Pen):
+                    bCanDraw = false;
                     break;
                 case (ETools.Shapes):
                     switch (shapeSelected)
@@ -221,6 +228,7 @@ namespace Tabula
         {
             CurrentMosusePos[0] = e.X;
             CurrentMosusePos[1] = e.Y;
+
             switch (CurrentTool)
             {
                 case (ETools.Select):
@@ -231,6 +239,14 @@ namespace Tabula
                     }
                     break;
                 case (ETools.Pen):
+                    if (bCanDraw)
+                    {
+                        Pen p = new Pen(selectedColor);
+                        p.Draw(BeforeLocation, e.X, e.Y, 3, baseCanvas, baseCanvas.Image);
+
+                    }
+
+
                     break;
                 case (ETools.Shapes):
                     break;
@@ -245,6 +261,8 @@ namespace Tabula
                 default:
                     break;
             }
+            BeforeLocation[0] = e.X;
+            BeforeLocation[1] = e.Y;
         }
         /**
          * Draw Tool Button
@@ -367,6 +385,11 @@ namespace Tabula
         private void moveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CurrentTool = ETools.Move;
+        }
+
+        private void memeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Meme meme = new Meme(baseCanvas);
         }
     }
 }

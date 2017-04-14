@@ -15,8 +15,8 @@ namespace Tabula
             //Creates new form with these properties
             Form popUp = new Form()
             {
-                Width = 300,
-                Height = 100,
+                Width = 275,
+                Height = 150,
                 FormBorderStyle = FormBorderStyle.FixedDialog,
                 Text = defaultVal,
                 StartPosition = FormStartPosition.CenterScreen
@@ -24,8 +24,8 @@ namespace Tabula
 
             //Sets up control buttons and sets their individual properties(height,width,etc.)
             Label popupTitle = new Label() { Left = 20, Top = 10, Text = title};
-            TextBox textBox = new TextBox() {Left = 20, Top = 50, Width = 200 };
-            Button ok = new Button() {Text = "Enter", Left = 150, Top = 90, Width = 50, DialogResult = DialogResult.OK};
+            TextBox textBox = new TextBox() {Left = 20, Top = 40, Width = 200 };
+            Button ok = new Button() {Text = "Enter", Left = 60, Top = 80, Width = 50, DialogResult = DialogResult.OK};
             ok.Click += (sender, e) => { popUp.Close(); };
 
             //Adds the buttons to the actual form

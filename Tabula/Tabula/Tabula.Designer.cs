@@ -212,8 +212,9 @@
             // pasteButton
             // 
             this.pasteButton.Name = "pasteButton";
-            this.pasteButton.Size = new System.Drawing.Size(128, 22);
+            this.pasteButton.Size = new System.Drawing.Size(152, 22);
             this.pasteButton.Text = "Paste";
+            this.pasteButton.Click += new System.EventHandler(this.pasteButton_Click);
             // 
             // transformButton
             // 

@@ -26,7 +26,7 @@ namespace Tabula
         public static int[] CurrentMosusePos = { 0, 0 };
 
         public int[] BeforeLocation = { 0, 0 };
-        public Image CopiedImage;
+        public Bitmap CopiedImage;
 
         //Form Tools
         public Graphics SelectionArea;
@@ -47,6 +47,7 @@ namespace Tabula
         public Tabula()
         {
             InitializeComponent();
+
         }
 
         public Bitmap CropImage(Image SourceImage)
@@ -55,14 +56,21 @@ namespace Tabula
             Bitmap bmp = new Bitmap(SelectRect.Width, SelectRect.Height);
             Graphics g = Graphics.FromImage(SourceImage);
 
-
-            g.DrawImage(SourceImage, new Rectangle(0, 0, bmp.Width, bmp.Height), CroppedImage, GraphicsUnit.Pixel);
-            g.Dispose();
-            
+            CopiedImage = bmp;  
 
             return bmp;
         }
 
+        public void Paste(Bitmap ImageToPaste, Image SourceImage)
+        {
+            //savePrevImage();
+
+            Graphics g = Graphics.FromImage(SourceImage);
+
+            g.DrawImage(SourceImage, new Rectangle(0, 0, ImageToPaste.Width, ImageToPaste.Height), SelectRect, GraphicsUnit.Pixel);
+            g.Dispose();
+            baseCanvas.Refresh();
+        }
 
         //Use this whenever a tool is called to make sure the undo stack always gets updated
         private void savePrevImage()
@@ -410,6 +418,11 @@ namespace Tabula
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CropImage(baseCanvas.Image);
+        }
+
+        private void pasteButton_Click(object sender, EventArgs e)
+        {
+            Paste(CopiedImage, baseCanvas.Image);
         }
     }
 }

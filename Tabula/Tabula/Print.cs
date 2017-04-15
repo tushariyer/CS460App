@@ -17,12 +17,12 @@ namespace Tabula
         /**
          * Constructor
          */
-        public Print()
+        public Print(Image toPrint)
         {
-
+            PrepPicture(toPrint);
         }
 
-        public void PrepPicture(Image toPrint)
+        private void PrepPicture(Image toPrint)
         {
             //Note: If no picture is in the picturebox, Tabula will crash if you try to print
             imageToPrint = toPrint;
@@ -45,6 +45,7 @@ namespace Tabula
             //Passes the print document into the dialog windows (I think?)
             preview.Document = doc;
             printSettings.Document = doc;
+            
 
             //Control the dialog boxes....
             if (printSettings.ShowDialog() == DialogResult.OK)
@@ -53,7 +54,7 @@ namespace Tabula
                 {
                     // This method returns immediately, before the print job starts.
                     // The PrintPage event will fire asynchronously.
-
+                    
                     doc.Print();
                     //Intended to close the preview after doesnt work
                     doc.Dispose();

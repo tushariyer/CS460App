@@ -202,6 +202,7 @@
             this.cutButton.Name = "cutButton";
             this.cutButton.Size = new System.Drawing.Size(152, 22);
             this.cutButton.Text = "Cut";
+            this.cutButton.Click += new System.EventHandler(this.cutButton_Click);
             // 
             // copyButton
             // 

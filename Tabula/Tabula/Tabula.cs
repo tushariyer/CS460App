@@ -27,6 +27,8 @@ namespace Tabula
 
         public int[] BeforeLocation = { 0, 0 };
         public Bitmap CopiedImage;
+        
+        private bool bCut = false;
 
         //Form Tools
         public Graphics SelectionArea;
@@ -61,14 +63,42 @@ namespace Tabula
             return bmp;
         }
 
+        public void CutImage(Image SourceImage)
+        {
+
+            CropImage(SourceImage);
+
+            bCut = true;
+
+        }
+
+
         public void Paste(Bitmap ImageToPaste, Image SourceImage)
         {
             //savePrevImage();
 
             Graphics g = Graphics.FromImage(SourceImage);
 
-            g.DrawImage(SourceImage, new Rectangle(200, 200, Math.Abs(SelectRect.Width), 
+            g.DrawImage(SourceImage, new Rectangle(0, 0, Math.Abs(SelectRect.Width), 
                 Math.Abs(SelectRect.Height)), SelectRect.Left, SelectRect.Top, ImageToPaste.Width, ImageToPaste.Height, GraphicsUnit.Pixel);
+
+            if (bCut)
+            {
+                Rectangle CroppedImage = SelectRect;
+                Bitmap bmp = new Bitmap(Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height));
+                Graphics gr = Graphics.FromImage(SourceImage);
+                Brush b = new SolidBrush(Color.White);
+
+                bCut = false;
+
+                System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
+                myBrush.Dispose();
+
+                gr.FillRectangle(b, SelectRect);
+
+                baseCanvas.Refresh();
+            }
+
             g.Dispose();
             baseCanvas.Refresh();
         }
@@ -85,7 +115,16 @@ namespace Tabula
         private void openFileButton_Click(object sender, EventArgs e)
         {
             Open newPic = new Open(); //Create new Open Object
+            int newX = 552;
+            int newY = 294;
+            baseCanvas.SizeMode = PictureBoxSizeMode.AutoSize;
+            //baseCanvas.Size = new Size(newX--, newY--);
+
+            baseCanvas.Refresh();
+
             baseCanvas.Image = newPic.importImage(); //USe the importImage method to assign a picture to the PictureBox
+
+
         }
         /**
          * Save methods start here
@@ -254,6 +293,8 @@ namespace Tabula
          */
         private void baseCanvas_MouseMove(object sender, MouseEventArgs e)
         {
+
+
             //mouse cords indicator on the screen
             MousePos.Text = e.X + ", " + e.Y;
 
@@ -420,7 +461,7 @@ namespace Tabula
 
         private void memeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            savePrevImage();
+            //savePrevImage();
             Meme meme = new Meme(baseCanvas);
         }
 
@@ -432,6 +473,11 @@ namespace Tabula
         private void pasteButton_Click(object sender, EventArgs e)
         {
             Paste(CopiedImage, baseCanvas.Image);
+        }
+
+        private void cutButton_Click(object sender, EventArgs e)
+        {
+            CutImage(baseCanvas.Image);
         }
     }
 }

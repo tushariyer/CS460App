@@ -134,8 +134,13 @@ namespace Tabula
          */
         private void newFileButton_Click(object sender, EventArgs e)
         {
-            NewCreation newBlank = new NewCreation();
-            newBlank.importTemplate();
+            if(baseCanvas.Image != null)
+            {
+                savePrevImage();
+                NewCreation newBlank = new NewCreation(baseCanvas);
+            }
+            else { 
+                NewCreation newBlank = new NewCreation(baseCanvas);}
         }
         /**
          * Button for Undo

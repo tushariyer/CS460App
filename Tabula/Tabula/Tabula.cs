@@ -156,8 +156,7 @@ namespace Tabula
          */
         private void printButton_Click(object sender, EventArgs e)
         {
-            Print printer = new Print();
-            printer.PrepPicture(baseCanvas.Image);
+            Print printer = new Print(baseCanvas.Image);
         }
         /**
          * Select Button
@@ -415,6 +414,7 @@ namespace Tabula
 
         private void memeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            savePrevImage();
             Meme meme = new Meme(baseCanvas);
         }
 

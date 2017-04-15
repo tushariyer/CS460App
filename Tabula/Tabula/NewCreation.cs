@@ -13,34 +13,17 @@ namespace Tabula
         /**
          * Constructor
          */
-        public NewCreation()
+        public NewCreation(PictureBox pictureBox)
         {
-
+            importTemplate(pictureBox);
         }
 
         /**
          * Uses OpenFileDialog to import an image and store it in an Image object.
          */
-        public Image importTemplate()
+        private void importTemplate(PictureBox pictureBox)
         {
-            //Opens a dialog box to choose a file
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "All Files (*.*)|*.*";
-            openFile.FilterIndex = 1;
-
-            string fileName = ""; //Includes path to file
-
-            if (openFile.ShowDialog() == DialogResult.OK)
-            {
-                fileName = openFile.FileName;
-            }
-            else
-            {
-                MessageBox.Show("Please select an image to import.");
-                return null; // Because why not
-            }
-
-            return Image.FromFile(fileName); //Send it back to Tabula handler. it will get assigned to the PictureBox there.
+            pictureBox.Image = Properties.Resources.Blank;
         }
     }
 }

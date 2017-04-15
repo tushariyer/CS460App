@@ -55,7 +55,11 @@ namespace Tabula
         //Method to handle setting user text
         private void SetTextUser()
         {
-            
+            FontDialog userFont = new FontDialog();
+            if(userFont.ShowDialog() == DialogResult.OK)
+            {
+                DrawText(userFont.Font.ToString(),(int)userFont.Font.Size);
+            }    
         }
 
         //Method to handle formatting

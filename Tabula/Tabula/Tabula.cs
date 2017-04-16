@@ -16,8 +16,8 @@ namespace Tabula
     public partial class Tabula : Form
     {
         //Global Stacks
-        public static Stack<Image> GlobalUndoStack;
-        public static Stack<Image> GlobalRedoStack;
+        public static Stack<Image> GlobalUndoStack = new Stack<Image>();
+        public static Stack<Image> GlobalRedoStack = new Stack<Image>();
         //Colour currently selected
         private Color selectedColor = Color.Azure;
         //Select variables
@@ -264,6 +264,7 @@ namespace Tabula
                 case (ETools.Select):
                     if (bSelected)
                     {
+                        savePrevImage();
                         DrawSelectArea(e.X, e.Y);
                         baseCanvas.Invalidate();
                     }

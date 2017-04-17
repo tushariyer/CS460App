@@ -19,11 +19,31 @@ namespace Tabula
         public Meme(PictureBox image)
         {
             imageOnCanvas = image;
-            //Check to see if the user wants default meme text or nah
-            string messageBoxText = "Would you like to choose the font for this meme?";
+
+            //Checks if user wants a pre done meme
+            string messageBoxText = "Would you like to choose a blank meme template?";
             string caption = "Meme Generator";
             MessageBoxButtons button = MessageBoxButtons.YesNoCancel;
             DialogResult result = MessageBox.Show(messageBoxText, caption, button);
+
+            switch (result)
+            {
+                case DialogResult.Yes:
+                    ImportMeme();
+                    break;
+                case DialogResult.No:
+                    break;
+                case DialogResult.Cancel:
+                    break;
+                default:
+                    break;
+            }
+
+            //Check to see if the user wants default meme text or nah
+            messageBoxText = "Would you like to choose the font for this meme?";
+            caption = "Meme Generator";
+            button = MessageBoxButtons.YesNoCancel;
+            result = MessageBox.Show(messageBoxText, caption, button);
 
             switch(result)
             {
@@ -62,12 +82,6 @@ namespace Tabula
             }    
         }
 
-        //Method to handle formatting
-        private void FormatTextBox()
-        {
-
-        }
-
         private void DrawText(String fontStyle, int fontSize)
         {
             //Takes in user input for top and bottom text
@@ -94,6 +108,21 @@ namespace Tabula
 
             //Refreshes pictureBox
             imageOnCanvas.Refresh();
+        }
+
+        private void ImportMeme()
+        {
+            OpenFileDialog memeDia = new OpenFileDialog();
+            memeDia.Title = "Choose a meme";
+            memeDia.Filter = "All Files (*.*)|*.*";
+            memeDia.InitialDirectory = "Tabula/Tabula/Resources";
+            
+            if(memeDia.ShowDialog() == DialogResult.OK)
+            {
+                imageOnCanvas.Image = Image.FromFile(memeDia.FileName);
+            }
+
+            memeDia.Dispose();
         }
     }
 }

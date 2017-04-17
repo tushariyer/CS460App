@@ -74,7 +74,7 @@ namespace Tabula
 
         public void Paste(Bitmap ImageToPaste, Image SourceImage)
         {
-            //savePrevImage();
+            savePrevImage();
 
             Graphics g = Graphics.FromImage(SourceImage);
 
@@ -104,7 +104,7 @@ namespace Tabula
 
         public void Paste(Bitmap ImageToPaste, Image SourceImage, int X, int Y)
         {
-            //savePrevImage();
+            savePrevImage();
 
 
             using (Graphics g = Graphics.FromImage(SourceImage))
@@ -139,7 +139,14 @@ namespace Tabula
         //Use this whenever a tool is called to make sure the undo stack always gets updated
         private void savePrevImage()
         {
-            GlobalUndoStack.Push((Image)baseCanvas.Image.Clone());
+            if (baseCanvas.Image == null)
+            {
+
+            }
+            else
+            {
+                GlobalUndoStack.Push((Image)baseCanvas.Image.Clone());
+            }
         }
 
         /**
@@ -501,7 +508,7 @@ namespace Tabula
 
         private void memeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //savePrevImage();
+            savePrevImage();
             Meme meme = new Meme(baseCanvas);
         }
 

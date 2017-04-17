@@ -40,9 +40,6 @@ namespace Tabula
         private EShapes shapeSelected;
         public bool bSelected;
         public bool bCanDraw;
-        //Get & Set for stacks
-        public Stack<Image> GetUndoStack() { return GlobalUndoStack; }
-        public Stack<Image> GetRedoStack() { return GlobalRedoStack; }
 
         private PictureBox SelectLayer = new PictureBox();
         //Constructor
@@ -77,7 +74,7 @@ namespace Tabula
         //Use this whenever a tool is called to make sure the undo stack always gets updated
         private void savePrevImage()
         {
-            GlobalUndoStack.Push(baseCanvas.Image);
+            GlobalUndoStack.Push((Image)baseCanvas.Image.Clone());
         }
 
         /**
@@ -148,7 +145,7 @@ namespace Tabula
          */
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GlobalRedoStack.Push(baseCanvas.Image);
+            GlobalRedoStack.Push((Image)baseCanvas.Image.Clone());
             baseCanvas.Image = GlobalUndoStack.Pop();
         }
         /**
@@ -156,6 +153,7 @@ namespace Tabula
          */
         private void redoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            GlobalUndoStack.Push((Image)baseCanvas.Image.Clone());
             baseCanvas.Image = GlobalRedoStack.Pop();
         }
         /**

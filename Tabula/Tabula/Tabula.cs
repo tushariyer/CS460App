@@ -370,7 +370,7 @@ namespace Tabula
                     if (bCanDraw)
                     {
                         Pen p = new Pen(selectedColor);
-                        p.Draw(BeforeLocation, e.X, e.Y, 3, baseCanvas, baseCanvas.Image);
+                        p.Draw(BeforeLocation, e.X, e.Y, BrushSizeBar.Value, baseCanvas, baseCanvas.Image);
 
                     }
 
@@ -471,6 +471,7 @@ namespace Tabula
         private void penToolButton_Click(object sender, EventArgs e)
         {
             CurrentTool = ETools.Pen;
+            BrushSizeBar.Visible = true;
         }
         private void deselectButton_Click(object sender, EventArgs e)
         {

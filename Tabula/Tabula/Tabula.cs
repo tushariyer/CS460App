@@ -475,7 +475,7 @@ namespace Tabula
         }
         private void deselectButton_Click(object sender, EventArgs e)
         {
-            CurrentTool = ETools.None;
+            CurrentTool = ETools.None; //No tool selected
         }
         private void shapesToolButton_Click(object sender, EventArgs e)
         {

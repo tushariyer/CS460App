@@ -188,6 +188,7 @@
             // undoButton
             // 
             this.undoButton.Name = "undoButton";
+            this.undoButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
             this.undoButton.Size = new System.Drawing.Size(152, 22);
             this.undoButton.Text = "Undo";
             this.undoButton.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
@@ -195,6 +196,7 @@
             // redoButton
             // 
             this.redoButton.Name = "redoButton";
+            this.redoButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
             this.redoButton.Size = new System.Drawing.Size(152, 22);
             this.redoButton.Text = "Redo";
             this.redoButton.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);

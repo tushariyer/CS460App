@@ -204,6 +204,7 @@
             this.cutButton.Name = "cutButton";
             this.cutButton.Size = new System.Drawing.Size(152, 22);
             this.cutButton.Text = "Cut";
+            this.cutButton.Click += new System.EventHandler(this.cutButton_Click);
             // 
             // copyButton
             // 
@@ -358,7 +359,7 @@
             // MousePos
             // 
             this.MousePos.AutoSize = true;
-            this.MousePos.Location = new System.Drawing.Point(1604, 8);
+            this.MousePos.Location = new System.Drawing.Point(1571, 8);
             this.MousePos.Name = "MousePos";
             this.MousePos.Size = new System.Drawing.Size(37, 13);
             this.MousePos.TabIndex = 2;

@@ -105,6 +105,40 @@ namespace Tabula
             baseCanvas.Refresh();
         }
 
+        public void Paste(Bitmap ImageToPaste, Image SourceImage, int X, int Y)
+        {
+            //savePrevImage();
+
+
+            using (Graphics g = Graphics.FromImage(SourceImage))
+            {
+
+                g.DrawImage(SourceImage, new Rectangle(X, Y, Math.Abs(SelectRect.Width),
+                    Math.Abs(SelectRect.Height)), SelectRect.Left, SelectRect.Top, ImageToPaste.Width, ImageToPaste.Height, GraphicsUnit.Pixel);
+
+                if (bCut)
+                {
+                    Rectangle CroppedImage = SelectRect;
+                    Bitmap bmp = new Bitmap(Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height));
+                    Graphics gr = Graphics.FromImage(SourceImage);
+                    Brush b = new SolidBrush(Color.White);
+
+                    bCut = false;
+
+                    System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
+                    myBrush.Dispose();
+
+                    gr.FillRectangle(b, SelectRect);
+
+                    baseCanvas.Refresh();
+                }
+
+                g.Dispose();
+                baseCanvas.Refresh();
+            }
+        }
+
+
         //Use this whenever a tool is called to make sure the undo stack always gets updated
         private void savePrevImage()
         {
@@ -330,7 +364,10 @@ namespace Tabula
                     {
                         TranslateMedia TempMoving = new TranslateMedia(SelectRect, e.X, e.Y);
                         //TempMoving.Move();
-                        DrawSelectArea(e.X, e.Y);
+                        CropImage(baseCanvas.Image);
+                        Paste(CopiedImage, baseCanvas.Image, e.X, e.Y);    
+                    
+                    //DrawSelectArea(e.X, e.Y);
                     }
                     break;
                 default:

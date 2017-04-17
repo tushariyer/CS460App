@@ -362,7 +362,7 @@
             // 
             this.MousePos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.MousePos.AutoSize = true;
-            this.MousePos.Location = new System.Drawing.Point(1571, 8);
+            this.MousePos.Location = new System.Drawing.Point(1589, 8);
             this.MousePos.Name = "MousePos";
             this.MousePos.Size = new System.Drawing.Size(64, 26);
             this.MousePos.TabIndex = 2;

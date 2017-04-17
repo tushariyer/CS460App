@@ -18,8 +18,10 @@ namespace Tabula
         //Global Stacks
         public static Stack<Image> GlobalUndoStack = new Stack<Image>();
         public static Stack<Image> GlobalRedoStack = new Stack<Image>();
+
         //Colour currently selected
-        private Color selectedColor = Color.Azure;
+        private Color selectedColor = Color.Black; //Default Colour
+
         //Select variables
         public static int[] BeginningMousePos = { 0, 0 };
         private int[] EndMousePos = { 0, 0 };
@@ -305,7 +307,7 @@ namespace Tabula
                 SelectionArea.Clear(BackColor);
                 PictureBox SelectLayer = new PictureBox();
                 SelectLayer.BringToFront();
-                System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
+                System.Drawing.Pen pen = new System.Drawing.Pen(selectedColor, 2);
                 Brush brush = new SolidBrush(SelectLayer.BackColor);
                 SelectionArea.DrawRectangle(pen, Origin[0], Origin[1], End[0] - Origin[0], End[1] - Origin[1]);
                 //
@@ -320,7 +322,7 @@ namespace Tabula
             {
                 using (SelectionArea = this.baseCanvas.CreateGraphics())
                 {
-                    System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
+                    System.Drawing.Pen pen = new System.Drawing.Pen(selectedColor, 2);
                     Brush brush = new SolidBrush(SelectLayer.BackColor);
                     SelectRect = new Rectangle(CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
                     SelectionArea.DrawRectangle(pen, SelectRect);
@@ -331,7 +333,7 @@ namespace Tabula
             {
                 using (SelectionArea = this.baseCanvas.CreateGraphics())
                 {
-                    System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
+                    System.Drawing.Pen pen = new System.Drawing.Pen(selectedColor, 2);
                     Brush brush = new SolidBrush(SelectLayer.BackColor);
                     SelectRect = new Rectangle(CurrentPos[0], CurrentPos[1], BeginningMousePos[0] - CurrentPos[0], BeginningMousePos[1] - CurrentPos[1]);
                     SelectionArea.DrawRectangle(pen, SelectRect);
@@ -342,7 +344,7 @@ namespace Tabula
             {
                 using (SelectionArea = this.baseCanvas.CreateGraphics())
                 {
-                    System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
+                    System.Drawing.Pen pen = new System.Drawing.Pen(selectedColor, 2);
                     Brush brush = new SolidBrush(SelectLayer.BackColor);
                     SelectRect = new Rectangle(BeginningMousePos[0], CurrentPos[1], CurrentPos[0] - BeginningMousePos[0], BeginningMousePos[1] - CurrentPos[1]);
                     SelectionArea.DrawRectangle(pen, SelectRect);
@@ -353,7 +355,7 @@ namespace Tabula
             {
                 using (SelectionArea = this.baseCanvas.CreateGraphics())
                 {
-                    System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
+                    System.Drawing.Pen pen = new System.Drawing.Pen(selectedColor, 2);
                     Brush brush = new SolidBrush(SelectLayer.BackColor);
                     SelectRect = new Rectangle(CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
                     SelectionArea.DrawRectangle(pen, SelectRect);
@@ -362,7 +364,7 @@ namespace Tabula
 
             using (SelectionArea = this.baseCanvas.CreateGraphics())
             {
-                System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
+                System.Drawing.Pen pen = new System.Drawing.Pen(selectedColor, 2);
                 Brush brush = new SolidBrush(SelectLayer.BackColor);
                 SelectRect = new Rectangle(BeginningMousePos[0], BeginningMousePos[1], CurrentPos[0] - BeginningMousePos[0], CurrentPos[1] - BeginningMousePos[1]);
                 SelectionArea.DrawRectangle(pen, SelectRect);
@@ -378,7 +380,7 @@ namespace Tabula
         }
         private void shapesToolButton_Click(object sender, EventArgs e)
         {
-            System.Drawing.Pen pen = new System.Drawing.Pen(Color.Azure, 2);
+            System.Drawing.Pen pen = new System.Drawing.Pen(selectedColor, 2);
             switch (shapeSelected)
             {
                 case (EShapes.Line):
@@ -403,8 +405,10 @@ namespace Tabula
 
         private void sepiaEffect_Click(object sender, EventArgs e)
         {
+            int width = (EndMousePos[0] - BeginningMousePos[0]);
+            int height = (EndMousePos[1] - BeginningMousePos[1]);
             ImageEffects sepia = new ImageEffects();
-            //sepia.useSepia(baseCanvas.Image, EndMousePos[0]);
+            sepia.useSepia(baseCanvas.Image, BeginningMousePos[0], BeginningMousePos[1], width, height);
         }
 
         private void exitButton_Click(object sender, EventArgs e)

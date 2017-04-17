@@ -406,7 +406,7 @@ namespace Tabula
             int width = (EndMousePos[0] - BeginningMousePos[0]);
             int height = (EndMousePos[1] - BeginningMousePos[1]);
             ImageEffects sepia = new ImageEffects();
-            sepia.useSepia(baseCanvas.Image, BeginningMousePos[0], BeginningMousePos[1], width, height);
+            sepia.useSepia(baseCanvas.Image, SelectRect);
         }
 
         private void exitButton_Click(object sender, EventArgs e)

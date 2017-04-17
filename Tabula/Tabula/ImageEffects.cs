@@ -10,18 +10,24 @@ namespace Tabula
 {
     class ImageEffects
     {
-        PictureBox ApplyArea = new PictureBox();
+        PictureBox baseCanvas = new PictureBox();
+        Rectangle recty;
 
         public static int[] BeginningMousePos = { 0, 0 };
         public int x, y, w, h;
 
         public void useSepia(Image target, int xCoord, int yCoord, int width, int height)
         {
-            ApplyArea.Image = target;
+            baseCanvas.Image = target;
             x = xCoord;
             y = yCoord;
             w = width;
             h = height;
+        }
+        public void useSepia(Image target, Rectangle selectedRectum)
+        {
+            baseCanvas.Image = target;
+            recty = selectedRectum;
         }
         public void sepia()
         {
@@ -43,19 +49,19 @@ namespace Tabula
             IA.SetColorMatrix(sepiaMatrix);
 
             //Creates a bitMap image that default value is whatever in currently on the canvas
-            Bitmap sepiaEffect = (Bitmap)ApplyArea.Image.Clone();
+            Bitmap sepiaEffect = (Bitmap)baseCanvas.Image.Clone();
 
             //Change the graphics of the image
             using (Graphics G = Graphics.FromImage(sepiaEffect))
             {
                 //the x,y cords in the rectangle are to find where to place the edited section of the image
                 //same with width and height
-                G.DrawImage(ApplyArea.Image, x , y , w, h);
+                G.DrawImage(baseCanvas.Image, recty);
                     
                     //new Rectangle(BeginningMousePos[0], BeginningMousePos[1], EndMousePos - BeginningMousePos[0], EndMousePos - BeginningMousePos[1]),
                    //BeginningMousePos[0], BeginningMousePos[1], EndMousePos - BeginningMousePos[0], EndMousePos - BeginningMousePos[1], GraphicsUnit.Pixel, IA);
             }
-            ApplyArea.Image = sepiaEffect;
+            baseCanvas.Image = sepiaEffect;
 
             //MessageBox.Show("Currently Broken trying to fix :)");
 

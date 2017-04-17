@@ -141,7 +141,7 @@ namespace Tabula
         {
             if (baseCanvas.Image == null)
             {
-
+                
             }
             else
             {
@@ -226,16 +226,30 @@ namespace Tabula
          */
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GlobalRedoStack.Push((Image)baseCanvas.Image.Clone());
-            baseCanvas.Image = GlobalUndoStack.Pop();
+            if(GlobalUndoStack.Count == 0)
+            {
+
+            }
+            else
+            {
+                GlobalRedoStack.Push((Image)baseCanvas.Image.Clone());
+                baseCanvas.Image = GlobalUndoStack.Pop();
+            }
         }
         /**
          * Redo Button
          */
         private void redoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GlobalUndoStack.Push((Image)baseCanvas.Image.Clone());
-            baseCanvas.Image = GlobalRedoStack.Pop();
+            if (GlobalRedoStack.Count == 0)
+            {
+
+            }
+            else
+            {
+                GlobalUndoStack.Push((Image)baseCanvas.Image.Clone());
+                baseCanvas.Image = GlobalRedoStack.Pop();
+            }
         }
         /**
          * Print Button

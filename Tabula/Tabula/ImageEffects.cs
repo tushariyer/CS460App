@@ -6,29 +6,27 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 
+
 namespace Tabula
 {
     class ImageEffects
     {
-        PictureBox baseCanvas = new PictureBox();
-        Rectangle recty;
+        private PictureBox baseCanvas;
+        private Rectangle recty;
+        private Image pastImage;
 
-        public static int[] BeginningMousePos = { 0, 0 };
-        public int x, y, w, h;
-
-        public void useSepia(Image target, int xCoord, int yCoord, int width, int height)
+        public ImageEffects(PictureBox baseCanvas)
         {
-            baseCanvas.Image = target;
-            x = xCoord;
-            y = yCoord;
-            w = width;
-            h = height;
+            this.baseCanvas = baseCanvas;
+            pastImage = (Image)baseCanvas.Image.Clone();
         }
-        public void useSepia(Image target, Rectangle selectedRectum)
+
+        public void useSepia(Rectangle selectedRectum)
         {
-            baseCanvas.Image = target;
             recty = selectedRectum;
+            sepia();
         }
+
         public void sepia()
         {
             //Creation of values that are used to change the apperance of the image. this set of creates a sepia effect
@@ -48,25 +46,16 @@ namespace Tabula
             //sets the image Attributes color matrix the 2D array above
             IA.SetColorMatrix(sepiaMatrix);
 
-            //Creates a bitMap image that default value is whatever in currently on the canvas
-            Bitmap sepiaEffect = (Bitmap)baseCanvas.Image.Clone();
-
             //Change the graphics of the image
-            using (Graphics G = Graphics.FromImage(sepiaEffect))
+            using (var G = Graphics.FromImage(pastImage))
             {
-                //the x,y cords in the rectangle are to find where to place the edited section of the image
-                //same with width and height
-                G.DrawImage(baseCanvas.Image, recty);
-                    
-                    //new Rectangle(BeginningMousePos[0], BeginningMousePos[1], EndMousePos - BeginningMousePos[0], EndMousePos - BeginningMousePos[1]),
-                   //BeginningMousePos[0], BeginningMousePos[1], EndMousePos - BeginningMousePos[0], EndMousePos - BeginningMousePos[1], GraphicsUnit.Pixel, IA);
+                //Draws base image first
+                G.DrawImage(pastImage,0,0);
+                //Draws sepia's image on top
+                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel,IA);
             }
-            baseCanvas.Image = sepiaEffect;
 
-            //MessageBox.Show("Currently Broken trying to fix :)");
-
-            //Throw exception here
-
+            baseCanvas.Image = pastImage;
         }
     }
 }

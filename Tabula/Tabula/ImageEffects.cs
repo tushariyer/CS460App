@@ -86,7 +86,7 @@ namespace Tabula
         {
             using (var G = Graphics.FromImage(pastImage))
             {
-                ColorMatrix colorMatrix = new ColorMatrix(new float[][]
+                ColorMatrix cMat = new ColorMatrix(new float[][] 
                 {
                     new float[] {-1, 0, 0, 0, 0},
                     new float[] {0, -1, 0, 0, 0},
@@ -96,7 +96,7 @@ namespace Tabula
                 });
 
                 ImageAttributes IA = new ImageAttributes();
-                IA.SetColorMatrix(colorMatrix);
+                IA.SetColorMatrix(cMat);
 
                 G.DrawImage(pastImage, 0, 0); //Draws base image first and then the inverted image
                 G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel, IA);

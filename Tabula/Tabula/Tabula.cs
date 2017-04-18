@@ -647,5 +647,25 @@ namespace Tabula
             ImageEffects inv = new ImageEffects(baseCanvas);
             inv.useInverse(SelectRect);
         }
+
+        /**
+         * Flip Vertically
+         */
+        private void verticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            savePrevImage();
+            ImageEffects flipV = new ImageEffects(baseCanvas);
+            flipV.useFlip(SelectRect, "Y");
+        }
+
+        /**
+         * Flip Horizontally
+         */
+        private void horizontalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            savePrevImage();
+            ImageEffects flipH = new ImageEffects(baseCanvas);
+            flipH.useFlip(SelectRect, "X");
+        }
     }
 }

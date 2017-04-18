@@ -104,5 +104,44 @@ namespace Tabula
                 G.Dispose(); //Bye
             }
         }
+
+        /**
+         * Prep Flip
+         */
+        public void useFlip(Rectangle selectedRectum, String axis)
+        {
+            recty = selectedRectum;
+            switch (axis.ToUpper())
+            {
+                case ("X"):
+                    flipHoriz((Bitmap)pastImage);
+                    break;
+                case ("Y"):
+                    flipVert((Bitmap)pastImage);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        /**
+         * Flip Vertically
+         */
+        public void flipVert(Bitmap imgToFlip)
+        {
+            imgToFlip.RotateFlip(RotateFlipType.Rotate180FlipY);
+
+            //todo
+        }
+
+        /**
+         * Flip Horizontally
+         */
+        public void flipHoriz(Bitmap imgToFlip)
+        {
+            imgToFlip.RotateFlip(RotateFlipType.Rotate180FlipX);
+
+            //todo
+        }
     }
 }

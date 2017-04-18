@@ -48,10 +48,10 @@ namespace Tabula
             new float[]{0, 0, 0, 0, 1}
             };
             //Creates a drawing matrix
-            System.Drawing.Imaging.ColorMatrix sepiaMatrix = new System.Drawing.Imaging.ColorMatrix(sepiaValues);
+            ColorMatrix sepiaMatrix = new ColorMatrix(sepiaValues);
 
             //Creates default Image Attributes because it's needed for the draw image function below
-            System.Drawing.Imaging.ImageAttributes IA = new System.Drawing.Imaging.ImageAttributes();
+            ImageAttributes IA = new ImageAttributes();
 
             //sets the image Attributes color matrix the 2D array above
             IA.SetColorMatrix(sepiaMatrix);
@@ -114,10 +114,10 @@ namespace Tabula
             switch (axis.ToUpper())
             {
                 case ("X"):
-                    flipHoriz((Bitmap)pastImage);
+                    flipHoriz();
                     break;
                 case ("Y"):
-                    flipVert((Bitmap)pastImage);
+                    flipVert();
                     break;
                 default:
                     break;
@@ -127,21 +127,41 @@ namespace Tabula
         /**
          * Flip Vertically
          */
-        public void flipVert(Bitmap imgToFlip)
+        public void flipVert()
         {
-            imgToFlip.RotateFlip(RotateFlipType.Rotate180FlipY);
-
-            //todo
+            //Flip entire image
+            baseCanvas.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
+            
+            using (var G = Graphics.FromImage(pastImage))
+            {
+                //Draws image from before as a base
+                G.DrawImage(pastImage, 0, 0);
+                //Draws selected area of flipped image
+                G.DrawImage(baseCanvas.Image, recty, recty.Left,recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top,GraphicsUnit.Pixel);
+                G.Dispose();
+            }
+            //Sure?
+            baseCanvas.Image = pastImage;
         }
 
         /**
          * Flip Horizontally
          */
-        public void flipHoriz(Bitmap imgToFlip)
+        public void flipHoriz()
         {
-            imgToFlip.RotateFlip(RotateFlipType.Rotate180FlipX);
+            //Flip entire image
+            baseCanvas.Image.RotateFlip(RotateFlipType.Rotate180FlipY);
 
-            //todo
+            using (var G = Graphics.FromImage(pastImage))
+            {
+                //Draws image from before as a base
+                G.DrawImage(pastImage, 0, 0);
+                //Draws selected area of flipped image
+                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel);
+                G.Dispose();
+            }            
+            //Sure?
+            baseCanvas.Image = pastImage;
         }
     }
 }

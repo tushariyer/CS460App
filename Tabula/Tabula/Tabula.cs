@@ -420,16 +420,16 @@ namespace Tabula
                 switch (shapeSelected)
                 {
                     case (EShapes.Line):
-                        Equations.DrawLine(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
+                        Equations.DrawLine(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea, selectedColor);
                         break;
                     case (EShapes.Circle):
-                        Equations.DrawCircle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
+                        Equations.DrawCircle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea, selectedColor);
                         break;
                     case (EShapes.Square):
-                        Equations.DrawSquare(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
+                        Equations.DrawSquare(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea, selectedColor);
                         break;
                     case (EShapes.Triangle):
-                        Equations.DrawTriangle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
+                        Equations.DrawTriangle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea, selectedColor);
                         break;
                     default:
                         break;
@@ -550,6 +550,7 @@ namespace Tabula
          */
         private void lineToolButton_Click(object sender, EventArgs e)
         {
+            CurrentTool = ETools.Shapes;
             shapeSelected = EShapes.Line;
             BrushSizeBar.Visible = false; //Hide the bar if its not in use
         }
@@ -559,6 +560,7 @@ namespace Tabula
          */
         private void circleToolButton_Click(object sender, EventArgs e)
         {
+            CurrentTool = ETools.Shapes;
             shapeSelected = EShapes.Circle;
             BrushSizeBar.Visible = false; //Hide the bar if its not in use
         }
@@ -701,6 +703,20 @@ namespace Tabula
         private void textBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TextInput.placeText(baseCanvas,SelectRect);
+        }
+
+        private void squareToolButton_Click(object sender, EventArgs e)
+        {
+            CurrentTool = ETools.Shapes;
+            shapeSelected = EShapes.Square;
+            BrushSizeBar.Visible = false; //Hide the bar if its not in use
+        }
+
+        private void triangleToolButton_Click(object sender, EventArgs e)
+        {
+            CurrentTool = ETools.Shapes;
+            shapeSelected = EShapes.Triangle;
+            BrushSizeBar.Visible = false; //Hide the bar if its not in use
         }
     }
 }

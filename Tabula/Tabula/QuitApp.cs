@@ -26,6 +26,7 @@ namespace Tabula
         private static void ByeBye()
         {
             Environment.Exit(0);
+            Application.Exit();
         }
     }
 }

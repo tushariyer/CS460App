@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using System.Drawing;
+using System.IO;
 
 namespace Tabula
 {
@@ -28,12 +29,25 @@ namespace Tabula
             if (openFile.ShowDialog() == DialogResult.OK)
             {
                 fileName = openFile.FileName;
-                pb.Image = Image.FromFile(fileName);
+                if (isImageType(fileName.ToLower()))
+                {
+                    pb.Image = Image.FromFile(fileName);
+                }
+                else
+                {
+                    MessageBox.Show("Please select an image file.");
+                }
             }
             else
             {
                 MessageBox.Show("Please select an image to import.");
             }
+        }
+
+        public bool isImageType(string dir)
+        {
+            //Check for image format. 
+            return (dir.EndsWith(".png") || dir.EndsWith(".jpg") || dir.EndsWith(".jpeg") || dir.EndsWith(".ico") || dir.EndsWith(".bmp") || dir.EndsWith(".gif") || dir.EndsWith(".pdf"));
         }
     }
 }

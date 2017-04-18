@@ -451,6 +451,7 @@ namespace Tabula
             }
             else if (CurrentTool == ETools.Shapes)
             {
+                savePrevImage();
                 switch (shapeSelected)
                 {
                     case (EShapes.Line):

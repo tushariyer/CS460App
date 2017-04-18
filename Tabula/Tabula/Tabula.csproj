@@ -63,8 +63,6 @@
   <ItemGroup>
     <Compile Include="ColorSelector.cs" />
     <Compile Include="Equations.cs" />
-    <Compile Include="FillColor.cs" />
-    <Compile Include="FontModifier.cs" />
     <Compile Include="ImageEffects.cs" />
     <Compile Include="Meme.cs" />
     <Compile Include="MultiTool.cs" />

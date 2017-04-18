@@ -62,7 +62,7 @@ namespace Tabula
         /**--------------------------
          * File operations start here
          ---------------------------*/
-           
+
         /**
          * New File Button
          */
@@ -71,11 +71,15 @@ namespace Tabula
             if (baseCanvas.Image != null)
             {
                 savePrevImage();
-                NewCreation newBlank = new NewCreation(baseCanvas);
-            }
-            else
-            {
-                NewCreation newBlank = new NewCreation(baseCanvas);
+                DialogResult check = MessageBox.Show("Do you want to save?", "Warning!", MessageBoxButtons.YesNo);
+                if (check == DialogResult.Yes)
+                {
+                    saveAsPNG_Click(sender, e);
+                }
+                else if (check == DialogResult.No)
+                {
+                    NewCreation newBlank = new NewCreation(baseCanvas);
+                }
             }
         }
         
@@ -84,10 +88,29 @@ namespace Tabula
          */
         private void openFileButton_Click(object sender, EventArgs e)
         {
-            Open newPic = new Open(); //Create new Open Object
-            baseCanvas.SizeMode = PictureBoxSizeMode.AutoSize;
-            baseCanvas.Refresh();
-            newPic.importImage(baseCanvas); //Use the importImage method to assign a picture to the PictureBox
+            if (baseCanvas.Image != null)
+            {
+                savePrevImage();
+                DialogResult check = MessageBox.Show("Do you want to save?", "Warning!", MessageBoxButtons.YesNo);
+                if (check == DialogResult.Yes)
+                {
+                    saveAsPNG_Click(sender, e);
+                }
+                else if (check == DialogResult.No)
+                {
+                    Open newPic = new Open(); //Create new Open Object
+                    baseCanvas.SizeMode = PictureBoxSizeMode.AutoSize;
+                    baseCanvas.Refresh();
+                    newPic.importImage(baseCanvas); //Use the importImage method to assign a picture to the PictureBox
+                }
+            }
+            else
+            {
+                Open newPic = new Open(); //Create new Open Object
+                baseCanvas.SizeMode = PictureBoxSizeMode.AutoSize;
+                baseCanvas.Refresh();
+                newPic.importImage(baseCanvas); //Use the importImage method to assign a picture to the PictureBox
+            }
         }
 
         /**

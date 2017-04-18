@@ -78,8 +78,9 @@ namespace Tabula
                 saveName = saveFile.FileName;
                 photoSave.Save(saveName, System.Drawing.Imaging.ImageFormat.Jpeg);
             }
+            else { }
 
-            MessageBox.Show("Saved as PNG Image");
+            //MessageBox.Show("Saved as PNG Image");
         }
     }
 }

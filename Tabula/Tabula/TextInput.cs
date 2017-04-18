@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Tabula
 {
@@ -36,6 +37,24 @@ namespace Tabula
 
             //Returns string hopefully
             return popUp.ShowDialog() == DialogResult.OK ? textBox.Text : "";
+        }
+
+        public static void placeText(PictureBox pb, Rectangle target) {
+            Font userFont;
+            FontDialog userFontInput = new FontDialog();
+            if (userFontInput.ShowDialog() == DialogResult.OK)
+            {
+                userFont = new Font(userFontInput.Font.ToString(),userFontInput.Font.Size);
+            }
+            else
+            {
+                userFont = new Font("Calibri", 12);
+            }
+            //Get user input
+            string userInput = TextInput.TextDialog("Text Box", "Enter your text:");
+
+            Graphics.FromImage(pb.Image).DrawString(userInput, userFont, Brushes.White, target.Left,target.Top);
+            pb.Refresh();
         }
     }
 }

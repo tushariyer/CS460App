@@ -697,5 +697,10 @@ namespace Tabula
             ImageEffects seeThru = new ImageEffects(baseCanvas);
             seeThru.moreOpaque(SelectRect);
         }
+
+        private void textBoxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TextInput.placeText(baseCanvas,SelectRect);
+        }
     }
 }

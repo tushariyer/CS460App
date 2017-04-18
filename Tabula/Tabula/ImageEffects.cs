@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Drawing.Imaging;
 
 
 namespace Tabula
@@ -15,18 +16,27 @@ namespace Tabula
         private Rectangle recty;
         private Image pastImage;
 
+        /**
+         * Image Effects constructor
+         */
         public ImageEffects(PictureBox baseCanvas)
         {
             this.baseCanvas = baseCanvas;
             pastImage = (Image)baseCanvas.Image.Clone();
         }
 
+        /**
+         * Prep for Sepia
+         */
         public void useSepia(Rectangle selectedRectum)
         {
             recty = selectedRectum;
             sepia();
         }
 
+        /**
+         * Sepia
+         */
         public void sepia()
         {
             //Creation of values that are used to change the apperance of the image. this set of creates a sepia effect
@@ -53,9 +63,46 @@ namespace Tabula
                 G.DrawImage(pastImage,0,0);
                 //Draws sepia's image on top
                 G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel,IA);
+                G.Dispose();
             }
 
             baseCanvas.Image = pastImage;
+        }
+
+        /**
+         * Prep for Inverse
+         */
+        public void useInverse(Rectangle selectedRectum)
+        {
+            recty = selectedRectum;
+            inverse();
+        }
+
+        /**
+         * Inverse
+         * WIP: Does not currently work. I don't know why
+         */
+        public void inverse()
+        {
+            using (var G = Graphics.FromImage(pastImage))
+            {
+                ColorMatrix colorMatrix = new ColorMatrix(new float[][]
+                {
+                    new float[] {-1, 0, 0, 0, 0},
+                    new float[] {0, -1, 0, 0, 0},
+                    new float[] {0, 0, -1, 0, 0},
+                    new float[] {0, 0, 0, 1, 0},
+                    new float[] {1, 1, 1, 0, 1}
+                });
+
+                ImageAttributes IA = new ImageAttributes();
+                IA.SetColorMatrix(colorMatrix);
+
+                G.DrawImage(pastImage, 0, 0); //Draws base image first and then the inverted image
+                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel, IA);
+
+                G.Dispose(); //Bye
+            }
         }
     }
 }

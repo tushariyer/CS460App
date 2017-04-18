@@ -629,10 +629,23 @@ namespace Tabula
          */
         private void BrushSizeBar_Scroll(object sender, EventArgs e){ }
 
+        /**
+         * Zoom in
+         */
         private void zoomInToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Zoom zoo = new Zoom();
             Paste((Bitmap)zoo.Scale(baseCanvas, new Rectangle(0, 0, 50, 50)), baseCanvas.Image);
+        }
+
+        /**
+         * Inverse
+         */
+        private void invertEffect_Click(object sender, EventArgs e)
+        {
+            savePrevImage();
+            ImageEffects inv = new ImageEffects(baseCanvas);
+            inv.useInverse(SelectRect);
         }
     }
 }

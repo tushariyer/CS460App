@@ -48,6 +48,7 @@
             this.copyButton = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteButton = new System.Windows.Forms.ToolStripMenuItem();
             this.transformButton = new System.Windows.Forms.ToolStripMenuItem();
+            this.zoomInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.effectsButton = new System.Windows.Forms.ToolStripMenuItem();
             this.sepiaEffect = new System.Windows.Forms.ToolStripMenuItem();
             this.invertEffect = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +68,6 @@
             this.availableColors = new System.Windows.Forms.ColorDialog();
             this.MousePos = new System.Windows.Forms.Label();
             this.BrushSizeBar = new System.Windows.Forms.TrackBar();
-            this.zoomInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenuBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.baseCanvas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrushSizeBar)).BeginInit();
@@ -193,7 +193,7 @@
             // 
             this.undoButton.Name = "undoButton";
             this.undoButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoButton.Size = new System.Drawing.Size(269, 38);
+            this.undoButton.Size = new System.Drawing.Size(236, 38);
             this.undoButton.Text = "Undo";
             this.undoButton.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
@@ -201,36 +201,43 @@
             // 
             this.redoButton.Name = "redoButton";
             this.redoButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoButton.Size = new System.Drawing.Size(269, 38);
+            this.redoButton.Size = new System.Drawing.Size(236, 38);
             this.redoButton.Text = "Redo";
             this.redoButton.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
             // 
             // cutButton
             // 
             this.cutButton.Name = "cutButton";
-            this.cutButton.Size = new System.Drawing.Size(269, 38);
+            this.cutButton.Size = new System.Drawing.Size(236, 38);
             this.cutButton.Text = "Cut";
             this.cutButton.Click += new System.EventHandler(this.cutButton_Click);
             // 
             // copyButton
             // 
             this.copyButton.Name = "copyButton";
-            this.copyButton.Size = new System.Drawing.Size(269, 38);
+            this.copyButton.Size = new System.Drawing.Size(236, 38);
             this.copyButton.Text = "Copy";
             this.copyButton.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // pasteButton
             // 
             this.pasteButton.Name = "pasteButton";
-            this.pasteButton.Size = new System.Drawing.Size(269, 38);
+            this.pasteButton.Size = new System.Drawing.Size(236, 38);
             this.pasteButton.Text = "Paste";
             this.pasteButton.Click += new System.EventHandler(this.pasteButton_Click);
             // 
             // transformButton
             // 
             this.transformButton.Name = "transformButton";
-            this.transformButton.Size = new System.Drawing.Size(269, 38);
+            this.transformButton.Size = new System.Drawing.Size(236, 38);
             this.transformButton.Text = "Transform";
+            // 
+            // zoomInToolStripMenuItem
+            // 
+            this.zoomInToolStripMenuItem.Name = "zoomInToolStripMenuItem";
+            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(236, 38);
+            this.zoomInToolStripMenuItem.Text = "Zoom In";
+            this.zoomInToolStripMenuItem.Click += new System.EventHandler(this.zoomInToolStripMenuItem_Click);
             // 
             // effectsButton
             // 
@@ -253,6 +260,7 @@
             this.invertEffect.Name = "invertEffect";
             this.invertEffect.Size = new System.Drawing.Size(269, 38);
             this.invertEffect.Text = "Invert";
+            this.invertEffect.Click += new System.EventHandler(this.invertEffect_Click);
             // 
             // colorButton
             // 
@@ -366,6 +374,8 @@
             // 
             this.MousePos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.MousePos.AutoSize = true;
+            this.MousePos.BackColor = System.Drawing.Color.Transparent;
+            this.MousePos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MousePos.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.MousePos.Location = new System.Drawing.Point(1589, 8);
             this.MousePos.Name = "MousePos";
@@ -383,13 +393,6 @@
             this.BrushSizeBar.TickFrequency = 2;
             this.BrushSizeBar.Visible = false;
             this.BrushSizeBar.Scroll += new System.EventHandler(this.BrushSizeBar_Scroll);
-            // 
-            // zoomInToolStripMenuItem
-            // 
-            this.zoomInToolStripMenuItem.Name = "zoomInToolStripMenuItem";
-            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(269, 38);
-            this.zoomInToolStripMenuItem.Text = "Zoom In";
-            this.zoomInToolStripMenuItem.Click += new System.EventHandler(this.zoomInToolStripMenuItem_Click);
             // 
             // Tabula
             // 

@@ -61,8 +61,35 @@ namespace Tabula
          */
         public void CropImage()
         {
+            savePrevImage();
             Bitmap bmp = (Bitmap)baseCanvas.Image.Clone();
-            CopiedImage = bmp.Clone(SelectRect, bmp.PixelFormat);
+            if (SelectRect.Width < 0 && SelectRect.Height < 0) //Bottom-Right to Top-Left
+            {
+                CopiedImage = bmp.Clone(new Rectangle(SelectRect.Right, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
+            }
+            else if (SelectRect.Width >= 0 && SelectRect.Height >= 0) //Top-Left to Bottom-Right
+            {
+                CopiedImage = bmp.Clone(new Rectangle(SelectRect.Left, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
+            }
+            else if (SelectRect.Width < 0 && SelectRect.Height >= 0) //Top-Right to Bottom-Left
+            {
+                CopiedImage = bmp.Clone(new Rectangle(SelectRect.Right, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
+            }
+            else //Bottom-Left to Top-Right
+            {
+                CopiedImage = bmp.Clone(new Rectangle(SelectRect.Left, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
+            }
+
+            //using (Form form = new Form())
+            //{
+            //    form.StartPosition = FormStartPosition.CenterScreen;
+            //    form.Size = CopiedImage.Size;
+            //    PictureBox pb = new PictureBox();
+            //    pb.Dock = DockStyle.Fill;
+            //    pb.Image = CopiedImage;
+            //    form.Controls.Add(pb);
+            //    form.ShowDialog();
+            //}
         }
 
         /**
@@ -71,9 +98,33 @@ namespace Tabula
         public void CutImage()
         {
             CropImage();
-            using (Graphics g = Graphics.FromImage(baseCanvas.Image))
+            if (SelectRect.Width < 0 && SelectRect.Height < 0) //Bottom-Right to Top-Left
             {
-                g.FillRectangle(new SolidBrush(Color.White), SelectRect);
+                using (Graphics g = Graphics.FromImage(baseCanvas.Image))
+                {
+                    g.FillRectangle(new SolidBrush(Color.White), new Rectangle(SelectRect.Right, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                }
+            }
+            else if (SelectRect.Width >= 0 && SelectRect.Height >= 0)  //Top-Left to Bottom-Right
+            {
+                using (Graphics g = Graphics.FromImage(baseCanvas.Image))
+                {
+                    g.FillRectangle(new SolidBrush(Color.White), new Rectangle(SelectRect.Left, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                }
+            }
+            else if (SelectRect.Width < 0 && SelectRect.Height >= 0) //Top-Right to Bottom-Left
+            {
+                using (Graphics g = Graphics.FromImage(baseCanvas.Image))
+                {
+                    g.FillRectangle(new SolidBrush(Color.White), new Rectangle(SelectRect.Right, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                }
+            }
+            else //Bottom-Left - Top-Right
+            {
+                using (Graphics g = Graphics.FromImage(baseCanvas.Image))
+                {
+                    g.FillRectangle(new SolidBrush(Color.White), new Rectangle(SelectRect.Left, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                }
             }
             baseCanvas.Refresh();
         }
@@ -84,9 +135,33 @@ namespace Tabula
         public void Paste(Bitmap ImageToPaste, Image SourceImage)
         {
             savePrevImage();
-            using (Graphics g = Graphics.FromImage(SourceImage))
+            if (SelectRect.Width < 0 && SelectRect.Height < 0) //Bottom-Right to Top-Left
             {
-                g.DrawImage(ImageToPaste, SelectRect);
+                using (Graphics g = Graphics.FromImage(SourceImage))
+                {
+                    g.DrawImage(ImageToPaste, new Rectangle(SelectRect.Right, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                }
+            }
+            else if (SelectRect.Width >= 0 && SelectRect.Height >= 0)  //Top-Left to Bottom-Right
+            {
+                using (Graphics g = Graphics.FromImage(SourceImage))
+                {
+                    g.DrawImage(ImageToPaste, new Rectangle(SelectRect.Left, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                }
+            }
+            else if (SelectRect.Width < 0 && SelectRect.Height >= 0) //Top-Right to Bottom-Left
+            {
+                using (Graphics g = Graphics.FromImage(SourceImage))
+                {
+                    g.DrawImage(ImageToPaste, new Rectangle(SelectRect.Right, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                }
+            }
+            else //Bottom-Left - Top-Right
+            {
+                using (Graphics g = Graphics.FromImage(SourceImage))
+                {
+                    g.DrawImage(ImageToPaste, new Rectangle(SelectRect.Left, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                }
             }
             baseCanvas.Refresh();
         }
@@ -302,10 +377,13 @@ namespace Tabula
             {
                 //Copied the selected image to the "clipboard"
                 CropImage();
+
                 //set the current copied image to the mouse position.
                 Paste(CopiedImage, baseCanvas.Image, e.X, e.Y);
+
                 //clear the tool to stop the constant repasting.
                 CurrentTool = ETools.None;
+                SelectRect = new Rectangle(0, 0, 0, 0);
             }
             else if (CurrentTool == ETools.Shapes)
             {

@@ -13,7 +13,7 @@ namespace Tabula
             using (Graphics g = Layer.CreateGraphics())
             {
                 //draw the rectangle
-                g.DrawRectangle(pen, new Rectangle(X, Y, R.Width, R.Height));
+                g.DrawRectangle(pen, new Rectangle(X, Y, R.Right - R.Left, R.Bottom - R.Top));
             }
         }
     }

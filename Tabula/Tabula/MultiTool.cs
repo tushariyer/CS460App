@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Drawing;
-
-namespace Tabula
+﻿namespace Tabula
 {
     //Implementations of Action[Interface] and Tool[Interface]. See UML for details
     class MultiTool

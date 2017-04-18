@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Imaging;
-
 
 namespace Tabula
 {
@@ -61,9 +56,9 @@ namespace Tabula
             using (var G = Graphics.FromImage(pastImage))
             {
                 //Draws base image first
-                G.DrawImage(pastImage,0,0);
+                G.DrawImage(pastImage, 0, 0);
                 //Draws sepia's image on top
-                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel,IA);
+                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel, IA);
                 G.Dispose();
             }
 
@@ -81,7 +76,6 @@ namespace Tabula
 
         /**
          * Inverse
-         * WIP: Does not currently work. I don't know why
          */
         public void inverse()
         {
@@ -101,7 +95,7 @@ namespace Tabula
 
                 G.DrawImage(pastImage, 0, 0); //Draws base image first and then the inverted image
                 G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel);
-                
+
                 G.Dispose(); //Bye
             }
         }
@@ -205,13 +199,13 @@ namespace Tabula
         {
             //Flip entire image
             baseCanvas.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
-            
+
             using (var G = Graphics.FromImage(pastImage))
             {
                 //Draws image from before as a base
                 G.DrawImage(pastImage, 0, 0);
                 //Draws selected area of flipped image
-                G.DrawImage(baseCanvas.Image, recty, recty.Left,recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top,GraphicsUnit.Pixel);
+                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel);
                 G.Dispose();
             }
             //Sure?
@@ -233,7 +227,7 @@ namespace Tabula
                 //Draws selected area of flipped image
                 G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel);
                 G.Dispose();
-            }            
+            }
             //Sure?
             baseCanvas.Image = pastImage;
         }
@@ -281,33 +275,57 @@ namespace Tabula
          */
         public void blackAndWhite()
         {
-            //Creation of values that are used to change the apperance of the image. this set of creates a sepia effect
-            float[][] sepiaValues = {
+            //Creation of values that are used to change the apperance of the image. this set of creates a b&w effect
+            float[][] bwValues = {
             new float[] {.3f, .3f, .3f, 0, 0},
             new float[] {.59f, .59f, .59f, 0, 0},
             new float[] {.11f, .11f, .11f, 0, 0},
             new float[]{0, 0, 0, 1, 0},
             new float[]{0, 0, 0, 0, 1}
             };
-            //Creates a drawing matrix
-            ColorMatrix sepiaMatrix = new ColorMatrix(sepiaValues);
+            
+            ColorMatrix bwMatrix = new ColorMatrix(bwValues); //Creates a drawing matrix
 
             //Creates default Image Attributes because it's needed for the draw image function below
             ImageAttributes IA = new ImageAttributes();
+            
+            IA.SetColorMatrix(bwMatrix); //sets the image Attributes color matrix the 2D array above
 
-            //sets the image Attributes color matrix the 2D array above
-            IA.SetColorMatrix(sepiaMatrix);
-
-            //Change the graphics of the image
-            using (var G = Graphics.FromImage(pastImage))
+            using (var G = Graphics.FromImage(pastImage)) //Change the graphics of the image
             {
-                //Draws base image first
-                G.DrawImage(pastImage, 0, 0);
-                //Draws sepia's image on top
+                G.DrawImage(pastImage, 0, 0); //Draws base image first & Draws sepia's image on top
                 G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel, IA);
                 G.Dispose();
             }
+            baseCanvas.Image = pastImage;
+        }
 
+        /**
+         * Prep Hue
+         */
+        public void useHue(Rectangle selectedRectum, Color selectedColor)
+        {
+            recty = selectedRectum;
+            chosenShade = selectedColor;
+            hue();
+        }
+
+        /**
+         * Hue
+         */
+        public void hue()
+        {
+            Color newColor = Color.FromArgb(150, chosenShade); //Change the graphics of the image
+
+            using (var G = Graphics.FromImage(pastImage))
+            using (SolidBrush brush = new SolidBrush(newColor))
+            {
+                G.DrawImage(pastImage, 0, 0); //Draws base image first
+                
+                G.FillRectangle(brush, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top); //Draws color on top of that
+                G.Dispose();
+                brush.Dispose();
+            }
             baseCanvas.Image = pastImage;
         }
     }

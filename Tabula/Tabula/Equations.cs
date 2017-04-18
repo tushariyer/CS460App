@@ -2,6 +2,9 @@
 using System.Drawing;
 using System.Windows.Forms;
 
+/**
+ * Enum for Drawable shapes
+ */
 enum EShapes
 {
     Line,

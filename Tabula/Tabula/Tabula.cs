@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
+/**
+ * Enum for usable tools
+ */
 enum ETools
 {
     None,
@@ -640,6 +643,17 @@ namespace Tabula
             bw.useBW(SelectRect);
         }
 
+        /**
+         * Effect - Hue
+         */
+        private void hueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            savePrevImage();
+            colorButton_Click(sender, e);
+            ImageEffects hue = new ImageEffects(baseCanvas);
+            hue.useHue(SelectRect, selectedColor);
+        }
+
         /**-----------------------
          * Tool methods start here
          -----------------------*/
@@ -736,6 +750,7 @@ namespace Tabula
             }
             else
             {
+                colorButton_Click(sender, e);
                 CurrentTool = ETools.Pen;
                 BrushSizeBar.Visible = true;
             }

@@ -80,6 +80,7 @@
             this.MousePos = new System.Windows.Forms.Label();
             this.BrushSizeBar = new System.Windows.Forms.TrackBar();
             this.bWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenuBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.baseCanvas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrushSizeBar)).BeginInit();
@@ -270,7 +271,8 @@
             this.sepiaEffect,
             this.invertEffect,
             this.transparencyToolStripMenuItem,
-            this.bWToolStripMenuItem});
+            this.bWToolStripMenuItem,
+            this.hueToolStripMenuItem});
             this.effectsButton.Name = "effectsButton";
             this.effectsButton.Size = new System.Drawing.Size(88, 33);
             this.effectsButton.Text = "Effects";
@@ -526,6 +528,13 @@
             this.bWToolStripMenuItem.Text = "Grayscale";
             this.bWToolStripMenuItem.Click += new System.EventHandler(this.bWToolStripMenuItem_Click);
             // 
+            // hueToolStripMenuItem
+            // 
+            this.hueToolStripMenuItem.Name = "hueToolStripMenuItem";
+            this.hueToolStripMenuItem.Size = new System.Drawing.Size(338, 38);
+            this.hueToolStripMenuItem.Text = "Hue";
+            this.hueToolStripMenuItem.Click += new System.EventHandler(this.hueToolStripMenuItem_Click);
+            // 
             // Tabula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 26F);
@@ -603,6 +612,7 @@
         private System.Windows.Forms.ToolStripMenuItem decreaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem textBoxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bWToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hueToolStripMenuItem;
     }
 }
 

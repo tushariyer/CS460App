@@ -23,7 +23,7 @@ namespace Tabula
         /**
          * Uses OpenFileDialog to import an image and store it in an Image object.
          */
-        public Image importImage()
+        public void importImage(PictureBox pb)
         {
             //Opens a dialog box to choose a file
             OpenFileDialog openFile = new OpenFileDialog();
@@ -35,14 +35,12 @@ namespace Tabula
             if (openFile.ShowDialog() == DialogResult.OK)
             {
                 fileName = openFile.FileName;
+                pb.Image = Image.FromFile(fileName);
             }
             else
             {
                 MessageBox.Show("Please select an image to import.");
-                return null; // Because why not
             }
-
-            return Image.FromFile(fileName); //Send it back to Tabula handler. it will get assigned to the PictureBox there.
         }
     }
 }

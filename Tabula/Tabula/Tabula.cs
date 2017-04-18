@@ -233,7 +233,7 @@ namespace Tabula
             Open newPic = new Open(); //Create new Open Object
             baseCanvas.SizeMode = PictureBoxSizeMode.AutoSize;
             baseCanvas.Refresh();
-            baseCanvas.Image = newPic.importImage(); //USe the importImage method to assign a picture to the PictureBox
+            newPic.importImage(baseCanvas); //Use the importImage method to assign a picture to the PictureBox
         }
 
         /**-----------------------
@@ -668,6 +668,9 @@ namespace Tabula
             flipH.useFlip(SelectRect, "X");
         }
 
+        /**
+         * Fill Color
+         */
         private void fillColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             colorButton_Click(sender, e);

@@ -87,29 +87,21 @@ namespace Tabula
         {
             using (var G = Graphics.FromImage(pastImage))
             {
-                MessageBox.Show("Processing Invert\nThis may take a couple seconds..."); //Patience
                 Bitmap pic = new Bitmap(pastImage); //Store the inverse in a bitmap
-                for (int y = 0; (y <= (pic.Height - 1)); y++) //Y-Axis
+                for (int y = recty.Top; (y <= recty.Bottom); y++) //Y-Axis
                 {
-                    for (int x = 0; (x <= (pic.Width - 1)); x++) //X-Axis
+                    for (int x = recty.Left; (x <= recty.Right); x++) //X-Axis
                     {
                         Color inv = pic.GetPixel(x, y); //Get the color per pixel
                         inv = Color.FromArgb(255, (255 - inv.R), (255 - inv.G), (255 - inv.B)); //Get negative values
                         pic.SetPixel(x, y, inv); //Set negative values
                     }
                 }
-                //using (Form form = new Form())
-                //{
-                //    form.StartPosition = FormStartPosition.CenterScreen;
-                //    form.Size = pic.Size;
-                //    PictureBox pb = new PictureBox();
-                //    pb.Dock = DockStyle.Fill;
-                //    pb.Image = (Image)pic;
-                //    form.Controls.Add(pb);
-                //    form.ShowDialog();
-                //}
+                baseCanvas.Image = pic;
+
                 G.DrawImage(pastImage, 0, 0); //Draws base image first and then the inverted image
-                G.DrawImage(pic, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel);
+                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel);
+                
                 G.Dispose(); //Bye
             }
         }

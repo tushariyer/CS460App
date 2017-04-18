@@ -139,16 +139,31 @@ namespace Tabula
          */
         private void saveAsJPEG_Click(object sender, EventArgs e)
         {
-            SavePicture jpeg = new SavePicture(); //New SavePicture Object
-            jpeg.saveJpeg(baseCanvas.Image);
+            if (baseCanvas.Image != null)
+            {
+                SavePicture jpeg = new SavePicture(); //New SavePicture Object
+                jpeg.saveJpeg(baseCanvas.Image);
+            }
+            else
+            {
+                MessageBox.Show("There's nothing to save.");
+            }
         }
+        
         /**
          * Save File as Bitmap
          */
         private void saveAsBitmap_Click(object sender, EventArgs e)
         {
-            SavePicture bmp = new SavePicture(); //New SavePicture Object
-            bmp.saveBitmap(baseCanvas.Image);
+            if (baseCanvas.Image != null)
+            {
+                SavePicture bmp = new SavePicture(); //New SavePicture Object
+                bmp.saveBitmap(baseCanvas.Image);
+            }
+            else
+            {
+                MessageBox.Show("There's nothing to save.");
+            }
         }
 
         /**
@@ -156,8 +171,16 @@ namespace Tabula
          */
         private void saveAsPNG_Click(object sender, EventArgs e)
         {
-            SavePicture png = new SavePicture(); //New SavePicture Object
-            png.savePng(baseCanvas.Image);
+            if (baseCanvas.Image != null)
+            {
+                SavePicture png = new SavePicture(); //New SavePicture Object
+                png.savePng(baseCanvas.Image);
+            }
+            else
+            {
+                MessageBox.Show("There's nothing to save.");
+            }
+                
         }
 
         /**-----------------------
@@ -386,8 +409,7 @@ namespace Tabula
             Zoom zoo = new Zoom();
             Paste((Bitmap)zoo.Scale(baseCanvas, new Rectangle(0, 0, 50, 50)), baseCanvas.Image);
         }
-
-
+        
         /**
          * Save Previous Image
          * Use this whenever a tool is called to make sure the undo stack always gets updated

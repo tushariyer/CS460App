@@ -172,9 +172,39 @@ namespace Tabula
         public void Paste(Bitmap ImageToPaste, Image SourceImage, int X, int Y)
         {
             savePrevImage();
-            using (Graphics g = Graphics.FromImage(SourceImage))
+            //using (Graphics g = Graphics.FromImage(SourceImage))
+            //{
+            //    g.DrawImage(ImageToPaste, new Rectangle(X, Y, SelectRect.Width, SelectRect.Height));
+            //}
+
+            //----
+            if (SelectRect.Width < 0 && SelectRect.Height < 0) //Bottom-Right to Top-Left
             {
-                g.DrawImage(ImageToPaste, new Rectangle(X, Y, SelectRect.Width, SelectRect.Height));
+                using (Graphics g = Graphics.FromImage(SourceImage))
+                {
+                    g.DrawImage(ImageToPaste, new Rectangle(X, Y, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                }
+            }
+            else if (SelectRect.Width >= 0 && SelectRect.Height >= 0)  //Top-Left to Bottom-Right
+            {
+                using (Graphics g = Graphics.FromImage(SourceImage))
+                {
+                    g.DrawImage(ImageToPaste, new Rectangle(X, Y, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                }
+            }
+            else if (SelectRect.Width < 0 && SelectRect.Height >= 0) //Top-Right to Bottom-Left
+            {
+                using (Graphics g = Graphics.FromImage(SourceImage))
+                {
+                    g.DrawImage(ImageToPaste, new Rectangle(X, Y, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                }
+            }
+            else //Bottom-Left - Top-Right
+            {
+                using (Graphics g = Graphics.FromImage(SourceImage))
+                {
+                    g.DrawImage(ImageToPaste, new Rectangle(X, Y, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                }
             }
             baseCanvas.Refresh();
         }

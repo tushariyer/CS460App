@@ -432,10 +432,13 @@ namespace Tabula
             using (var G = Graphics.FromImage(pastImage)) //Change the graphics of the image
             {
                 G.DrawImage(pastImage, 0, 0); //Draws base image first
+
                 G.TranslateTransform((float)pastImage.Width / 2, (float)pastImage.Height / 2);
-                G.RotateTransform(rotAngle);
+                G.RotateTransform(rotAngle); //Rotate
                 G.TranslateTransform(-(float)pastImage.Width / 2, -(float)pastImage.Height / 2);
                 G.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+                //Draw the new image
                 G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel);
                 G.Dispose();
             }

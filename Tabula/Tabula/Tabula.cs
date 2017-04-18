@@ -22,65 +22,69 @@ namespace Tabula
         //Colour currently selected
         private Color selectedColor = Color.Black; //Default Colour
 
-        //Select variables
+        //Global pen tool
+        private System.Drawing.Pen pen = new System.Drawing.Pen(Color.Black, 2); //Default pen tool for all
+
+        //Coordinate variables
         public static int[] BeginningMousePos = { 0, 0 };
         private int[] EndMousePos = { 0, 0 };
         public static int[] CurrentMosusePos = { 0, 0 };
-
         public int[] BeforeLocation = { 0, 0 };
+
+        //Temp var for copied image
         public Bitmap CopiedImage;
         
-        private bool bCut = false;
-
-        //Form Tools
+        //Form Graphic Tools
         public Graphics SelectionArea;
-        //Rectangle selected
+        private PictureBox SelectLayer = new PictureBox();
         Rectangle SelectRect;
-        private bool bInSelectedRect;
+
         //Current tool/shape selected
         private ETools CurrentTool;
         private EShapes shapeSelected;
+
+        //Checking booleans
+        private bool bInSelectedRect;
         public bool bSelected;
         public bool bCanDraw;
+        private bool bCut = false;
 
-        private PictureBox SelectLayer = new PictureBox();
-        //Constructor
+        /**
+         * App Constructor
+         **/
         public Tabula()
         {
             InitializeComponent();
-
         }
 
+        /**
+         * Copy
+         */
         public Bitmap CropImage(Image SourceImage)
         {
-            Rectangle CroppedImage = SelectRect;
             Bitmap bmp = new Bitmap(Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height));
-            //Graphics g = Graphics.FromImage(SourceImage);
-
-            CopiedImage = bmp;  
-
+            CopiedImage = bmp;
             return bmp;
         }
 
+        /**
+         * Cut
+         */
         public void CutImage(Image SourceImage)
         {
-
             CropImage(SourceImage);
-
             bCut = true;
-
         }
 
-
+        /**
+         * Paste
+         */
         public void Paste(Bitmap ImageToPaste, Image SourceImage)
         {
             savePrevImage();
-
             Graphics g = Graphics.FromImage(SourceImage);
-
-            g.DrawImage(SourceImage, new Rectangle(0, 0, Math.Abs(SelectRect.Width), 
-                Math.Abs(SelectRect.Height)), SelectRect.Left, SelectRect.Top, ImageToPaste.Width, ImageToPaste.Height, GraphicsUnit.Pixel);
-
+            g.DrawImage(ImageToPaste, SelectRect, SelectRect.Left, SelectRect.Top, ImageToPaste.Width, ImageToPaste.Height, GraphicsUnit.Pixel);
+            
             if (bCut)
             {
                 Rectangle CroppedImage = SelectRect;
@@ -92,9 +96,7 @@ namespace Tabula
 
                 System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
                 myBrush.Dispose();
-
                 gr.FillRectangle(b, SelectRect);
-
                 baseCanvas.Refresh();
             }
 
@@ -102,17 +104,18 @@ namespace Tabula
             baseCanvas.Refresh();
         }
 
+        /**
+         * Paste [Overloaded]
+         */
         public void Paste(Bitmap ImageToPaste, Image SourceImage, int X, int Y)
         {
             savePrevImage();
-
 
             using (Graphics g = Graphics.FromImage(SourceImage))
             {
 
                 g.DrawImage(SourceImage, new Rectangle(X, Y, Math.Abs(SelectRect.Width),
                     Math.Abs(SelectRect.Height)), SelectRect.Left, SelectRect.Top, ImageToPaste.Width, ImageToPaste.Height, GraphicsUnit.Pixel);
-
                 if (bCut)
                 {
                     Rectangle CroppedImage = SelectRect;
@@ -126,17 +129,17 @@ namespace Tabula
                     myBrush.Dispose();
 
                     gr.FillRectangle(b, SelectRect);
-
                     baseCanvas.Refresh();
                 }
-
                 g.Dispose();
                 baseCanvas.Refresh();
             }
         }
 
-
-        //Use this whenever a tool is called to make sure the undo stack always gets updated
+        /**
+         * Save Previous Image
+         * Use this whenever a tool is called to make sure the undo stack always gets updated
+         */
         private void savePrevImage()
         {
             if (baseCanvas.Image == null)
@@ -155,20 +158,15 @@ namespace Tabula
         private void openFileButton_Click(object sender, EventArgs e)
         {
             Open newPic = new Open(); //Create new Open Object
-            int newX = 552;
-            int newY = 294;
             baseCanvas.SizeMode = PictureBoxSizeMode.AutoSize;
-            //baseCanvas.Size = new Size(newX--, newY--);
-
             baseCanvas.Refresh();
-
             baseCanvas.Image = newPic.importImage(); //USe the importImage method to assign a picture to the PictureBox
-
-
         }
-        /**
+
+        /**-----------------------
          * Save methods start here
-         */
+         -----------------------*/
+
         /**
          * Save File as JPEG
          */
@@ -185,6 +183,7 @@ namespace Tabula
             SavePicture bmp = new SavePicture(); //New SavePicture Object
             bmp.saveBitmap(baseCanvas.Image);
         }
+
         /**
          * Save File as PNG
          */
@@ -193,21 +192,22 @@ namespace Tabula
             SavePicture png = new SavePicture(); //New SavePicture Object
             png.savePng(baseCanvas.Image);
         }
+
         /**
-         * Canvas Click Method
+         * Canvas Click Method should do nothing
          */
-        private void baseCanvas_Click(object sender, EventArgs e)
-        {
-        }
+        private void baseCanvas_Click(object sender, EventArgs e){}
+
         /**
          * Colour button.
+         * Passes the ColorDialog from the form to ColorSelector so it can allow the user to choose. Stores the value in selectedColor. Other methods can use it.
          */
         private void colorButton_Click(object sender, EventArgs e)
         {
             ColorSelector colorGrid = new ColorSelector();
-            //Passes the ColorDialog from the form to ColorSelector so it can allow the user to choose. Stores the value in selectedColor. Other methods can use it.
             selectedColor = colorGrid.displayShades(availableColors);
         }
+
         /**
          * New File Button
          */
@@ -219,8 +219,10 @@ namespace Tabula
                 NewCreation newBlank = new NewCreation(baseCanvas);
             }
             else { 
-                NewCreation newBlank = new NewCreation(baseCanvas);}
+                NewCreation newBlank = new NewCreation(baseCanvas);
+            }
         }
+
         /**
          * Button for Undo
          */
@@ -228,7 +230,7 @@ namespace Tabula
         {
             if(GlobalUndoStack.Count == 0)
             {
-
+                MessageBox.Show("There's nothing to undo.");
             }
             else
             {
@@ -236,6 +238,7 @@ namespace Tabula
                 baseCanvas.Image = GlobalUndoStack.Pop();
             }
         }
+
         /**
          * Redo Button
          */
@@ -243,7 +246,7 @@ namespace Tabula
         {
             if (GlobalRedoStack.Count == 0)
             {
-
+                MessageBox.Show("There's nothing to redo.");
             }
             else
             {
@@ -251,6 +254,7 @@ namespace Tabula
                 baseCanvas.Image = GlobalRedoStack.Pop();
             }
         }
+
         /**
          * Print Button
          */
@@ -258,6 +262,7 @@ namespace Tabula
         {
             Print printer = new Print(baseCanvas.Image);
         }
+
         /**
          * Select Button
          */
@@ -265,6 +270,7 @@ namespace Tabula
         {
             CurrentTool = ETools.Select;
         }
+
         /**
          * Redo Button
          */
@@ -273,6 +279,7 @@ namespace Tabula
             DesiredArray[0] = x;
             DesiredArray[1] = y;
         }
+
         /**
          * Canvas Click and hold Button
          */
@@ -302,6 +309,7 @@ namespace Tabula
                     break;
             }
         }
+
         /**
          * Canvas release-click Button
          */
@@ -333,23 +341,18 @@ namespace Tabula
                         case (EShapes.Triangle):
                             Equations.DrawTriangle(this.baseCanvas, new System.Drawing.Pen(selectedColor, 2), BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
                             break;
-                            /* case (EShapes.Star):
-                                 Equations.DrawStar(this.baseCanvas, new System.Drawing.Pen(Color.Azure, 2), BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
-                                 break;*/
-
                     }
                     break;
                 default:
                     break;
             }
         }
+
         /**
          * Canvas drag Button
          */
         private void baseCanvas_MouseMove(object sender, MouseEventArgs e)
         {
-
-
             //mouse cords indicator on the screen
             MousePos.Text = e.X + ", " + e.Y;
 
@@ -361,7 +364,6 @@ namespace Tabula
                 case (ETools.Select):
                     if (bSelected)
                     {
-                        savePrevImage();
                         DrawSelectArea(e.X, e.Y);
                         baseCanvas.Invalidate();
                     }
@@ -371,10 +373,7 @@ namespace Tabula
                     {
                         Pen p = new Pen(selectedColor);
                         p.Draw(BeforeLocation, e.X, e.Y, BrushSizeBar.Value, baseCanvas, baseCanvas.Image);
-
                     }
-
-
                     break;
                 case (ETools.Shapes):
                     break;
@@ -382,11 +381,8 @@ namespace Tabula
                     if (bInSelectedRect)
                     {
                         TranslateMedia TempMoving = new TranslateMedia(SelectRect, e.X, e.Y);
-                        //TempMoving.Move();
                         CropImage(baseCanvas.Image);
                         Paste(CopiedImage, baseCanvas.Image, e.X, e.Y);    
-                    
-                    //DrawSelectArea(e.X, e.Y);
                     }
                     break;
                 default:
@@ -395,113 +391,100 @@ namespace Tabula
             BeforeLocation[0] = e.X;
             BeforeLocation[1] = e.Y;
         }
+
         /**
          * Draw Tool Button
          */
-        private void DrawSelectArea(int[] End, int[] Origin)
-        {
-            using (SelectionArea = this.baseCanvas.CreateGraphics())
-            {
-                SelectionArea.Clear(BackColor);
-                PictureBox SelectLayer = new PictureBox();
-                SelectLayer.BringToFront();
-                System.Drawing.Pen pen = new System.Drawing.Pen(selectedColor, 2);
-                Brush brush = new SolidBrush(SelectLayer.BackColor);
-                SelectionArea.DrawRectangle(pen, Origin[0], Origin[1], End[0] - Origin[0], End[1] - Origin[1]);
-                //
-            }
-        }
         private void DrawSelectArea(int X, int Y)
         {
-
             int[] CurrentPos = { X, Y };
-            //handles the [1 -1] vector
-            if (CurrentPos[0] > BeginningMousePos[0] && CurrentPos[1] > BeginningMousePos[1])
+            using (SelectionArea = this.baseCanvas.CreateGraphics())
             {
-                using (SelectionArea = this.baseCanvas.CreateGraphics())
+                if (CurrentPos[0] > BeginningMousePos[0] && CurrentPos[1] > BeginningMousePos[1]) //Quadrant [+ -]
                 {
-                    System.Drawing.Pen pen = new System.Drawing.Pen(selectedColor, 2);
-                    Brush brush = new SolidBrush(SelectLayer.BackColor);
                     SelectRect = new Rectangle(CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
                     SelectionArea.DrawRectangle(pen, SelectRect);
                 }
-            }
-            //handles the [-1 1] vector
-            else if (CurrentPos[0] < BeginningMousePos[0] && CurrentPos[1] < BeginningMousePos[1])
-            {
-                using (SelectionArea = this.baseCanvas.CreateGraphics())
+                else if (CurrentPos[0] < BeginningMousePos[0] && CurrentPos[1] < BeginningMousePos[1]) //Quadrant [- +]
                 {
-                    System.Drawing.Pen pen = new System.Drawing.Pen(selectedColor, 2);
-                    Brush brush = new SolidBrush(SelectLayer.BackColor);
                     SelectRect = new Rectangle(CurrentPos[0], CurrentPos[1], BeginningMousePos[0] - CurrentPos[0], BeginningMousePos[1] - CurrentPos[1]);
                     SelectionArea.DrawRectangle(pen, SelectRect);
                 }
-            }
-            //handles the [1, 1] vector
-            else if (CurrentPos[0] > BeginningMousePos[0] && CurrentPos[1] < BeginningMousePos[1])
-            {
-                using (SelectionArea = this.baseCanvas.CreateGraphics())
+                else if (CurrentPos[0] > BeginningMousePos[0] && CurrentPos[1] < BeginningMousePos[1]) //Quadrant [+ +]
                 {
-                    System.Drawing.Pen pen = new System.Drawing.Pen(selectedColor, 2);
-                    Brush brush = new SolidBrush(SelectLayer.BackColor);
                     SelectRect = new Rectangle(BeginningMousePos[0], CurrentPos[1], CurrentPos[0] - BeginningMousePos[0], BeginningMousePos[1] - CurrentPos[1]);
                     SelectionArea.DrawRectangle(pen, SelectRect);
                 }
-            }
-            //handles the [-1,-1] vector
-            else
-            {
-                using (SelectionArea = this.baseCanvas.CreateGraphics())
+                else //Quadrant [- -]
                 {
-                    System.Drawing.Pen pen = new System.Drawing.Pen(selectedColor, 2);
-                    Brush brush = new SolidBrush(SelectLayer.BackColor);
                     SelectRect = new Rectangle(CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
                     SelectionArea.DrawRectangle(pen, SelectRect);
                 }
-            }
-
-            using (SelectionArea = this.baseCanvas.CreateGraphics())
-            {
-                System.Drawing.Pen pen = new System.Drawing.Pen(selectedColor, 2);
-                Brush brush = new SolidBrush(SelectLayer.BackColor);
                 SelectRect = new Rectangle(BeginningMousePos[0], BeginningMousePos[1], CurrentPos[0] - BeginningMousePos[0], CurrentPos[1] - BeginningMousePos[1]);
                 SelectionArea.DrawRectangle(pen, SelectRect);
             }
         }
+
+        /**
+         * Click on Pen
+         */
         private void penToolButton_Click(object sender, EventArgs e)
         {
-            CurrentTool = ETools.Pen;
-            BrushSizeBar.Visible = true;
+            if (baseCanvas.Image == null)
+            {
+                MessageBox.Show("Cannot write on an empty canvas.");
+            } else { 
+                CurrentTool = ETools.Pen;
+                BrushSizeBar.Visible = true;
+            }
         }
+
+        /**
+         * Click on Deselect
+         */
         private void deselectButton_Click(object sender, EventArgs e)
         {
             CurrentTool = ETools.None; //No tool selected
+            BrushSizeBar.Visible = false; //Hide the bar if its not in use
         }
+
+        /**
+         * Click on Shapes
+         */
         private void shapesToolButton_Click(object sender, EventArgs e)
         {
-            System.Drawing.Pen pen = new System.Drawing.Pen(selectedColor, 2);
             switch (shapeSelected)
             {
                 case (EShapes.Line):
                     CurrentTool = ETools.Shapes;
-                    //Equations.DrawLine(this.baseCanvas, new System.Drawing.Pen(Color.Azure, 2), BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
-
+                    BrushSizeBar.Visible = false; //Hide the bar if its not in use
                     break;
                 case (EShapes.Circle):
-
                     break;
-
             }
         }
+
+        /**
+         * Click on Line
+         */
         private void lineToolButton_Click(object sender, EventArgs e)
         {
             shapeSelected = EShapes.Line;
+            BrushSizeBar.Visible = false; //Hide the bar if its not in use
         }
+
+        /**
+         * Click on Circle
+         */
         private void circleToolButton_Click(object sender, EventArgs e)
         {
             shapeSelected = EShapes.Circle;
+            BrushSizeBar.Visible = false; //Hide the bar if its not in use
         }
 
+        /**
+         * Click on Sepia
+         */
         private void sepiaEffect_Click(object sender, EventArgs e)
         {
             int width = (EndMousePos[0] - BeginningMousePos[0]);
@@ -510,36 +493,60 @@ namespace Tabula
             sepia.useSepia(baseCanvas.Image, SelectRect);
         }
 
+        /**
+         * Click on Quit
+         */
         private void exitButton_Click(object sender, EventArgs e)
         {
             QuitApp die = new QuitApp();
             die.beginQuit(baseCanvas);
         }
 
+        /**
+         * Click on Move
+         */
         private void moveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CurrentTool = ETools.Move;
+            BrushSizeBar.Visible = false; //Hide the bar if its not in use
         }
 
+        /**
+         * Click on Meme
+         */
         private void memeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             savePrevImage();
             Meme meme = new Meme(baseCanvas);
         }
 
+        /**
+         * Click on Copy
+         */
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CropImage(baseCanvas.Image);
         }
 
+        /**
+         * Click on Paste
+         */
         private void pasteButton_Click(object sender, EventArgs e)
         {
             Paste(CopiedImage, baseCanvas.Image);
         }
 
+        /**
+         * Click on Cut
+         */
         private void cutButton_Click(object sender, EventArgs e)
         {
             CutImage(baseCanvas.Image);
         }
+
+        /**
+         * BrushSizeBar methods
+         */
+        private void BrushSizeBar_Scroll(object sender, EventArgs e){ }
     }
 }

@@ -317,14 +317,16 @@
             // selectToolButton
             // 
             this.selectToolButton.Name = "selectToolButton";
-            this.selectToolButton.Size = new System.Drawing.Size(269, 38);
+            this.selectToolButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
+            this.selectToolButton.Size = new System.Drawing.Size(294, 38);
             this.selectToolButton.Text = "Select";
             this.selectToolButton.Click += new System.EventHandler(this.selectToolButton_Click);
             // 
             // penToolButton
             // 
             this.penToolButton.Name = "penToolButton";
-            this.penToolButton.Size = new System.Drawing.Size(269, 38);
+            this.penToolButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.P)));
+            this.penToolButton.Size = new System.Drawing.Size(294, 38);
             this.penToolButton.Text = "Pen";
             this.penToolButton.Click += new System.EventHandler(this.penToolButton_Click);
             // 
@@ -336,7 +338,7 @@
             this.lineToolButton,
             this.triangleToolButton});
             this.shapesToolButton.Name = "shapesToolButton";
-            this.shapesToolButton.Size = new System.Drawing.Size(269, 38);
+            this.shapesToolButton.Size = new System.Drawing.Size(294, 38);
             this.shapesToolButton.Text = "Shapes";
             this.shapesToolButton.Click += new System.EventHandler(this.shapesToolButton_Click);
             // 
@@ -369,14 +371,15 @@
             // deselectButton
             // 
             this.deselectButton.Name = "deselectButton";
-            this.deselectButton.Size = new System.Drawing.Size(269, 38);
+            this.deselectButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D)));
+            this.deselectButton.Size = new System.Drawing.Size(294, 38);
             this.deselectButton.Text = "Deselect All";
             this.deselectButton.Click += new System.EventHandler(this.deselectButton_Click);
             // 
             // moveToolStripMenuItem
             // 
             this.moveToolStripMenuItem.Name = "moveToolStripMenuItem";
-            this.moveToolStripMenuItem.Size = new System.Drawing.Size(269, 38);
+            this.moveToolStripMenuItem.Size = new System.Drawing.Size(294, 38);
             this.moveToolStripMenuItem.Text = "Move";
             this.moveToolStripMenuItem.Click += new System.EventHandler(this.moveToolStripMenuItem_Click);
             // 
@@ -384,7 +387,7 @@
             // 
             this.memeToolStripMenuItem.Name = "memeToolStripMenuItem";
             this.memeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.memeToolStripMenuItem.Size = new System.Drawing.Size(269, 38);
+            this.memeToolStripMenuItem.Size = new System.Drawing.Size(294, 38);
             this.memeToolStripMenuItem.Text = "Meme";
             this.memeToolStripMenuItem.Click += new System.EventHandler(this.memeToolStripMenuItem_Click);
             // 
@@ -394,7 +397,7 @@
             this.verticalToolStripMenuItem,
             this.horizontalToolStripMenuItem});
             this.flipToolStripMenuItem.Name = "flipToolStripMenuItem";
-            this.flipToolStripMenuItem.Size = new System.Drawing.Size(269, 38);
+            this.flipToolStripMenuItem.Size = new System.Drawing.Size(294, 38);
             this.flipToolStripMenuItem.Text = "Flip";
             // 
             // verticalToolStripMenuItem
@@ -414,13 +417,13 @@
             // rotateToolStripMenuItem
             // 
             this.rotateToolStripMenuItem.Name = "rotateToolStripMenuItem";
-            this.rotateToolStripMenuItem.Size = new System.Drawing.Size(269, 38);
+            this.rotateToolStripMenuItem.Size = new System.Drawing.Size(294, 38);
             this.rotateToolStripMenuItem.Text = "Rotate";
             // 
             // resizeToolStripMenuItem
             // 
             this.resizeToolStripMenuItem.Name = "resizeToolStripMenuItem";
-            this.resizeToolStripMenuItem.Size = new System.Drawing.Size(269, 38);
+            this.resizeToolStripMenuItem.Size = new System.Drawing.Size(294, 38);
             this.resizeToolStripMenuItem.Text = "Resize";
             // 
             // baseCanvas
@@ -465,7 +468,8 @@
             // fillColorToolStripMenuItem
             // 
             this.fillColorToolStripMenuItem.Name = "fillColorToolStripMenuItem";
-            this.fillColorToolStripMenuItem.Size = new System.Drawing.Size(269, 38);
+            this.fillColorToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F)));
+            this.fillColorToolStripMenuItem.Size = new System.Drawing.Size(294, 38);
             this.fillColorToolStripMenuItem.Text = "Fill Color";
             this.fillColorToolStripMenuItem.Click += new System.EventHandler(this.fillColorToolStripMenuItem_Click);
             // 

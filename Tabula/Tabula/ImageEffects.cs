@@ -328,5 +328,92 @@ namespace Tabula
             }
             baseCanvas.Image = pastImage;
         }
+        
+        /**
+         * Prep Brightness
+         */
+        public void useBright(string upDown, Rectangle selectedRectum)
+        {
+            recty = selectedRectum;
+
+            if (upDown == "up")
+            {
+                increaseBrightness();
+            }
+            else if (upDown == "down")
+            {
+                decreaseBrightness();
+            }
+            else { }
+        }
+
+        /**
+         * Increase Brightness
+         */
+        public void increaseBrightness() {
+            Bitmap originalImage = (Bitmap)pastImage;
+            //Bitmap adjustedImage;
+            float brightness = 1.0f; // no change in brightness
+            float contrast = 1.5f;
+            float gamma = 1.0f; // no change in gamma
+            var imageAttributes = new ImageAttributes();
+
+            float adjustedBrightness = brightness - 1.0f;
+            // create matrix that will brighten and contrast the image
+            float[][] ptsArray ={
+            new float[] {contrast, 0, 0, 0, 0}, // scale red
+            new float[] {0, contrast, 0, 0, 0}, // scale green
+            new float[] {0, 0, contrast, 0, 0}, // scale blue
+            new float[] {0, 0, 0, 1.0f, 0}, // don't scale alpha
+            new float[] {adjustedBrightness, adjustedBrightness, adjustedBrightness, 0, 1}};
+
+            
+            imageAttributes.ClearColorMatrix();
+            imageAttributes.SetColorMatrix(new ColorMatrix(ptsArray), ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+            imageAttributes.SetGamma(gamma, ColorAdjustType.Bitmap);
+
+            using (var G = Graphics.FromImage(pastImage)) //Change the graphics of the image
+            {
+                G.DrawImage(pastImage, 0, 0); //Draws base image first & Draws sepia's image on top
+                G.DrawImage(originalImage, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel, imageAttributes);
+                G.Dispose();
+            }
+            baseCanvas.Image = pastImage;
+        }
+
+        /**
+         * Decrease Brightness
+         */
+        public void decreaseBrightness()
+        {
+            Bitmap originalImage = (Bitmap)pastImage;
+            //Bitmap adjustedImage;
+            float brightness = 1.0f; // no change in brightness
+            float contrast = 0.5f;
+            float gamma = 1.0f; // no change in gamma
+            var imageAttributes = new ImageAttributes();
+
+            float adjustedBrightness = brightness - 1.0f;
+            // create matrix that will brighten and contrast the image
+            float[][] ptsArray ={
+            new float[] {contrast, 0, 0, 0, 0}, // scale red
+            new float[] {0, contrast, 0, 0, 0}, // scale green
+            new float[] {0, 0, contrast, 0, 0}, // scale blue
+            new float[] {0, 0, 0, 1.0f, 0}, // don't scale alpha
+            new float[] {adjustedBrightness, adjustedBrightness, adjustedBrightness, 0, 1}};
+
+
+            imageAttributes.ClearColorMatrix();
+            imageAttributes.SetColorMatrix(new ColorMatrix(ptsArray), ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+            imageAttributes.SetGamma(gamma, ColorAdjustType.Bitmap);
+
+            using (var G = Graphics.FromImage(pastImage)) //Change the graphics of the image
+            {
+                G.DrawImage(pastImage, 0, 0); //Draws base image first & Draws sepia's image on top
+                G.DrawImage(originalImage, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel, imageAttributes);
+                G.Dispose();
+            }
+            baseCanvas.Image = pastImage;
+        }
     }
 }

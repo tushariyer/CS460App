@@ -81,6 +81,9 @@
             this.BrushSizeBar = new System.Windows.Forms.TrackBar();
             this.bWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.brightnessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.increaseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.decreaseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenuBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.baseCanvas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrushSizeBar)).BeginInit();
@@ -120,14 +123,16 @@
             // newFileButton
             // 
             this.newFileButton.Name = "newFileButton";
-            this.newFileButton.Size = new System.Drawing.Size(205, 38);
+            this.newFileButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newFileButton.Size = new System.Drawing.Size(281, 38);
             this.newFileButton.Text = "New File";
             this.newFileButton.Click += new System.EventHandler(this.newFileButton_Click);
             // 
             // openFileButton
             // 
             this.openFileButton.Name = "openFileButton";
-            this.openFileButton.Size = new System.Drawing.Size(205, 38);
+            this.openFileButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openFileButton.Size = new System.Drawing.Size(281, 38);
             this.openFileButton.Text = "Open File";
             this.openFileButton.Click += new System.EventHandler(this.openFileButton_Click);
             // 
@@ -138,53 +143,55 @@
             this.saveAsBitmap,
             this.saveAsPNG});
             this.saveFileSave.Name = "saveFileSave";
-            this.saveFileSave.Size = new System.Drawing.Size(205, 38);
+            this.saveFileSave.Size = new System.Drawing.Size(281, 38);
             this.saveFileSave.Text = "Save File";
             // 
             // saveAsJPEG
             // 
             this.saveAsJPEG.Name = "saveAsJPEG";
-            this.saveAsJPEG.Size = new System.Drawing.Size(182, 38);
+            this.saveAsJPEG.Size = new System.Drawing.Size(269, 38);
             this.saveAsJPEG.Text = "JPEG";
             this.saveAsJPEG.Click += new System.EventHandler(this.saveAsJPEG_Click);
             // 
             // saveAsBitmap
             // 
             this.saveAsBitmap.Name = "saveAsBitmap";
-            this.saveAsBitmap.Size = new System.Drawing.Size(182, 38);
+            this.saveAsBitmap.Size = new System.Drawing.Size(269, 38);
             this.saveAsBitmap.Text = "Bitmap";
             this.saveAsBitmap.Click += new System.EventHandler(this.saveAsBitmap_Click);
             // 
             // saveAsPNG
             // 
             this.saveAsPNG.Name = "saveAsPNG";
-            this.saveAsPNG.Size = new System.Drawing.Size(182, 38);
+            this.saveAsPNG.Size = new System.Drawing.Size(269, 38);
             this.saveAsPNG.Text = "PNG";
             this.saveAsPNG.Click += new System.EventHandler(this.saveAsPNG_Click);
             // 
             // optionsButton
             // 
             this.optionsButton.Name = "optionsButton";
-            this.optionsButton.Size = new System.Drawing.Size(205, 38);
+            this.optionsButton.Size = new System.Drawing.Size(281, 38);
             this.optionsButton.Text = "Options";
             // 
             // aboutButton
             // 
             this.aboutButton.Name = "aboutButton";
-            this.aboutButton.Size = new System.Drawing.Size(205, 38);
+            this.aboutButton.Size = new System.Drawing.Size(281, 38);
             this.aboutButton.Text = "About";
             // 
             // printButton
             // 
             this.printButton.Name = "printButton";
-            this.printButton.Size = new System.Drawing.Size(205, 38);
+            this.printButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.printButton.Size = new System.Drawing.Size(281, 38);
             this.printButton.Text = "Print";
             this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
             // exitButton
             // 
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(205, 38);
+            this.exitButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
+            this.exitButton.Size = new System.Drawing.Size(281, 38);
             this.exitButton.Text = "Exit";
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
@@ -272,7 +279,8 @@
             this.invertEffect,
             this.transparencyToolStripMenuItem,
             this.bWToolStripMenuItem,
-            this.hueToolStripMenuItem});
+            this.hueToolStripMenuItem,
+            this.brightnessToolStripMenuItem});
             this.effectsButton.Name = "effectsButton";
             this.effectsButton.Size = new System.Drawing.Size(88, 33);
             this.effectsButton.Text = "Effects";
@@ -535,6 +543,29 @@
             this.hueToolStripMenuItem.Text = "Hue";
             this.hueToolStripMenuItem.Click += new System.EventHandler(this.hueToolStripMenuItem_Click);
             // 
+            // brightnessToolStripMenuItem
+            // 
+            this.brightnessToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.increaseToolStripMenuItem1,
+            this.decreaseToolStripMenuItem1});
+            this.brightnessToolStripMenuItem.Name = "brightnessToolStripMenuItem";
+            this.brightnessToolStripMenuItem.Size = new System.Drawing.Size(338, 38);
+            this.brightnessToolStripMenuItem.Text = "Brightness";
+            // 
+            // increaseToolStripMenuItem1
+            // 
+            this.increaseToolStripMenuItem1.Name = "increaseToolStripMenuItem1";
+            this.increaseToolStripMenuItem1.Size = new System.Drawing.Size(269, 38);
+            this.increaseToolStripMenuItem1.Text = "Increase";
+            this.increaseToolStripMenuItem1.Click += new System.EventHandler(this.increaseToolStripMenuItem1_Click);
+            // 
+            // decreaseToolStripMenuItem1
+            // 
+            this.decreaseToolStripMenuItem1.Name = "decreaseToolStripMenuItem1";
+            this.decreaseToolStripMenuItem1.Size = new System.Drawing.Size(269, 38);
+            this.decreaseToolStripMenuItem1.Text = "Decrease";
+            this.decreaseToolStripMenuItem1.Click += new System.EventHandler(this.decreaseToolStripMenuItem1_Click);
+            // 
             // Tabula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 26F);
@@ -613,6 +644,9 @@
         private System.Windows.Forms.ToolStripMenuItem textBoxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bWToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem brightnessToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem increaseToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem decreaseToolStripMenuItem1;
     }
 }
 

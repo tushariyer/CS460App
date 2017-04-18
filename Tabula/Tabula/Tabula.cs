@@ -699,6 +699,26 @@ namespace Tabula
             hue.useHue(SelectRect, selectedColor);
         }
 
+        /**
+         * Effect - Increase Brightness
+         */
+        private void increaseToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            savePrevImage();
+            ImageEffects brightUp = new ImageEffects(baseCanvas);
+            brightUp.useBright("up", SelectRect);
+        }
+
+        /**
+         * Effect - Decrease Brightness
+         */
+        private void decreaseToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            savePrevImage();
+            ImageEffects brightUp = new ImageEffects(baseCanvas);
+            brightUp.useBright("down", SelectRect);
+        }
+
         /**-----------------------
          * Tool methods start here
          -----------------------*/
@@ -826,5 +846,6 @@ namespace Tabula
             DesiredArray[0] = x;
             DesiredArray[1] = y;
         }
+
     }
 }

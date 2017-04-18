@@ -92,6 +92,19 @@ namespace Tabula
         }
 
         /**
+         * Paste
+         */
+        public void Paste(Bitmap ImageToPaste, Image SourceImage, int X, int Y)
+        {
+            savePrevImage();
+            using (Graphics g = Graphics.FromImage(SourceImage))
+            {
+                g.DrawImage(ImageToPaste, new Rectangle(X, Y, SelectRect.Width, SelectRect.Height));
+            }
+            baseCanvas.Refresh();
+        }
+
+        /**
          * Save Previous Image
          * Use this whenever a tool is called to make sure the undo stack always gets updated
          */
@@ -254,6 +267,8 @@ namespace Tabula
                     if (SelectRect.Contains(new Point(e.X, e.Y)))
                     {
                         bInSelectedRect = true;
+                        //sets the mouse position to the "origin" of the selected rectangle
+                        Cursor.Position = new Point(e.X, e.Y);
                     }
                     else
                     {
@@ -283,8 +298,16 @@ namespace Tabula
             {
                 bCanDraw = false;
             }
-
-            if (CurrentTool == ETools.Shapes)
+            if (CurrentTool == ETools.Move)
+            {
+                //Copied the selected image to the "clipboard"
+                CropImage();
+                //set the current copied image to the mouse position.
+                Paste(CopiedImage, baseCanvas.Image, e.X, e.Y);
+                //clear the tool to stop the constant repasting.
+                CurrentTool = ETools.None;
+            }
+            else if (CurrentTool == ETools.Shapes)
             {
                 switch (shapeSelected)
                 {
@@ -329,9 +352,14 @@ namespace Tabula
                 p.Draw(BeforeLocation, e.X, e.Y, BrushSizeBar.Value, baseCanvas, baseCanvas.Image);
             }
 
-            if (bInSelectedRect)
+            if (bInSelectedRect && CurrentTool == ETools.Move)
             {
-                TranslateMedia TempMoving = new TranslateMedia(SelectRect, e.X, e.Y);
+                //create a moving object
+                TranslateMedia TempMoving = new TranslateMedia();
+                //move the object based on the mouse
+                TempMoving.Move(baseCanvas, SelectRect, pen, e.X, e.Y);
+                //clear the base can
+                baseCanvas.Invalidate();
             }
             BeforeLocation[0] = e.X;
             BeforeLocation[1] = e.Y;

@@ -29,7 +29,7 @@ namespace Tabula
                 g.DrawLine(pen, new Point(BeforeLocation[0], BeforeLocation[1]), new Point(X, Y));
             }
             */
-
+            
             pen.Width = BrushSize;
             Graphics.FromImage(CurrentImage).DrawLine(pen, new Point(BeforeLocation[0], BeforeLocation[1]), new Point(X, Y));
             Layer.Refresh();

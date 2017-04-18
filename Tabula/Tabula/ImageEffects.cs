@@ -15,27 +15,18 @@ namespace Tabula
         private Rectangle recty;
         private Image pastImage;
 
-        public static int[] BeginningMousePos = { 0, 0 };
-        public int x, y, w, h;
-
         public ImageEffects(PictureBox baseCanvas)
         {
             this.baseCanvas = baseCanvas;
             pastImage = (Image)baseCanvas.Image.Clone();
         }
 
-        //public void useSepia(Image target, int xCoord, int yCoord, int width, int height)
-        //{
-        //    x = xCoord;
-        //    y = yCoord;
-        //    w = width;
-        //    h = height;
-        //}
         public void useSepia(Rectangle selectedRectum)
         {
             recty = selectedRectum;
             sepia();
         }
+
         public void sepia()
         {
             //Creation of values that are used to change the apperance of the image. this set of creates a sepia effect
@@ -55,7 +46,7 @@ namespace Tabula
             //sets the image Attributes color matrix the 2D array above
             IA.SetColorMatrix(sepiaMatrix);
 
-            var bitmp = new Bitmap(recty.Width,recty.Height);
+            var bitmp = new Bitmap(Math.Abs(recty.Width),Math.Abs(recty.Height));
 
             //Change the graphics of the image
             using (var G = Graphics.FromImage(pastImage))
@@ -63,19 +54,10 @@ namespace Tabula
                 //Draws base image first
                 G.DrawImage(pastImage,0,0);
                 //Draws sepia's image on top
-                G.DrawImage(baseCanvas.Image, recty, recty.X, recty.Y, recty.Width,recty.Height, GraphicsUnit.Point,IA);
-            }
-            using (var G = Graphics.FromImage(bitmp))
-            {
-                //Draws sepia's image on top
-                G.DrawImage(baseCanvas.Image, recty, 200, recty.Y, recty.Width, recty.Height, GraphicsUnit.Point, IA);
+                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, Math.Abs(recty.Width),Math.Abs(recty.Height), GraphicsUnit.Pixel,IA);
             }
 
             baseCanvas.Image = pastImage;
-            //MessageBox.Show("Currently Broken trying to fix :)");
-
-            //Throw exception here
-
         }
     }
 }

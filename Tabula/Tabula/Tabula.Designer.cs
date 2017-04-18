@@ -464,8 +464,10 @@
             // rotateToolStripMenuItem
             // 
             this.rotateToolStripMenuItem.Name = "rotateToolStripMenuItem";
+            this.rotateToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Right)));
             this.rotateToolStripMenuItem.Size = new System.Drawing.Size(294, 38);
             this.rotateToolStripMenuItem.Text = "Rotate";
+            this.rotateToolStripMenuItem.Click += new System.EventHandler(this.rotateToolStripMenuItem_Click);
             // 
             // resizeToolStripMenuItem
             // 

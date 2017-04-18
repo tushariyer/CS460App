@@ -859,5 +859,13 @@ namespace Tabula
             DesiredArray[1] = y;
         }
 
+        /**
+         * Rotate Tool
+         */
+        private void rotateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImageEffects rotater = new ImageEffects(baseCanvas);
+            rotater.rotatePrep(SelectRect, selectedColor, 5.0f);
+        }
     }
 }

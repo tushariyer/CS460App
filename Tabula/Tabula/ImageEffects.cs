@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Drawing.Drawing2D;
 
 namespace Tabula
 {
@@ -411,6 +412,31 @@ namespace Tabula
             {
                 G.DrawImage(pastImage, 0, 0); //Draws base image first & Draws sepia's image on top
                 G.DrawImage(originalImage, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel, imageAttributes);
+                G.Dispose();
+            }
+            baseCanvas.Image = pastImage;
+        }
+
+        public void rotatePrep(Rectangle rect, Color selectedColor, float rotAngle)
+        {
+            recty = rect;
+            chosenShade = selectedColor;
+            RotateImg(rotAngle);
+        }
+
+        /**
+         * Rotate Image
+         */
+        public void RotateImg(float rotAngle)
+        {
+            using (var G = Graphics.FromImage(pastImage)) //Change the graphics of the image
+            {
+                G.DrawImage(pastImage, 0, 0); //Draws base image first
+                G.TranslateTransform((float)pastImage.Width / 2, (float)pastImage.Height / 2);
+                G.RotateTransform(rotAngle);
+                G.TranslateTransform(-(float)pastImage.Width / 2, -(float)pastImage.Height / 2);
+                G.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel);
                 G.Dispose();
             }
             baseCanvas.Image = pastImage;

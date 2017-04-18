@@ -15,12 +15,18 @@ namespace Tabula
     class Equations
     {
         EShapes shapeSelected;
-        //Combination of Equations[Interface] and Shape[Class]. Refer to UML for details.
+
+        /**
+         * Constructor
+         */
         public Equations(EShapes shapeSelected)
         {
             this.shapeSelected = shapeSelected;
         }
 
+        /**
+         * Draw Line
+         */
         public static void DrawLine(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea)
         {
             using (SelectionArea = baseCanvas.CreateGraphics())
@@ -29,6 +35,9 @@ namespace Tabula
             }
         }
 
+        /**
+         * Draw Circle
+         */
         public static void DrawCircle(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea)
         {
             int radius = (int)Math.Round(Math.Sqrt(Math.Pow(endY - startY, 2) + Math.Pow(endX - startX, 2)));
@@ -39,6 +48,9 @@ namespace Tabula
 
         }
 
+        /**
+         * Draw Square
+         */
         public static void DrawSquare(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea)
         {
             using (SelectionArea = baseCanvas.CreateGraphics())
@@ -47,6 +59,9 @@ namespace Tabula
             }
         }
 
+        /**
+         * Draw Triangle
+         */
         public static void DrawTriangle(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea)
         {
             using (SelectionArea = baseCanvas.CreateGraphics())

@@ -667,5 +667,14 @@ namespace Tabula
             ImageEffects flipH = new ImageEffects(baseCanvas);
             flipH.useFlip(SelectRect, "X");
         }
+
+        private void fillColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            colorButton_Click(sender, e);
+
+            ImageEffects phil = new ImageEffects(baseCanvas);
+
+            phil.useFill(SelectRect, selectedColor);
+        }
     }
 }

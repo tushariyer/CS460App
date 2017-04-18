@@ -15,6 +15,7 @@ namespace Tabula
         private PictureBox baseCanvas;
         private Rectangle recty;
         private Image pastImage;
+        private Color chosenShade;
 
         /**
          * Image Effects constructor
@@ -86,21 +87,29 @@ namespace Tabula
         {
             using (var G = Graphics.FromImage(pastImage))
             {
-                ColorMatrix cMat = new ColorMatrix(new float[][] 
+                MessageBox.Show("Processing Invert\nThis may take a couple seconds..."); //Patience
+                Bitmap pic = new Bitmap(pastImage); //Store the inverse in a bitmap
+                for (int y = 0; (y <= (pic.Height - 1)); y++) //Y-Axis
                 {
-                    new float[] {-1, 0, 0, 0, 0},
-                    new float[] {0, -1, 0, 0, 0},
-                    new float[] {0, 0, -1, 0, 0},
-                    new float[] {0, 0, 0, 1, 0},
-                    new float[] {1, 1, 1, 0, 1}
-                });
-
-                ImageAttributes IA = new ImageAttributes();
-                IA.SetColorMatrix(cMat);
-
+                    for (int x = 0; (x <= (pic.Width - 1)); x++) //X-Axis
+                    {
+                        Color inv = pic.GetPixel(x, y); //Get the color per pixel
+                        inv = Color.FromArgb(255, (255 - inv.R), (255 - inv.G), (255 - inv.B)); //Get negative values
+                        pic.SetPixel(x, y, inv); //Set negative values
+                    }
+                }
+                //using (Form form = new Form())
+                //{
+                //    form.StartPosition = FormStartPosition.CenterScreen;
+                //    form.Size = pic.Size;
+                //    PictureBox pb = new PictureBox();
+                //    pb.Dock = DockStyle.Fill;
+                //    pb.Image = (Image)pic;
+                //    form.Controls.Add(pb);
+                //    form.ShowDialog();
+                //}
                 G.DrawImage(pastImage, 0, 0); //Draws base image first and then the inverted image
-                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel, IA);
-
+                G.DrawImage(pic, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel);
                 G.Dispose(); //Bye
             }
         }
@@ -161,6 +170,35 @@ namespace Tabula
                 G.Dispose();
             }            
             //Sure?
+            baseCanvas.Image = pastImage;
+        }
+
+        /**
+         * Prep Fill
+         */
+        public void useFill(Rectangle selectedRectum, Color selectedColor)
+        {
+            recty = selectedRectum;
+            chosenShade = selectedColor;
+            fill();
+        }
+
+        /**
+         * Fill
+         */
+        public void fill()
+        {
+            //Change the graphics of the image
+            using (var G = Graphics.FromImage(pastImage))
+            using (SolidBrush brush = new SolidBrush(chosenShade))
+            {
+                //Draws base image first
+                G.DrawImage(pastImage, 0, 0);
+                //Draws color on top of that
+                G.FillRectangle(brush, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top);
+                G.Dispose();
+                brush.Dispose();
+            }
             baseCanvas.Image = pastImage;
         }
     }

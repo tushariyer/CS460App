@@ -46,15 +46,13 @@ namespace Tabula
             //sets the image Attributes color matrix the 2D array above
             IA.SetColorMatrix(sepiaMatrix);
 
-            var bitmp = new Bitmap(Math.Abs(recty.Width),Math.Abs(recty.Height));
-
             //Change the graphics of the image
             using (var G = Graphics.FromImage(pastImage))
             {
                 //Draws base image first
                 G.DrawImage(pastImage,0,0);
                 //Draws sepia's image on top
-                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, Math.Abs(recty.Width),Math.Abs(recty.Height), GraphicsUnit.Pixel,IA);
+                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel,IA);
             }
 
             baseCanvas.Image = pastImage;

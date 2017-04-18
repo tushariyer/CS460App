@@ -47,7 +47,6 @@ namespace Tabula
         private bool bInSelectedRect;
         public bool bSelected;
         public bool bCanDraw;
-        private bool bCut = false;
 
         /**
          * App Constructor
@@ -273,34 +272,37 @@ namespace Tabula
         {
             EndMousePos[0] = e.Location.X;
             EndMousePos[1] = e.Location.Y;
-            switch (CurrentTool)
+
+            if (bSelected)
             {
-                case (ETools.Select):
-                    bSelected = false;
-                    DrawSelectArea(e.X, e.Y);
-                    break;
-                case (ETools.Pen):
-                    bCanDraw = false;
-                    break;
-                case (ETools.Shapes):
-                    switch (shapeSelected)
-                    {
-                        case (EShapes.Line):
-                            Equations.DrawLine(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
-                            break;
-                        case (EShapes.Circle):
-                            Equations.DrawCircle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
-                            break;
-                        case (EShapes.Square):
-                            Equations.DrawSquare(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
-                            break;
-                        case (EShapes.Triangle):
-                            Equations.DrawTriangle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
-                            break;
-                    }
-                    break;
-                default:
-                    break;
+                bSelected = false;
+                DrawSelectArea(e.X, e.Y);
+            }
+
+            if (bCanDraw)
+            {
+                bCanDraw = false;
+            }
+
+            if (CurrentTool == ETools.Shapes)
+            {
+                switch (shapeSelected)
+                {
+                    case (EShapes.Line):
+                        Equations.DrawLine(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
+                        break;
+                    case (EShapes.Circle):
+                        Equations.DrawCircle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
+                        break;
+                    case (EShapes.Square):
+                        Equations.DrawSquare(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
+                        break;
+                    case (EShapes.Triangle):
+                        Equations.DrawTriangle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -315,34 +317,21 @@ namespace Tabula
             CurrentMosusePos[0] = e.X;
             CurrentMosusePos[1] = e.Y;
 
-            switch (CurrentTool)
+            if (bSelected)
             {
-                case (ETools.Select):
-                    if (bSelected)
-                    {
-                        DrawSelectArea(e.X, e.Y);
-                        baseCanvas.Invalidate();
-                    }
-                    break;
-                case (ETools.Pen):
-                    if (bCanDraw)
-                    {
-                        Pen p = new Pen(selectedColor);
-                        p.Draw(BeforeLocation, e.X, e.Y, BrushSizeBar.Value, baseCanvas, baseCanvas.Image);
-                    }
-                    break;
-                case (ETools.Shapes):
-                    break;
-                case (ETools.Move):
-                    if (bInSelectedRect)
-                    {
-                        TranslateMedia TempMoving = new TranslateMedia(SelectRect, e.X, e.Y);
-                        //CropImage(baseCanvas.Image);
-                        //Paste(CopiedImage, baseCanvas.Image, e.X, e.Y);    
-                    }
-                    break;
-                default:
-                    break;
+                DrawSelectArea(e.X, e.Y);
+                baseCanvas.Invalidate();
+            }
+
+            if (bCanDraw)
+            {
+                Pen p = new Pen(selectedColor);
+                p.Draw(BeforeLocation, e.X, e.Y, BrushSizeBar.Value, baseCanvas, baseCanvas.Image);
+            }
+
+            if (bInSelectedRect)
+            {
+                TranslateMedia TempMoving = new TranslateMedia(SelectRect, e.X, e.Y);
             }
             BeforeLocation[0] = e.X;
             BeforeLocation[1] = e.Y;

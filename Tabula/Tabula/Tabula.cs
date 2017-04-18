@@ -60,52 +60,36 @@ namespace Tabula
         /**
          * Copy
          */
-        public Bitmap CropImage(Image SourceImage)
+        public void CropImage()
         {
-            Bitmap bmp = new Bitmap(Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height));
-            CopiedImage = bmp;
-            return bmp;
+            Bitmap bmp = (Bitmap)baseCanvas.Image.Clone();
+            CopiedImage = bmp.Clone(SelectRect, bmp.PixelFormat);
         }
 
         /**
          * Cut
          */
-        public void CutImage(Image SourceImage)
+        public void CutImage()
         {
-            CropImage(SourceImage);
-            bCut = true;
+            CropImage();
+            using (Graphics g = Graphics.FromImage(baseCanvas.Image))
+            {
+                g.FillRectangle(new SolidBrush(Color.White), SelectRect);
+            }
+            baseCanvas.Refresh();
         }
 
         /**
          * Paste
          */
-        public void Paste(Bitmap ImageToPaste, Image SourceImage, int X, int Y)
+        public void Paste(Bitmap ImageToPaste, Image SourceImage)
         {
             savePrevImage();
-
             using (Graphics g = Graphics.FromImage(SourceImage))
             {
-
-                g.DrawImage(SourceImage, new Rectangle(X, Y, Math.Abs(SelectRect.Width),
-                    Math.Abs(SelectRect.Height)), SelectRect.Left, SelectRect.Top, ImageToPaste.Width, ImageToPaste.Height, GraphicsUnit.Pixel);
-                if (bCut)
-                {
-                    Rectangle CroppedImage = SelectRect;
-                    Bitmap bmp = new Bitmap(Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height));
-                    Graphics gr = Graphics.FromImage(SourceImage);
-                    Brush b = new SolidBrush(Color.White);
-
-                    bCut = false;
-
-                    System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
-                    myBrush.Dispose();
-
-                    gr.FillRectangle(b, SelectRect);
-                    baseCanvas.Refresh();
-                }
-                g.Dispose();
-                baseCanvas.Refresh();
+                g.DrawImage(ImageToPaste, SelectRect);
             }
+            baseCanvas.Refresh();
         }
 
         /**
@@ -353,8 +337,8 @@ namespace Tabula
                     if (bInSelectedRect)
                     {
                         TranslateMedia TempMoving = new TranslateMedia(SelectRect, e.X, e.Y);
-                        CropImage(baseCanvas.Image);
-                        Paste(CopiedImage, baseCanvas.Image, e.X, e.Y);    
+                        //CropImage(baseCanvas.Image);
+                        //Paste(CopiedImage, baseCanvas.Image, e.X, e.Y);    
                     }
                     break;
                 default:
@@ -496,7 +480,7 @@ namespace Tabula
          */
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CropImage(baseCanvas.Image);
+            CropImage();
         }
 
         /**
@@ -504,7 +488,7 @@ namespace Tabula
          */
         private void pasteButton_Click(object sender, EventArgs e)
         {
-            Paste(CopiedImage, baseCanvas.Image, 0, 0);
+            Paste(CopiedImage, baseCanvas.Image);
         }
 
         /**
@@ -512,7 +496,7 @@ namespace Tabula
          */
         private void cutButton_Click(object sender, EventArgs e)
         {
-            CutImage(baseCanvas.Image);
+            CutImage();
         }
 
         /**

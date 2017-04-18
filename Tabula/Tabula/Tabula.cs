@@ -62,7 +62,11 @@ namespace Tabula
         /**--------------------------
          * File operations start here
          ---------------------------*/
-
+        private void defaultSelect()
+        {
+            SelectRect = new Rectangle(0, 0, baseCanvas.Width, baseCanvas.Height);
+        }
+        
         /**
          * New File Button
          */
@@ -79,6 +83,7 @@ namespace Tabula
                 else if (check == DialogResult.No)
                 {
                     NewCreation newBlank = new NewCreation(baseCanvas);
+                    defaultSelect();
                 }
             }
         }
@@ -102,6 +107,7 @@ namespace Tabula
                     baseCanvas.SizeMode = PictureBoxSizeMode.AutoSize;
                     baseCanvas.Refresh();
                     newPic.importImage(baseCanvas); //Use the importImage method to assign a picture to the PictureBox
+                    defaultSelect();
                 }
             }
             else
@@ -110,6 +116,7 @@ namespace Tabula
                 baseCanvas.SizeMode = PictureBoxSizeMode.AutoSize;
                 baseCanvas.Refresh();
                 newPic.importImage(baseCanvas); //Use the importImage method to assign a picture to the PictureBox
+                defaultSelect();
             }
         }
 
@@ -497,6 +504,10 @@ namespace Tabula
                 CurrentTool = ETools.None;
                 SelectRect = new Rectangle(0, 0, 0, 0);
             }
+            else if (CurrentTool == ETools.None)
+            {
+                defaultSelect();
+            }
             else if (CurrentTool == ETools.Shapes)
             {
                 savePrevImage();
@@ -826,6 +837,7 @@ namespace Tabula
          */
         private void deselectButton_Click(object sender, EventArgs e)
         {
+            defaultSelect();
             CurrentTool = ETools.None; //No tool selected
             BrushSizeBar.Visible = false; //Hide the bar if its not in use
         }

@@ -679,5 +679,23 @@ namespace Tabula
 
             phil.useFill(SelectRect, selectedColor);
         }
+
+        /**
+         * Increase Transparency
+         */
+        private void increaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImageEffects seeThru = new ImageEffects(baseCanvas);
+            seeThru.lessOpaque(SelectRect);
+        }
+
+        /**
+         * Decrease Transparency
+         */
+        private void decreaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImageEffects seeThru = new ImageEffects(baseCanvas);
+            seeThru.moreOpaque(SelectRect);
+        }
     }
 }

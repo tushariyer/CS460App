@@ -107,6 +107,79 @@ namespace Tabula
         }
 
         /**
+         * Opacity Decrease
+         */
+        public void lessOpaque(Rectangle rect)
+        {
+            recty = rect;
+
+            using (var G = Graphics.FromImage(pastImage))
+            {
+                Bitmap pic = new Bitmap(pastImage); //Store the inverse in a bitmap
+                for (int y = recty.Top; (y <= recty.Bottom); y++) //Y-Axis
+                {
+                    for (int x = recty.Left; (x <= recty.Right); x++) //X-Axis
+                    {
+                        Color inv = pic.GetPixel(x, y); //Get the color per pixel
+
+                        if ((inv.A - 10) >= 0)
+                        {
+                            inv = Color.FromArgb((inv.A - 10), inv.R, inv.G, inv.B); //Get negative values
+                            pic.SetPixel(x, y, inv); //Set negative values
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                baseCanvas.Image = pic;
+
+                G.DrawImage(pastImage, 0, 0); //Draws base image first and then the inverted image
+                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel);
+
+                G.Dispose(); //Bye
+            }
+
+        }
+
+        /**
+         * Opacity Increase
+         */
+        public void moreOpaque(Rectangle rect)
+        {
+            recty = rect;
+
+            using (var G = Graphics.FromImage(pastImage))
+            {
+                Bitmap pic = new Bitmap(pastImage); //Store the inverse in a bitmap
+                for (int y = recty.Top; (y <= recty.Bottom); y++) //Y-Axis
+                {
+                    for (int x = recty.Left; (x <= recty.Right); x++) //X-Axis
+                    {
+                        Color inv = pic.GetPixel(x, y); //Get the color per pixel
+
+                        if ((inv.A + 10) <= 255)
+                        {
+                            inv = Color.FromArgb((inv.A + 10), inv.R, inv.G, inv.B); //Get negative values
+                            pic.SetPixel(x, y, inv); //Set negative values
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                baseCanvas.Image = pic;
+
+                G.DrawImage(pastImage, 0, 0); //Draws base image first and then the inverted image
+                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel);
+
+                G.Dispose(); //Bye
+            }
+        }
+
+        /**
          * Prep Flip
          */
         public void useFlip(Rectangle selectedRectum, String axis)

@@ -79,34 +79,6 @@ namespace Tabula
         /**
          * Paste
          */
-        public void Paste(Bitmap ImageToPaste, Image SourceImage)
-        {
-            savePrevImage();
-            Graphics g = Graphics.FromImage(SourceImage);
-            g.DrawImage(ImageToPaste, SelectRect, SelectRect.Left, SelectRect.Top, ImageToPaste.Width, ImageToPaste.Height, GraphicsUnit.Pixel);
-            
-            if (bCut)
-            {
-                Rectangle CroppedImage = SelectRect;
-                Bitmap bmp = new Bitmap(Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height));
-                Graphics gr = Graphics.FromImage(SourceImage);
-                Brush b = new SolidBrush(Color.White);
-
-                bCut = false;
-
-                System.Drawing.SolidBrush myBrush = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
-                myBrush.Dispose();
-                gr.FillRectangle(b, SelectRect);
-                baseCanvas.Refresh();
-            }
-
-            g.Dispose();
-            baseCanvas.Refresh();
-        }
-
-        /**
-         * Paste [Overloaded]
-         */
         public void Paste(Bitmap ImageToPaste, Image SourceImage, int X, int Y)
         {
             savePrevImage();
@@ -533,7 +505,7 @@ namespace Tabula
          */
         private void pasteButton_Click(object sender, EventArgs e)
         {
-            Paste(CopiedImage, baseCanvas.Image);
+            Paste(CopiedImage, baseCanvas.Image, 0, 0);
         }
 
         /**

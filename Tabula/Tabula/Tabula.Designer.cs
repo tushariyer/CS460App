@@ -117,14 +117,14 @@
             // newFileButton
             // 
             this.newFileButton.Name = "newFileButton";
-            this.newFileButton.Size = new System.Drawing.Size(205, 38);
+            this.newFileButton.Size = new System.Drawing.Size(269, 38);
             this.newFileButton.Text = "New File";
             this.newFileButton.Click += new System.EventHandler(this.newFileButton_Click);
             // 
             // openFileButton
             // 
             this.openFileButton.Name = "openFileButton";
-            this.openFileButton.Size = new System.Drawing.Size(205, 38);
+            this.openFileButton.Size = new System.Drawing.Size(269, 38);
             this.openFileButton.Text = "Open File";
             this.openFileButton.Click += new System.EventHandler(this.openFileButton_Click);
             // 
@@ -135,7 +135,7 @@
             this.saveAsBitmap,
             this.saveAsPNG});
             this.saveFileSave.Name = "saveFileSave";
-            this.saveFileSave.Size = new System.Drawing.Size(205, 38);
+            this.saveFileSave.Size = new System.Drawing.Size(269, 38);
             this.saveFileSave.Text = "Save File";
             // 
             // saveAsJPEG
@@ -162,26 +162,26 @@
             // optionsButton
             // 
             this.optionsButton.Name = "optionsButton";
-            this.optionsButton.Size = new System.Drawing.Size(205, 38);
+            this.optionsButton.Size = new System.Drawing.Size(269, 38);
             this.optionsButton.Text = "Options";
             // 
             // aboutButton
             // 
             this.aboutButton.Name = "aboutButton";
-            this.aboutButton.Size = new System.Drawing.Size(205, 38);
+            this.aboutButton.Size = new System.Drawing.Size(269, 38);
             this.aboutButton.Text = "About";
             // 
             // printButton
             // 
             this.printButton.Name = "printButton";
-            this.printButton.Size = new System.Drawing.Size(205, 38);
+            this.printButton.Size = new System.Drawing.Size(269, 38);
             this.printButton.Text = "Print";
             this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
             // exitButton
             // 
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(205, 38);
+            this.exitButton.Size = new System.Drawing.Size(269, 38);
             this.exitButton.Text = "Exit";
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 

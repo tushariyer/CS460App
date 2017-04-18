@@ -31,7 +31,26 @@ namespace Tabula
             */
             
             pen.Width = BrushSize;
-            Graphics.FromImage(CurrentImage).DrawLine(pen, new Point(BeforeLocation[0], BeforeLocation[1]), new Point(X, Y));
+
+            //thin enough
+            if (pen.Width < 5)
+            {
+                Graphics.FromImage(CurrentImage).DrawLine(pen, new Point(BeforeLocation[0], BeforeLocation[1]), new Point(X, Y));
+            }
+            //thicker line needs more lines to fill open spaces in the brush strokes
+            else {
+                Graphics.FromImage(CurrentImage).DrawLine(pen, new Point(BeforeLocation[0] - 1, BeforeLocation[1] - 1), new Point(X - 1, Y - 1));
+
+                Graphics.FromImage(CurrentImage).DrawLine(pen, new Point(BeforeLocation[0] - 1, BeforeLocation[1] + 1), new Point(X - 1, Y + 1));
+                Graphics.FromImage(CurrentImage).DrawLine(pen, new Point(BeforeLocation[0] + 1, BeforeLocation[1] - 1), new Point(X + 1, Y - 1));
+
+                Graphics.FromImage(CurrentImage).DrawLine(pen, new Point(BeforeLocation[0] - 1, BeforeLocation[1] + 1), new Point(X + 1, Y - 1));
+                Graphics.FromImage(CurrentImage).DrawLine(pen, new Point(BeforeLocation[0] + 1, BeforeLocation[1] - 1), new Point(X - 1, Y + 1));
+
+                Graphics.FromImage(CurrentImage).DrawLine(pen, new Point(BeforeLocation[0] + 1, BeforeLocation[1] + 1), new Point(X + 1, Y + 1));
+
+                Graphics.FromImage(CurrentImage).DrawLine(pen, new Point(BeforeLocation[0], BeforeLocation[1]), new Point(X, Y));             
+            }
             Layer.Refresh();
 
         }

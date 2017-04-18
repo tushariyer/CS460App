@@ -503,10 +503,9 @@ namespace Tabula
 
         private void sepiaEffect_Click(object sender, EventArgs e)
         {
-            int width = (EndMousePos[0] - BeginningMousePos[0]);
-            int height = (EndMousePos[1] - BeginningMousePos[1]);
-            ImageEffects sepia = new ImageEffects();
-            sepia.useSepia(baseCanvas.Image, SelectRect);
+            savePrevImage();
+            ImageEffects sepia = new ImageEffects(baseCanvas);
+            sepia.useSepia(SelectRect);
         }
 
         private void exitButton_Click(object sender, EventArgs e)

@@ -32,8 +32,6 @@ namespace Tabula
                 saveName = saveFile.FileName;
                 photoSave.Save(saveName, System.Drawing.Imaging.ImageFormat.Jpeg);
             }
-
-            MessageBox.Show("Saved as JPEG");
         }
 
         /**
@@ -55,8 +53,6 @@ namespace Tabula
                 saveName = saveFile.FileName;
                 photoSave.Save(saveName, System.Drawing.Imaging.ImageFormat.Jpeg);
             }
-
-            MessageBox.Show("Saved as Bitmap Image");
         }
 
         /**
@@ -79,8 +75,6 @@ namespace Tabula
                 photoSave.Save(saveName, System.Drawing.Imaging.ImageFormat.Jpeg);
             }
             else { }
-
-            //MessageBox.Show("Saved as PNG Image");
         }
     }
 }

@@ -25,8 +25,8 @@ namespace Tabula
 
         private static void ByeBye()
         {
-            Environment.Exit(0);
-            Application.Exit();
+            System.Environment.Exit(0);
+            System.Windows.Forms.Application.Exit();
         }
     }
 }

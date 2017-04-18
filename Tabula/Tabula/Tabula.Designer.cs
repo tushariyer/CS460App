@@ -79,6 +79,7 @@
             this.availableColors = new System.Windows.Forms.ColorDialog();
             this.MousePos = new System.Windows.Forms.Label();
             this.BrushSizeBar = new System.Windows.Forms.TrackBar();
+            this.bWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenuBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.baseCanvas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrushSizeBar)).BeginInit();
@@ -268,7 +269,8 @@
             this.effectsButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sepiaEffect,
             this.invertEffect,
-            this.transparencyToolStripMenuItem});
+            this.transparencyToolStripMenuItem,
+            this.bWToolStripMenuItem});
             this.effectsButton.Name = "effectsButton";
             this.effectsButton.Size = new System.Drawing.Size(88, 38);
             this.effectsButton.Text = "Effects";
@@ -372,7 +374,7 @@
             // circleToolButton
             // 
             this.circleToolButton.Name = "circleToolButton";
-            this.circleToolButton.Size = new System.Drawing.Size(190, 38);
+            this.circleToolButton.Size = new System.Drawing.Size(269, 38);
             this.circleToolButton.Text = "Circle";
             this.circleToolButton.Click += new System.EventHandler(this.circleToolButton_Click);
             // 
@@ -386,7 +388,7 @@
             // lineToolButton
             // 
             this.lineToolButton.Name = "lineToolButton";
-            this.lineToolButton.Size = new System.Drawing.Size(190, 38);
+            this.lineToolButton.Size = new System.Drawing.Size(269, 38);
             this.lineToolButton.Text = "Line";
             this.lineToolButton.Click += new System.EventHandler(this.lineToolButton_Click);
             // 
@@ -509,6 +511,13 @@
             this.BrushSizeBar.Visible = false;
             this.BrushSizeBar.Scroll += new System.EventHandler(this.BrushSizeBar_Scroll);
             // 
+            // bWToolStripMenuItem
+            // 
+            this.bWToolStripMenuItem.Name = "bWToolStripMenuItem";
+            this.bWToolStripMenuItem.Size = new System.Drawing.Size(293, 38);
+            this.bWToolStripMenuItem.Text = "Grayscale";
+            this.bWToolStripMenuItem.Click += new System.EventHandler(this.bWToolStripMenuItem_Click);
+            // 
             // Tabula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 26F);
@@ -585,6 +594,7 @@
         private System.Windows.Forms.ToolStripMenuItem increaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem decreaseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem textBoxToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bWToolStripMenuItem;
     }
 }
 

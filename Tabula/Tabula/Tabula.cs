@@ -56,41 +56,87 @@ namespace Tabula
             InitializeComponent();
         }
 
+        /**--------------------------
+         * File operations start here
+         ---------------------------*/
+           
         /**
-         * Copy
+         * New File Button
          */
-        public void CropImage()
+        private void newFileButton_Click(object sender, EventArgs e)
         {
-            savePrevImage();
-            Bitmap bmp = (Bitmap)baseCanvas.Image.Clone();
-            if (SelectRect.Width < 0 && SelectRect.Height < 0) //Bottom-Right to Top-Left
+            if (baseCanvas.Image != null)
             {
-                CopiedImage = bmp.Clone(new Rectangle(SelectRect.Right, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
+                savePrevImage();
+                NewCreation newBlank = new NewCreation(baseCanvas);
             }
-            else if (SelectRect.Width >= 0 && SelectRect.Height >= 0) //Top-Left to Bottom-Right
+            else
             {
-                CopiedImage = bmp.Clone(new Rectangle(SelectRect.Left, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
+                NewCreation newBlank = new NewCreation(baseCanvas);
             }
-            else if (SelectRect.Width < 0 && SelectRect.Height >= 0) //Top-Right to Bottom-Left
-            {
-                CopiedImage = bmp.Clone(new Rectangle(SelectRect.Right, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
-            }
-            else //Bottom-Left to Top-Right
-            {
-                CopiedImage = bmp.Clone(new Rectangle(SelectRect.Left, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
-            }
-
-            //using (Form form = new Form())
-            //{
-            //    form.StartPosition = FormStartPosition.CenterScreen;
-            //    form.Size = CopiedImage.Size;
-            //    PictureBox pb = new PictureBox();
-            //    pb.Dock = DockStyle.Fill;
-            //    pb.Image = CopiedImage;
-            //    form.Controls.Add(pb);
-            //    form.ShowDialog();
-            //}
         }
+        
+        /**
+         * File Import Object created here. Redirects to Open.cs
+         */
+        private void openFileButton_Click(object sender, EventArgs e)
+        {
+            Open newPic = new Open(); //Create new Open Object
+            baseCanvas.SizeMode = PictureBoxSizeMode.AutoSize;
+            baseCanvas.Refresh();
+            newPic.importImage(baseCanvas); //Use the importImage method to assign a picture to the PictureBox
+        }
+
+        /**
+         * Print Button
+         */
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            Print printer = new Print(baseCanvas.Image);
+        }
+
+        /**
+         * Click on Quit
+         */
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            QuitApp die = new QuitApp();
+            die.beginQuit(baseCanvas);
+        }
+
+        /**-----------------------
+         * Save methods start here
+         -----------------------*/
+
+        /**
+         * Save File as JPEG
+         */
+        private void saveAsJPEG_Click(object sender, EventArgs e)
+        {
+            SavePicture jpeg = new SavePicture(); //New SavePicture Object
+            jpeg.saveJpeg(baseCanvas.Image);
+        }
+        /**
+         * Save File as Bitmap
+         */
+        private void saveAsBitmap_Click(object sender, EventArgs e)
+        {
+            SavePicture bmp = new SavePicture(); //New SavePicture Object
+            bmp.saveBitmap(baseCanvas.Image);
+        }
+
+        /**
+         * Save File as PNG
+         */
+        private void saveAsPNG_Click(object sender, EventArgs e)
+        {
+            SavePicture png = new SavePicture(); //New SavePicture Object
+            png.savePng(baseCanvas.Image);
+        }
+
+        /**-----------------------
+         * Edit methods start here
+         -----------------------*/
 
         /**
          * Cut
@@ -128,7 +174,43 @@ namespace Tabula
             }
             baseCanvas.Refresh();
         }
+        
+        /**
+         * Copy
+         */
+        public void CropImage()
+        {
+            savePrevImage();
+            Bitmap bmp = (Bitmap)baseCanvas.Image.Clone();
+            if (SelectRect.Width < 0 && SelectRect.Height < 0) //Bottom-Right to Top-Left
+            {
+                CopiedImage = bmp.Clone(new Rectangle(SelectRect.Right, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
+            }
+            else if (SelectRect.Width >= 0 && SelectRect.Height >= 0) //Top-Left to Bottom-Right
+            {
+                CopiedImage = bmp.Clone(new Rectangle(SelectRect.Left, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
+            }
+            else if (SelectRect.Width < 0 && SelectRect.Height >= 0) //Top-Right to Bottom-Left
+            {
+                CopiedImage = bmp.Clone(new Rectangle(SelectRect.Right, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
+            }
+            else //Bottom-Left to Top-Right
+            {
+                CopiedImage = bmp.Clone(new Rectangle(SelectRect.Left, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
+            }
 
+            //using (Form form = new Form())
+            //{
+            //    form.StartPosition = FormStartPosition.CenterScreen;
+            //    form.Size = CopiedImage.Size;
+            //    PictureBox pb = new PictureBox();
+            //    pb.Dock = DockStyle.Fill;
+            //    pb.Image = CopiedImage;
+            //    form.Controls.Add(pb);
+            //    form.ShowDialog();
+            //}
+        }
+        
         /**
          * Paste
          */
@@ -167,7 +249,7 @@ namespace Tabula
         }
 
         /**
-         * Paste
+         * Paste [Overloaded]
          */
         public void Paste(Bitmap ImageToPaste, Image SourceImage, int X, int Y)
         {
@@ -210,98 +292,11 @@ namespace Tabula
         }
 
         /**
-         * Save Previous Image
-         * Use this whenever a tool is called to make sure the undo stack always gets updated
-         */
-        private void savePrevImage()
-        {
-            if (baseCanvas.Image == null)
-            {
-                
-            }
-            else
-            {
-                GlobalUndoStack.Push((Image)baseCanvas.Image.Clone());
-            }
-        }
-
-        /**
-         * File Import Object created here. Redirects to Open.cs
-         */
-        private void openFileButton_Click(object sender, EventArgs e)
-        {
-            Open newPic = new Open(); //Create new Open Object
-            baseCanvas.SizeMode = PictureBoxSizeMode.AutoSize;
-            baseCanvas.Refresh();
-            newPic.importImage(baseCanvas); //Use the importImage method to assign a picture to the PictureBox
-        }
-
-        /**-----------------------
-         * Save methods start here
-         -----------------------*/
-
-        /**
-         * Save File as JPEG
-         */
-        private void saveAsJPEG_Click(object sender, EventArgs e)
-        {
-            SavePicture jpeg = new SavePicture(); //New SavePicture Object
-            jpeg.saveJpeg(baseCanvas.Image);
-        }
-        /**
-         * Save File as Bitmap
-         */
-        private void saveAsBitmap_Click(object sender, EventArgs e)
-        {
-            SavePicture bmp = new SavePicture(); //New SavePicture Object
-            bmp.saveBitmap(baseCanvas.Image);
-        }
-
-        /**
-         * Save File as PNG
-         */
-        private void saveAsPNG_Click(object sender, EventArgs e)
-        {
-            SavePicture png = new SavePicture(); //New SavePicture Object
-            png.savePng(baseCanvas.Image);
-        }
-
-        /**
-         * Canvas Click Method should do nothing
-         */
-        private void baseCanvas_Click(object sender, EventArgs e){}
-
-        /**
-         * Colour button.
-         * Passes the ColorDialog from the form to ColorSelector so it can allow the user to choose. Stores the value in selectedColor. Other methods can use it.
-         */
-        private void colorButton_Click(object sender, EventArgs e)
-        {
-            ColorSelector colorGrid = new ColorSelector();
-            selectedColor = colorGrid.displayShades(availableColors);
-        }
-
-        /**
-         * New File Button
-         */
-        private void newFileButton_Click(object sender, EventArgs e)
-        {
-            if(baseCanvas.Image != null)
-            {
-                savePrevImage();
-                NewCreation newBlank = new NewCreation(baseCanvas);
-            }
-            else { 
-                NewCreation newBlank = new NewCreation(baseCanvas);
-            }
-        }
-
-        /**
          * Button for Undo
          */
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(GlobalUndoStack.Count == 0)
+            if (GlobalUndoStack.Count == 0)
             {
                 MessageBox.Show("There's nothing to undo.");
             }
@@ -329,30 +324,69 @@ namespace Tabula
         }
 
         /**
-         * Print Button
+         * Click on Cut
          */
-        private void printButton_Click(object sender, EventArgs e)
+        private void cutButton_Click(object sender, EventArgs e)
         {
-            Print printer = new Print(baseCanvas.Image);
+            CutImage();
         }
 
         /**
-         * Select Button
+         * Click on Copy
          */
-        private void selectToolButton_Click(object sender, EventArgs e)
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CurrentTool = ETools.Select;
+            CropImage();
         }
 
         /**
-         * Redo Button
+         * Click on Paste
          */
-        public void SetMousePoss(int[] DesiredArray, int x, int y)
+        private void pasteButton_Click(object sender, EventArgs e)
         {
-            DesiredArray[0] = x;
-            DesiredArray[1] = y;
+            Paste(CopiedImage, baseCanvas.Image);
+        }
+        
+        /**
+         * BrushSizeBar methods
+         */
+        private void BrushSizeBar_Scroll(object sender, EventArgs e) { }
+
+        /**
+         * Zoom in
+         */
+        private void zoomInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Zoom zoo = new Zoom();
+            Paste((Bitmap)zoo.Scale(baseCanvas, new Rectangle(0, 0, 50, 50)), baseCanvas.Image);
         }
 
+
+        /**
+         * Save Previous Image
+         * Use this whenever a tool is called to make sure the undo stack always gets updated
+         */
+        private void savePrevImage()
+        {
+            if (baseCanvas.Image == null)
+            {
+                
+            }
+            else
+            {
+                GlobalUndoStack.Push((Image)baseCanvas.Image.Clone());
+            }
+        }
+
+        /**-----------------------
+         * Canvas methods start here
+         -----------------------*/
+
+        /**
+         * Canvas Click Method should do nothing
+         */
+        private void baseCanvas_Click(object sender, EventArgs e){}
+        
         /**
          * Canvas Click and hold Button
          */
@@ -473,6 +507,190 @@ namespace Tabula
             BeforeLocation[1] = e.Y;
         }
 
+        /**-----------------------
+         * Shape methods start here
+         -----------------------*/
+
+        /**
+         * Click on Shapes
+         */
+        private void shapesToolButton_Click(object sender, EventArgs e)
+        {
+            switch (shapeSelected)
+            {
+                case (EShapes.Line):
+                    CurrentTool = ETools.Shapes;
+                    BrushSizeBar.Visible = false; //Hide the bar if its not in use
+                    break;
+                case (EShapes.Circle):
+                    break;
+            }
+        }
+
+        /**
+         * Click on Line
+         */
+        private void lineToolButton_Click(object sender, EventArgs e)
+        {
+            CurrentTool = ETools.Shapes;
+            shapeSelected = EShapes.Line;
+            BrushSizeBar.Visible = false; //Hide the bar if its not in use
+        }
+
+        /**
+         * Click on Circle
+         */
+        private void circleToolButton_Click(object sender, EventArgs e)
+        {
+            CurrentTool = ETools.Shapes;
+            shapeSelected = EShapes.Circle;
+            BrushSizeBar.Visible = false; //Hide the bar if its not in use
+        }
+
+        /**
+         * Shape - Square
+         */
+        private void squareToolButton_Click(object sender, EventArgs e)
+        {
+            CurrentTool = ETools.Shapes;
+            shapeSelected = EShapes.Square;
+            BrushSizeBar.Visible = false; //Hide the bar if its not in use
+        }
+
+        /**
+         * Shape - Triangle
+         */
+        private void triangleToolButton_Click(object sender, EventArgs e)
+        {
+            CurrentTool = ETools.Shapes;
+            shapeSelected = EShapes.Triangle;
+            BrushSizeBar.Visible = false; //Hide the bar if its not in use
+        }
+
+        /**-----------------------
+         * Image effects start here
+         -----------------------*/
+
+        /**
+         * Inverse
+         */
+        private void invertEffect_Click(object sender, EventArgs e)
+        {
+            savePrevImage();
+            ImageEffects inv = new ImageEffects(baseCanvas);
+            inv.useInverse(SelectRect);
+        }
+
+        /**
+         * Flip Vertically
+         */
+        private void verticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            savePrevImage();
+            ImageEffects flipV = new ImageEffects(baseCanvas);
+            flipV.useFlip(SelectRect, "Y");
+        }
+
+        /**
+         * Flip Horizontally
+         */
+        private void horizontalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            savePrevImage();
+            ImageEffects flipH = new ImageEffects(baseCanvas);
+            flipH.useFlip(SelectRect, "X");
+        }
+
+        /**
+         * Increase Transparency
+         */
+        private void increaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImageEffects seeThru = new ImageEffects(baseCanvas);
+            seeThru.lessOpaque(SelectRect);
+        }
+
+        /**
+         * Decrease Transparency
+         */
+        private void decreaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImageEffects seeThru = new ImageEffects(baseCanvas);
+            seeThru.moreOpaque(SelectRect);
+        }
+
+        /**
+         * Click on Sepia
+         */
+        private void sepiaEffect_Click(object sender, EventArgs e)
+        {
+            savePrevImage();
+            ImageEffects sepia = new ImageEffects(baseCanvas);
+            sepia.useSepia(SelectRect);
+        }
+
+        /**
+         * Effect - Black & White
+         */
+        private void bWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            savePrevImage();
+            ImageEffects bw = new ImageEffects(baseCanvas);
+            bw.useBW(SelectRect);
+        }
+
+        /**-----------------------
+         * Tool methods start here
+         -----------------------*/
+
+        /**
+         * TextBox Tool
+         */
+        private void textBoxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TextInput.placeText(baseCanvas, SelectRect);
+        }
+
+        /**
+         * Fill Color
+         */
+        private void fillColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            colorButton_Click(sender, e);
+
+            ImageEffects phil = new ImageEffects(baseCanvas);
+
+            phil.useFill(SelectRect, selectedColor);
+        }
+
+        /**
+         * Click on Move
+         */
+        private void moveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CurrentTool = ETools.Move;
+            BrushSizeBar.Visible = false; //Hide the bar if its not in use
+        }
+
+        /**
+         * Click on Meme
+         */
+        private void memeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            savePrevImage();
+            Meme meme = new Meme(baseCanvas);
+        }
+
+        /**
+         * Colour button.
+         * Passes the ColorDialog from the form to ColorSelector so it can allow the user to choose. Stores the value in selectedColor. Other methods can use it.
+         */
+        private void colorButton_Click(object sender, EventArgs e)
+        {
+            ColorSelector colorGrid = new ColorSelector();
+            selectedColor = colorGrid.displayShades(availableColors);
+        }
+
         /**
          * Draw Tool Button
          */
@@ -514,7 +732,9 @@ namespace Tabula
             if (baseCanvas.Image == null)
             {
                 MessageBox.Show("Cannot write on an empty canvas.");
-            } else { 
+            }
+            else
+            {
                 CurrentTool = ETools.Pen;
                 BrushSizeBar.Visible = true;
             }
@@ -530,193 +750,20 @@ namespace Tabula
         }
 
         /**
-         * Click on Shapes
+         * Select Button
          */
-        private void shapesToolButton_Click(object sender, EventArgs e)
+        private void selectToolButton_Click(object sender, EventArgs e)
         {
-            switch (shapeSelected)
-            {
-                case (EShapes.Line):
-                    CurrentTool = ETools.Shapes;
-                    BrushSizeBar.Visible = false; //Hide the bar if its not in use
-                    break;
-                case (EShapes.Circle):
-                    break;
-            }
+            CurrentTool = ETools.Select;
         }
 
         /**
-         * Click on Line
+         * Set Mouse Position
          */
-        private void lineToolButton_Click(object sender, EventArgs e)
+        public void SetMousePoss(int[] DesiredArray, int x, int y)
         {
-            CurrentTool = ETools.Shapes;
-            shapeSelected = EShapes.Line;
-            BrushSizeBar.Visible = false; //Hide the bar if its not in use
-        }
-
-        /**
-         * Click on Circle
-         */
-        private void circleToolButton_Click(object sender, EventArgs e)
-        {
-            CurrentTool = ETools.Shapes;
-            shapeSelected = EShapes.Circle;
-            BrushSizeBar.Visible = false; //Hide the bar if its not in use
-        }
-
-        /**
-         * Click on Sepia
-         */
-        private void sepiaEffect_Click(object sender, EventArgs e)
-        {
-            savePrevImage();
-            ImageEffects sepia = new ImageEffects(baseCanvas);
-            sepia.useSepia(SelectRect);
-        }
-
-        /**
-         * Click on Quit
-         */
-        private void exitButton_Click(object sender, EventArgs e)
-        {
-            QuitApp die = new QuitApp();
-            die.beginQuit(baseCanvas);
-        }
-
-        /**
-         * Click on Move
-         */
-        private void moveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CurrentTool = ETools.Move;
-            BrushSizeBar.Visible = false; //Hide the bar if its not in use
-        }
-
-        /**
-         * Click on Meme
-         */
-        private void memeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            savePrevImage();
-            Meme meme = new Meme(baseCanvas);
-        }
-
-        /**
-         * Click on Copy
-         */
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CropImage();
-        }
-
-        /**
-         * Click on Paste
-         */
-        private void pasteButton_Click(object sender, EventArgs e)
-        {
-            Paste(CopiedImage, baseCanvas.Image);
-        }
-
-        /**
-         * Click on Cut
-         */
-        private void cutButton_Click(object sender, EventArgs e)
-        {
-            CutImage();
-        }
-
-        /**
-         * BrushSizeBar methods
-         */
-        private void BrushSizeBar_Scroll(object sender, EventArgs e){ }
-
-        /**
-         * Zoom in
-         */
-        private void zoomInToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Zoom zoo = new Zoom();
-            Paste((Bitmap)zoo.Scale(baseCanvas, new Rectangle(0, 0, 50, 50)), baseCanvas.Image);
-        }
-
-        /**
-         * Inverse
-         */
-        private void invertEffect_Click(object sender, EventArgs e)
-        {
-            savePrevImage();
-            ImageEffects inv = new ImageEffects(baseCanvas);
-            inv.useInverse(SelectRect);
-        }
-
-        /**
-         * Flip Vertically
-         */
-        private void verticalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            savePrevImage();
-            ImageEffects flipV = new ImageEffects(baseCanvas);
-            flipV.useFlip(SelectRect, "Y");
-        }
-
-        /**
-         * Flip Horizontally
-         */
-        private void horizontalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            savePrevImage();
-            ImageEffects flipH = new ImageEffects(baseCanvas);
-            flipH.useFlip(SelectRect, "X");
-        }
-
-        /**
-         * Fill Color
-         */
-        private void fillColorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            colorButton_Click(sender, e);
-
-            ImageEffects phil = new ImageEffects(baseCanvas);
-
-            phil.useFill(SelectRect, selectedColor);
-        }
-
-        /**
-         * Increase Transparency
-         */
-        private void increaseToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ImageEffects seeThru = new ImageEffects(baseCanvas);
-            seeThru.lessOpaque(SelectRect);
-        }
-
-        /**
-         * Decrease Transparency
-         */
-        private void decreaseToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ImageEffects seeThru = new ImageEffects(baseCanvas);
-            seeThru.moreOpaque(SelectRect);
-        }
-
-        private void textBoxToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            TextInput.placeText(baseCanvas,SelectRect);
-        }
-
-        private void squareToolButton_Click(object sender, EventArgs e)
-        {
-            CurrentTool = ETools.Shapes;
-            shapeSelected = EShapes.Square;
-            BrushSizeBar.Visible = false; //Hide the bar if its not in use
-        }
-
-        private void triangleToolButton_Click(object sender, EventArgs e)
-        {
-            CurrentTool = ETools.Shapes;
-            shapeSelected = EShapes.Triangle;
-            BrushSizeBar.Visible = false; //Hide the bar if its not in use
+            DesiredArray[0] = x;
+            DesiredArray[1] = y;
         }
     }
 }

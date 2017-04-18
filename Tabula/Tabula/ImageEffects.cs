@@ -266,5 +266,49 @@ namespace Tabula
             }
             baseCanvas.Image = pastImage;
         }
+
+        /**
+         * Prep B&W
+         */
+        public void useBW(Rectangle selectedRectum)
+        {
+            recty = selectedRectum;
+            blackAndWhite();
+        }
+
+        /**
+         * B&W
+         */
+        public void blackAndWhite()
+        {
+            //Creation of values that are used to change the apperance of the image. this set of creates a sepia effect
+            float[][] sepiaValues = {
+            new float[] {.3f, .3f, .3f, 0, 0},
+            new float[] {.59f, .59f, .59f, 0, 0},
+            new float[] {.11f, .11f, .11f, 0, 0},
+            new float[]{0, 0, 0, 1, 0},
+            new float[]{0, 0, 0, 0, 1}
+            };
+            //Creates a drawing matrix
+            ColorMatrix sepiaMatrix = new ColorMatrix(sepiaValues);
+
+            //Creates default Image Attributes because it's needed for the draw image function below
+            ImageAttributes IA = new ImageAttributes();
+
+            //sets the image Attributes color matrix the 2D array above
+            IA.SetColorMatrix(sepiaMatrix);
+
+            //Change the graphics of the image
+            using (var G = Graphics.FromImage(pastImage))
+            {
+                //Draws base image first
+                G.DrawImage(pastImage, 0, 0);
+                //Draws sepia's image on top
+                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel, IA);
+                G.Dispose();
+            }
+
+            baseCanvas.Image = pastImage;
+        }
     }
 }

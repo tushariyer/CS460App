@@ -17,6 +17,7 @@ namespace Tabula
          */
         private void importTemplate(PictureBox pictureBox)
         {
+            pictureBox.MaximumSize = Properties.Resources.Blank.Size;
             pictureBox.Image = Properties.Resources.Blank;
         }
     }

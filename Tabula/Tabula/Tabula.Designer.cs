@@ -84,6 +84,8 @@
             this.availableColors = new System.Windows.Forms.ColorDialog();
             this.MousePos = new System.Windows.Forms.Label();
             this.BrushSizeBar = new System.Windows.Forms.TrackBar();
+            this.forwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenuBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.baseCanvas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrushSizeBar)).BeginInit();
@@ -102,7 +104,7 @@
             this.toolsButton});
             this.topMenuBar.Location = new System.Drawing.Point(0, 0);
             this.topMenuBar.Name = "topMenuBar";
-            this.topMenuBar.Size = new System.Drawing.Size(1653, 37);
+            this.topMenuBar.Size = new System.Drawing.Size(1653, 42);
             this.topMenuBar.TabIndex = 0;
             this.topMenuBar.Text = "topMenuBar";
             // 
@@ -117,7 +119,7 @@
             this.printButton,
             this.exitButton});
             this.fileButton.Name = "fileButton";
-            this.fileButton.Size = new System.Drawing.Size(60, 33);
+            this.fileButton.Size = new System.Drawing.Size(60, 38);
             this.fileButton.Text = "File";
             // 
             // newFileButton
@@ -207,7 +209,7 @@
             this.zoomInToolStripMenuItem,
             this.zoomOutToolStripMenuItem});
             this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(64, 33);
+            this.editButton.Size = new System.Drawing.Size(64, 38);
             this.editButton.Text = "Edit";
             // 
             // undoButton
@@ -282,7 +284,7 @@
             this.hueToolStripMenuItem,
             this.brightnessToolStripMenuItem});
             this.effectsButton.Name = "effectsButton";
-            this.effectsButton.Size = new System.Drawing.Size(88, 33);
+            this.effectsButton.Size = new System.Drawing.Size(88, 38);
             this.effectsButton.Text = "Effects";
             // 
             // sepiaEffect
@@ -372,7 +374,7 @@
             // colorButton
             // 
             this.colorButton.Name = "colorButton";
-            this.colorButton.Size = new System.Drawing.Size(78, 33);
+            this.colorButton.Size = new System.Drawing.Size(78, 38);
             this.colorButton.Text = "Color";
             this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
             // 
@@ -391,7 +393,7 @@
             this.fillColorToolStripMenuItem,
             this.textBoxToolStripMenuItem});
             this.toolsButton.Name = "toolsButton";
-            this.toolsButton.Size = new System.Drawing.Size(76, 33);
+            this.toolsButton.Size = new System.Drawing.Size(76, 38);
             this.toolsButton.Text = "Tools";
             // 
             // selectToolButton
@@ -502,8 +504,10 @@
             // 
             // rotateToolStripMenuItem
             // 
+            this.rotateToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.forwardToolStripMenuItem,
+            this.backwardToolStripMenuItem});
             this.rotateToolStripMenuItem.Name = "rotateToolStripMenuItem";
-            this.rotateToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Right)));
             this.rotateToolStripMenuItem.Size = new System.Drawing.Size(294, 38);
             this.rotateToolStripMenuItem.Text = "Rotate";
             this.rotateToolStripMenuItem.Click += new System.EventHandler(this.rotateToolStripMenuItem_Click);
@@ -533,10 +537,10 @@
             // 
             this.baseCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.baseCanvas.InitialImage = ((System.Drawing.Image)(resources.GetObject("baseCanvas.InitialImage")));
-            this.baseCanvas.Location = new System.Drawing.Point(0, 37);
+            this.baseCanvas.Location = new System.Drawing.Point(0, 42);
             this.baseCanvas.MaximumSize = new System.Drawing.Size(1653, 992);
             this.baseCanvas.Name = "baseCanvas";
-            this.baseCanvas.Size = new System.Drawing.Size(1653, 992);
+            this.baseCanvas.Size = new System.Drawing.Size(1653, 987);
             this.baseCanvas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.baseCanvas.TabIndex = 1;
             this.baseCanvas.TabStop = false;
@@ -568,6 +572,22 @@
             this.BrushSizeBar.TickFrequency = 2;
             this.BrushSizeBar.Visible = false;
             this.BrushSizeBar.Scroll += new System.EventHandler(this.BrushSizeBar_Scroll);
+            // 
+            // forwardToolStripMenuItem
+            // 
+            this.forwardToolStripMenuItem.Name = "forwardToolStripMenuItem";
+            this.forwardToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Right)));
+            this.forwardToolStripMenuItem.Size = new System.Drawing.Size(304, 38);
+            this.forwardToolStripMenuItem.Text = "Forward";
+            this.forwardToolStripMenuItem.Click += new System.EventHandler(this.forwardToolStripMenuItem_Click);
+            // 
+            // backwardToolStripMenuItem
+            // 
+            this.backwardToolStripMenuItem.Name = "backwardToolStripMenuItem";
+            this.backwardToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Left)));
+            this.backwardToolStripMenuItem.Size = new System.Drawing.Size(304, 38);
+            this.backwardToolStripMenuItem.Text = "Backward";
+            this.backwardToolStripMenuItem.Click += new System.EventHandler(this.backwardToolStripMenuItem_Click);
             // 
             // Tabula
             // 
@@ -650,6 +670,8 @@
         private System.Windows.Forms.ToolStripMenuItem brightnessToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem increaseToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem decreaseToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem forwardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backwardToolStripMenuItem;
     }
 }
 

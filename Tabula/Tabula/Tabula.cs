@@ -986,8 +986,19 @@ namespace Tabula
          */
         private void rotateToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Should now call the methods based on the arrow keys
+        }
+
+        private void forwardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             ImageEffects rotator = new ImageEffects(baseCanvas);
             rotator.rotatePrep(SelectRect, selectedColor, 5.0f);
+        }
+
+        private void backwardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImageEffects rotator = new ImageEffects(baseCanvas);
+            rotator.rotatePrep(SelectRect, selectedColor, -5.0f);
         }
     }
 }

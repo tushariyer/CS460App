@@ -577,6 +577,10 @@ namespace Tabula
          */
         private void shapesToolButton_Click(object sender, EventArgs e)
         {
+            if (SelectRect == null)
+            {
+                defaultSelect();
+            }
             switch (shapeSelected)
             {
                 case (EShapes.Line):
@@ -593,6 +597,10 @@ namespace Tabula
          */
         private void lineToolButton_Click(object sender, EventArgs e)
         {
+            if (SelectRect == null)
+            {
+                defaultSelect();
+            }
             CurrentTool = ETools.Shapes;
             shapeSelected = EShapes.Line;
             BrushSizeBar.Visible = false; //Hide the bar if its not in use
@@ -603,6 +611,10 @@ namespace Tabula
          */
         private void circleToolButton_Click(object sender, EventArgs e)
         {
+            if (SelectRect == null)
+            {
+                defaultSelect();
+            }
             CurrentTool = ETools.Shapes;
             shapeSelected = EShapes.Circle;
             BrushSizeBar.Visible = false; //Hide the bar if its not in use
@@ -613,6 +625,10 @@ namespace Tabula
          */
         private void squareToolButton_Click(object sender, EventArgs e)
         {
+            if (SelectRect == null)
+            {
+                defaultSelect();
+            }
             CurrentTool = ETools.Shapes;
             shapeSelected = EShapes.Square;
             BrushSizeBar.Visible = false; //Hide the bar if its not in use
@@ -623,6 +639,10 @@ namespace Tabula
          */
         private void triangleToolButton_Click(object sender, EventArgs e)
         {
+            if (SelectRect == null)
+            {
+                defaultSelect();
+            }
             CurrentTool = ETools.Shapes;
             shapeSelected = EShapes.Triangle;
             BrushSizeBar.Visible = false; //Hide the bar if its not in use
@@ -652,6 +672,10 @@ namespace Tabula
         private void verticalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             savePrevImage();
+            if (SelectRect == null)
+            {
+                defaultSelect();
+            }
             ImageEffects flipV = new ImageEffects(baseCanvas);
             flipV.useFlip(SelectRect, "Y");
         }
@@ -662,6 +686,10 @@ namespace Tabula
         private void horizontalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             savePrevImage();
+            if (SelectRect == null)
+            {
+                defaultSelect();
+            }
             ImageEffects flipH = new ImageEffects(baseCanvas);
             flipH.useFlip(SelectRect, "X");
         }
@@ -671,6 +699,11 @@ namespace Tabula
          */
         private void increaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            savePrevImage();
+            if (SelectRect == null)
+            {
+                defaultSelect();
+            }
             ImageEffects seeThru = new ImageEffects(baseCanvas);
             seeThru.lessOpaque(SelectRect);
         }
@@ -680,6 +713,11 @@ namespace Tabula
          */
         private void decreaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            savePrevImage();
+            if (SelectRect == null)
+            {
+                defaultSelect();
+            }
             ImageEffects seeThru = new ImageEffects(baseCanvas);
             seeThru.moreOpaque(SelectRect);
         }
@@ -690,6 +728,10 @@ namespace Tabula
         private void sepiaEffect_Click(object sender, EventArgs e)
         {
             savePrevImage();
+            if (SelectRect == null)
+            {
+                defaultSelect();
+            }
             ImageEffects sepia = new ImageEffects(baseCanvas);
             sepia.useSepia(SelectRect);
         }
@@ -700,6 +742,10 @@ namespace Tabula
         private void bWToolStripMenuItem_Click(object sender, EventArgs e)
         {
             savePrevImage();
+            if (SelectRect == null)
+            {
+                defaultSelect();
+            }
             ImageEffects bw = new ImageEffects(baseCanvas);
             bw.useBW(SelectRect);
         }
@@ -711,6 +757,10 @@ namespace Tabula
         {
             savePrevImage();
             colorButton_Click(sender, e);
+            if (SelectRect == null)
+            {
+                defaultSelect();
+            }
             ImageEffects hue = new ImageEffects(baseCanvas);
             hue.useHue(SelectRect, selectedColor);
         }
@@ -721,6 +771,10 @@ namespace Tabula
         private void increaseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             savePrevImage();
+            if (SelectRect == null)
+            {
+                defaultSelect();
+            }
             ImageEffects brightUp = new ImageEffects(baseCanvas);
             brightUp.useBright("up", SelectRect);
         }
@@ -731,6 +785,10 @@ namespace Tabula
         private void decreaseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             savePrevImage();
+            if (SelectRect == null)
+            {
+                defaultSelect();
+            }
             ImageEffects brightUp = new ImageEffects(baseCanvas);
             brightUp.useBright("down", SelectRect);
         }

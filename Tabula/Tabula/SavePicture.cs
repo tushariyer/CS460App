@@ -86,9 +86,9 @@ namespace Tabula
          */
         String CheckExtension(String sv)
         {
-            if (Path.HasExtension(sv) == false || Path.GetExtension(sv).ToLower() != ".png" || Path.GetExtension(sv).ToLower() != ".jpg" || Path.GetExtension(sv).ToLower() != ".jpeg" || Path.GetExtension(sv).ToLower() != ".bmp")
+            if (Path.GetExtension(sv).ToLower() != ".png" || Path.GetExtension(sv).ToLower() != ".jpg" || Path.GetExtension(sv).ToLower() != ".jpeg" || Path.GetExtension(sv).ToLower() != ".bmp")
             {
-                MessageBox.Show("Invalid extention.\nSaving as PNG");
+                Console.WriteLine("Invalid extention.\nSaving as PNG");
                 sv += ".png";
                 Console.WriteLine(sv);
             }

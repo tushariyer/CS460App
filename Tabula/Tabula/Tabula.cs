@@ -15,36 +15,28 @@ enum ETools {
 };
 namespace Tabula {
     public partial class Tabula : Form {
-        //Global Stacks
-        public static Stack<Image> GlobalUndoStack = new Stack<Image>();
+        public static Stack<Image> GlobalUndoStack = new Stack<Image>(); //Global Stacks
         public static Stack<Image> GlobalRedoStack = new Stack<Image>();
 
-        //Colour currently selected
-        private Color selectedColor = Color.Black; //Default Colour
+        private Color selectedColor = Color.Black; //Currently selected color, defaults to black
 
-        //Global pen tool
-        private System.Drawing.Pen pen = new System.Drawing.Pen(Color.Black, 2); //Default pen tool for all
+        private System.Drawing.Pen pen = new System.Drawing.Pen(Color.Black, 2); //Global pen tool
 
-        //Coordinate variables
-        public static int[] BeginningMousePos = { 0, 0 };
+        public static int[] BeginningMousePos = { 0, 0 }; //Coordinate variables
         private int[] EndMousePos = { 0, 0 };
         public static int[] CurrentMosusePos = { 0, 0 };
         public int[] BeforeLocation = { 0, 0 };
 
-        //Temp var for copied image
-        public Bitmap CopiedImage;
+        public Bitmap CopiedImage; //Temp var for copied image
 
-        //Form Graphic Tools
-        public Graphics SelectionArea;
+        public Graphics SelectionArea; //Form Graphic Tools
         private PictureBox SelectLayer = new PictureBox();
         Rectangle SelectRect;
 
-        //Current tool/shape selected
-        private ETools CurrentTool;
+        private ETools CurrentTool; //Current tool/shape selected
         private EShapes shapeSelected;
 
-        //Checking booleans
-        private bool bInSelectedRect;
+        private bool bInSelectedRect; //Checking booleans
         public bool bSelected;
         public bool bCanDraw;
 
@@ -201,26 +193,22 @@ namespace Tabula {
         public void CutImage() {
             if (baseCanvas.Image != null) {
                 CropImage();
-                if (SelectRect.Width < 0 && SelectRect.Height < 0) //Bottom-Right to Top-Left
-                {
+                if (SelectRect.Width < 0 && SelectRect.Height < 0) { //Bottom-Right to Top-Left
                     using (Graphics g = Graphics.FromImage(baseCanvas.Image)) {
                         g.FillRectangle(new SolidBrush(Color.White), new Rectangle(SelectRect.Right, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
                     }
                 }
-                else if (SelectRect.Width >= 0 && SelectRect.Height >= 0)  //Top-Left to Bottom-Right
-                {
+                else if (SelectRect.Width >= 0 && SelectRect.Height >= 0) {  //Top-Left to Bottom-Right
                     using (Graphics g = Graphics.FromImage(baseCanvas.Image)) {
                         g.FillRectangle(new SolidBrush(Color.White), new Rectangle(SelectRect.Left, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
                     }
                 }
-                else if (SelectRect.Width < 0 && SelectRect.Height >= 0) //Top-Right to Bottom-Left
-                {
+                else if (SelectRect.Width < 0 && SelectRect.Height >= 0) { //Top-Right to Bottom-Left
                     using (Graphics g = Graphics.FromImage(baseCanvas.Image)) {
                         g.FillRectangle(new SolidBrush(Color.White), new Rectangle(SelectRect.Right, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
                     }
                 }
-                else //Bottom-Left - Top-Right
-                {
+                else { //Bottom-Left - Top-Right
                     using (Graphics g = Graphics.FromImage(baseCanvas.Image)) {
                         g.FillRectangle(new SolidBrush(Color.White), new Rectangle(SelectRect.Left, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
                     }
@@ -239,20 +227,16 @@ namespace Tabula {
             if (baseCanvas.Image != null) {
                 savePrevImage();
                 Bitmap bmp = (Bitmap)baseCanvas.Image.Clone();
-                if (SelectRect.Width < 0 && SelectRect.Height < 0) //Bottom-Right to Top-Left
-                {
+                if (SelectRect.Width < 0 && SelectRect.Height < 0) { //Bottom-Right to Top-Left
                     CopiedImage = bmp.Clone(new Rectangle(SelectRect.Right, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
                 }
-                else if (SelectRect.Width >= 0 && SelectRect.Height >= 0) //Top-Left to Bottom-Right
-                {
+                else if (SelectRect.Width >= 0 && SelectRect.Height >= 0) { //Top-Left to Bottom-Right
                     CopiedImage = bmp.Clone(new Rectangle(SelectRect.Left, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
                 }
-                else if (SelectRect.Width < 0 && SelectRect.Height >= 0) //Top-Right to Bottom-Left
-                {
+                else if (SelectRect.Width < 0 && SelectRect.Height >= 0) { //Top-Right to Bottom-Left
                     CopiedImage = bmp.Clone(new Rectangle(SelectRect.Right, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
                 }
-                else //Bottom-Left to Top-Right
-                {
+                else { //Bottom-Left to Top-Right
                     CopiedImage = bmp.Clone(new Rectangle(SelectRect.Left, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
                 }
             }
@@ -267,26 +251,22 @@ namespace Tabula {
         public void Paste(Bitmap ImageToPaste, Image SourceImage) {
             if (baseCanvas.Image != null) {
                 savePrevImage();
-                if (SelectRect.Width < 0 && SelectRect.Height < 0) //Bottom-Right to Top-Left
-                {
+                if (SelectRect.Width < 0 && SelectRect.Height < 0) { //Bottom-Right to Top-Left
                     using (Graphics g = Graphics.FromImage(SourceImage)) {
                         g.DrawImage(ImageToPaste, new Rectangle(SelectRect.Right, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
                     }
                 }
-                else if (SelectRect.Width >= 0 && SelectRect.Height >= 0)  //Top-Left to Bottom-Right
-                {
+                else if (SelectRect.Width >= 0 && SelectRect.Height >= 0) {  //Top-Left to Bottom-Right
                     using (Graphics g = Graphics.FromImage(SourceImage)) {
                         g.DrawImage(ImageToPaste, new Rectangle(SelectRect.Left, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
                     }
                 }
-                else if (SelectRect.Width < 0 && SelectRect.Height >= 0) //Top-Right to Bottom-Left
-                {
+                else if (SelectRect.Width < 0 && SelectRect.Height >= 0) { //Top-Right to Bottom-Left
                     using (Graphics g = Graphics.FromImage(SourceImage)) {
                         g.DrawImage(ImageToPaste, new Rectangle(SelectRect.Right, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
                     }
                 }
-                else //Bottom-Left - Top-Right
-                {
+                else { //Bottom-Left - Top-Right
                     using (Graphics g = Graphics.FromImage(SourceImage)) {
                         g.DrawImage(ImageToPaste, new Rectangle(SelectRect.Left, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
                     }
@@ -304,26 +284,22 @@ namespace Tabula {
         public void Paste(Bitmap ImageToPaste, Image SourceImage, int X, int Y) {
             if (baseCanvas.Image != null) {
                 savePrevImage();
-                if (SelectRect.Width < 0 && SelectRect.Height < 0) //Bottom-Right to Top-Left
-                {
+                if (SelectRect.Width < 0 && SelectRect.Height < 0) { //Bottom-Right to Top-Left
                     using (Graphics g = Graphics.FromImage(SourceImage)) {
                         g.DrawImage(ImageToPaste, new Rectangle(X, Y, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
                     }
                 }
-                else if (SelectRect.Width >= 0 && SelectRect.Height >= 0)  //Top-Left to Bottom-Right
-                {
+                else if (SelectRect.Width >= 0 && SelectRect.Height >= 0) {  //Top-Left to Bottom-Right
                     using (Graphics g = Graphics.FromImage(SourceImage)) {
                         g.DrawImage(ImageToPaste, new Rectangle(X, Y, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
                     }
                 }
-                else if (SelectRect.Width < 0 && SelectRect.Height >= 0) //Top-Right to Bottom-Left
-                {
+                else if (SelectRect.Width < 0 && SelectRect.Height >= 0) { //Top-Right to Bottom-Left
                     using (Graphics g = Graphics.FromImage(SourceImage)) {
                         g.DrawImage(ImageToPaste, new Rectangle(X, Y, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
                     }
                 }
-                else //Bottom-Left - Top-Right
-                {
+                else { //Bottom-Left - Top-Right
                     using (Graphics g = Graphics.FromImage(SourceImage)) {
                         g.DrawImage(ImageToPaste, new Rectangle(X, Y, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
                     }
@@ -433,8 +409,7 @@ namespace Tabula {
                 case (ETools.Move):
                     if (SelectRect.Contains(new Point(e.X, e.Y))) {
                         bInSelectedRect = true;
-                        //sets the mouse position to the "origin" of the selected rectangle
-                        Cursor.Position = new Point(e.X, e.Y);
+                        Cursor.Position = new Point(e.X, e.Y); //sets the mouse position to the "origin" of the selected rectangle
                     }
                     else {
                         bInSelectedRect = false;
@@ -461,14 +436,12 @@ namespace Tabula {
                 bCanDraw = false;
             }
             if (CurrentTool == ETools.Move) {
-                //Copied the selected image to the "clipboard"
-                CropImage();
 
-                //set the current copied image to the mouse position.
-                Paste(CopiedImage, baseCanvas.Image, e.X, e.Y);
+                CropImage(); //Copied the selected image to the "clipboard"
 
-                //clear the tool to stop the constant repasting.
-                CurrentTool = ETools.None;
+                Paste(CopiedImage, baseCanvas.Image, e.X, e.Y); //set the current copied image to the mouse position.
+
+                CurrentTool = ETools.None; //clear the tool to stop the constant repasting.
                 SelectRect = new Rectangle(0, 0, 0, 0);
             }
             else if (CurrentTool == ETools.None) {
@@ -499,8 +472,7 @@ namespace Tabula {
          * Canvas drag Button
          */
         private void baseCanvas_MouseMove(object sender, MouseEventArgs e) {
-            //mouse cords indicator on the screen
-            MousePos.Text = e.X + ", " + e.Y;
+            MousePos.Text = e.X + ", " + e.Y; //mouse cords indicator on the screen
 
             CurrentMosusePos[0] = e.X;
             CurrentMosusePos[1] = e.Y;
@@ -516,12 +488,9 @@ namespace Tabula {
             }
 
             if (bInSelectedRect && CurrentTool == ETools.Move) {
-                //create a moving object
-                TranslateMedia TempMoving = new TranslateMedia();
-                //move the object based on the mouse
-                TempMoving.Move(baseCanvas, SelectRect, pen, e.X, e.Y);
-                //clear the base can
-                baseCanvas.Invalidate();
+                TranslateMedia TempMoving = new TranslateMedia(); //create a moving object
+                TempMoving.Move(baseCanvas, SelectRect, pen, e.X, e.Y); //move the object based on the mouse
+                baseCanvas.Invalidate(); //clear the base can
             }
             BeforeLocation[0] = e.X;
             BeforeLocation[1] = e.Y;
@@ -783,36 +752,24 @@ namespace Tabula {
         }
 
         /**
-         * Colour button.
-         * Passes the ColorDialog from the form to ColorSelector so it can allow the user to choose. Stores the value in selectedColor. Other methods can use it.
-         */
-        private void colorButton_Click(object sender, EventArgs e) {
-            //No longer needed
-        }
-
-        /**
          * Draw Tool Button
          */
         private void DrawSelectArea(int X, int Y) {
             int[] CurrentPos = { X, Y };
             using (SelectionArea = this.baseCanvas.CreateGraphics()) {
-                if (CurrentPos[0] > BeginningMousePos[0] && CurrentPos[1] > BeginningMousePos[1]) //Quadrant [+ -]
-                {
+                if (CurrentPos[0] > BeginningMousePos[0] && CurrentPos[1] > BeginningMousePos[1]) {  //Quadrant [+ -]
                     SelectRect = new Rectangle(CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
                     SelectionArea.DrawRectangle(pen, SelectRect);
                 }
-                else if (CurrentPos[0] < BeginningMousePos[0] && CurrentPos[1] < BeginningMousePos[1]) //Quadrant [- +]
-                {
+                else if (CurrentPos[0] < BeginningMousePos[0] && CurrentPos[1] < BeginningMousePos[1]) {  //Quadrant [- +]
                     SelectRect = new Rectangle(CurrentPos[0], CurrentPos[1], BeginningMousePos[0] - CurrentPos[0], BeginningMousePos[1] - CurrentPos[1]);
                     SelectionArea.DrawRectangle(pen, SelectRect);
                 }
-                else if (CurrentPos[0] > BeginningMousePos[0] && CurrentPos[1] < BeginningMousePos[1]) //Quadrant [+ +]
-                {
+                else if (CurrentPos[0] > BeginningMousePos[0] && CurrentPos[1] < BeginningMousePos[1]) {  //Quadrant [+ +]
                     SelectRect = new Rectangle(BeginningMousePos[0], CurrentPos[1], CurrentPos[0] - BeginningMousePos[0], BeginningMousePos[1] - CurrentPos[1]);
                     SelectionArea.DrawRectangle(pen, SelectRect);
                 }
-                else //Quadrant [- -]
-                {
+                else {  //Quadrant [- -]
                     SelectRect = new Rectangle(CurrentPos[0], BeginningMousePos[1], BeginningMousePos[0] - CurrentPos[0], CurrentPos[1] - BeginningMousePos[1]);
                     SelectionArea.DrawRectangle(pen, SelectRect);
                 }
@@ -862,9 +819,7 @@ namespace Tabula {
         /**
          * Rotate Tool
          */
-        private void rotateToolStripMenuItem_Click(object sender, EventArgs e) {
-            //Should now call the methods based on the arrow keys
-        }
+        private void rotateToolStripMenuItem_Click(object sender, EventArgs e) { } //Should now call the methods based on the arrow keys. Don't delete this methos
 
         /**
          * Rotate Forward

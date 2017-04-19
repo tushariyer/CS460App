@@ -153,21 +153,21 @@
             // saveAsJPEG
             // 
             this.saveAsJPEG.Name = "saveAsJPEG";
-            this.saveAsJPEG.Size = new System.Drawing.Size(269, 38);
+            this.saveAsJPEG.Size = new System.Drawing.Size(182, 38);
             this.saveAsJPEG.Text = "JPEG";
             this.saveAsJPEG.Click += new System.EventHandler(this.saveAsJPEG_Click);
             // 
             // saveAsBitmap
             // 
             this.saveAsBitmap.Name = "saveAsBitmap";
-            this.saveAsBitmap.Size = new System.Drawing.Size(269, 38);
+            this.saveAsBitmap.Size = new System.Drawing.Size(182, 38);
             this.saveAsBitmap.Text = "Bitmap";
             this.saveAsBitmap.Click += new System.EventHandler(this.saveAsBitmap_Click);
             // 
             // saveAsPNG
             // 
             this.saveAsPNG.Name = "saveAsPNG";
-            this.saveAsPNG.Size = new System.Drawing.Size(269, 38);
+            this.saveAsPNG.Size = new System.Drawing.Size(182, 38);
             this.saveAsPNG.Text = "PNG";
             this.saveAsPNG.Click += new System.EventHandler(this.saveAsPNG_Click);
             // 

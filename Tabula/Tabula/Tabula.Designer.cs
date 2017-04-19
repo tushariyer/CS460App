@@ -96,7 +96,7 @@
             // 
             // topMenuBar
             // 
-            this.topMenuBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.topMenuBar.BackColor = System.Drawing.Color.SlateGray;
             this.topMenuBar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.topMenuBar.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.topMenuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -153,21 +153,21 @@
             // saveAsJPEG
             // 
             this.saveAsJPEG.Name = "saveAsJPEG";
-            this.saveAsJPEG.Size = new System.Drawing.Size(182, 38);
+            this.saveAsJPEG.Size = new System.Drawing.Size(269, 38);
             this.saveAsJPEG.Text = "JPEG";
             this.saveAsJPEG.Click += new System.EventHandler(this.saveAsJPEG_Click);
             // 
             // saveAsBitmap
             // 
             this.saveAsBitmap.Name = "saveAsBitmap";
-            this.saveAsBitmap.Size = new System.Drawing.Size(182, 38);
+            this.saveAsBitmap.Size = new System.Drawing.Size(269, 38);
             this.saveAsBitmap.Text = "Bitmap";
             this.saveAsBitmap.Click += new System.EventHandler(this.saveAsBitmap_Click);
             // 
             // saveAsPNG
             // 
             this.saveAsPNG.Name = "saveAsPNG";
-            this.saveAsPNG.Size = new System.Drawing.Size(182, 38);
+            this.saveAsPNG.Size = new System.Drawing.Size(269, 38);
             this.saveAsPNG.Text = "PNG";
             this.saveAsPNG.Click += new System.EventHandler(this.saveAsPNG_Click);
             // 
@@ -218,7 +218,7 @@
             // 
             this.undoButton.Name = "undoButton";
             this.undoButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.undoButton.Size = new System.Drawing.Size(282, 38);
+            this.undoButton.Size = new System.Drawing.Size(281, 38);
             this.undoButton.Text = "Undo";
             this.undoButton.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
@@ -226,7 +226,7 @@
             // 
             this.redoButton.Name = "redoButton";
             this.redoButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.redoButton.Size = new System.Drawing.Size(282, 38);
+            this.redoButton.Size = new System.Drawing.Size(281, 38);
             this.redoButton.Text = "Redo";
             this.redoButton.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
             // 
@@ -234,7 +234,7 @@
             // 
             this.cutButton.Name = "cutButton";
             this.cutButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutButton.Size = new System.Drawing.Size(282, 38);
+            this.cutButton.Size = new System.Drawing.Size(281, 38);
             this.cutButton.Text = "Cut";
             this.cutButton.Click += new System.EventHandler(this.cutButton_Click);
             // 
@@ -242,7 +242,7 @@
             // 
             this.copyButton.Name = "copyButton";
             this.copyButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyButton.Size = new System.Drawing.Size(282, 38);
+            this.copyButton.Size = new System.Drawing.Size(281, 38);
             this.copyButton.Text = "Copy";
             this.copyButton.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
@@ -250,7 +250,7 @@
             // 
             this.pasteButton.Name = "pasteButton";
             this.pasteButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteButton.Size = new System.Drawing.Size(282, 38);
+            this.pasteButton.Size = new System.Drawing.Size(281, 38);
             this.pasteButton.Text = "Paste";
             this.pasteButton.Click += new System.EventHandler(this.pasteButton_Click);
             // 
@@ -258,14 +258,14 @@
             // 
             this.transformButton.Name = "transformButton";
             this.transformButton.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.transformButton.Size = new System.Drawing.Size(282, 38);
-            this.transformButton.Text = "Transform";
+            this.transformButton.Size = new System.Drawing.Size(281, 38);
+            this.transformButton.Text = "Translate";
             // 
             // zoomInToolStripMenuItem
             // 
             this.zoomInToolStripMenuItem.Name = "zoomInToolStripMenuItem";
             this.zoomInToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D3)));
-            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(282, 38);
+            this.zoomInToolStripMenuItem.Size = new System.Drawing.Size(281, 38);
             this.zoomInToolStripMenuItem.Text = "Zoom In";
             this.zoomInToolStripMenuItem.Click += new System.EventHandler(this.zoomInToolStripMenuItem_Click);
             // 
@@ -273,7 +273,7 @@
             // 
             this.zoomOutToolStripMenuItem.Name = "zoomOutToolStripMenuItem";
             this.zoomOutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D4)));
-            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(282, 38);
+            this.zoomOutToolStripMenuItem.Size = new System.Drawing.Size(281, 38);
             this.zoomOutToolStripMenuItem.Text = "Zoom Out";
             // 
             // effectsButton
@@ -585,10 +585,10 @@
             // 
             // baseCanvas
             // 
+            this.baseCanvas.BackColor = System.Drawing.Color.DimGray;
             this.baseCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.baseCanvas.InitialImage = ((System.Drawing.Image)(resources.GetObject("baseCanvas.InitialImage")));
             this.baseCanvas.Location = new System.Drawing.Point(0, 37);
-            this.baseCanvas.MaximumSize = new System.Drawing.Size(1653, 992);
             this.baseCanvas.Name = "baseCanvas";
             this.baseCanvas.Size = new System.Drawing.Size(1653, 992);
             this.baseCanvas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

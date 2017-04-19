@@ -4,10 +4,8 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 
-namespace Tabula
-{
-    class ImageEffects
-    {
+namespace Tabula {
+    class ImageEffects {
         private PictureBox baseCanvas;
         private Rectangle recty;
         private Image pastImage;
@@ -16,40 +14,34 @@ namespace Tabula
         /**
          * Image Effects constructor
          */
-        public ImageEffects(PictureBox baseCanvas)
-        {
+        public ImageEffects(PictureBox baseCanvas) {
             this.baseCanvas = baseCanvas;
             try {
                 pastImage = (Image)baseCanvas.Image.Clone();
             }
-            catch (NullReferenceException)
-            {
+            catch (NullReferenceException) {
                 MessageBox.Show("Please import an image to use this tool.");
             }
-            
+
         }
 
         /**
          * Prep for Sepia
          */
-        public void useSepia(Rectangle selectedRectum)
-        {
-            if (baseCanvas.Image == null)
-            {
+        public void useSepia(Rectangle selectedRectum) {
+            if (baseCanvas.Image == null) {
 
             }
-            else
-            {
+            else {
                 recty = selectedRectum;
                 sepia();
-            }      
+            }
         }
 
         /**
          * Sepia
          */
-        private void sepia()
-        {
+        private void sepia() {
             //Creation of values that are used to change the apperance of the image. this set of creates a sepia effect
             float[][] sepiaValues = {
             new float[]{.393f, .349f, .272f, 0, 0},
@@ -68,8 +60,7 @@ namespace Tabula
             IA.SetColorMatrix(sepiaMatrix);
 
             //Change the graphics of the image
-            using (var G = Graphics.FromImage(pastImage))
-            {
+            using (var G = Graphics.FromImage(pastImage)) {
                 //Draws base image first
                 G.DrawImage(pastImage, 0, 0);
                 //Draws sepia's image on top
@@ -83,14 +74,11 @@ namespace Tabula
         /**
          * Prep for Inverse
          */
-        public void useInverse(Rectangle selectedRectum)
-        {
-            if (baseCanvas.Image == null)
-            {
+        public void useInverse(Rectangle selectedRectum) {
+            if (baseCanvas.Image == null) {
 
             }
-            else
-            {
+            else {
                 recty = selectedRectum;
                 inverse();
             }
@@ -99,16 +87,12 @@ namespace Tabula
         /**
          * Inverse
          */
-        private void inverse()
-        {
+        private void inverse() {
             try {
-                using (var G = Graphics.FromImage(pastImage))
-                {
+                using (var G = Graphics.FromImage(pastImage)) {
                     Bitmap pic = new Bitmap(pastImage); //Store the inverse in a bitmap
-                    for (int y = recty.Top; (y < recty.Bottom); y++) //Y-Axis
-                    {
-                        for (int x = recty.Left; (x < recty.Right); x++) //X-Axis
-                        {
+                    for (int y = recty.Top; (y < recty.Bottom); y++) { //Y-Axis
+                        for (int x = recty.Left; (x < recty.Right); x++) { //X-Axis
                             Color inv = pic.GetPixel(x, y); //Get the color per pixel
                             inv = Color.FromArgb(255, (255 - inv.R), (255 - inv.G), (255 - inv.B)); //Get negative values
                             pic.SetPixel(x, y, inv); //Set negative values
@@ -122,8 +106,7 @@ namespace Tabula
                     G.Dispose(); //Bye
                 }
             }
-            catch (NullReferenceException)
-            {
+            catch (NullReferenceException) {
 
             }
         }
@@ -131,27 +114,21 @@ namespace Tabula
         /**
          * Opacity Decrease
          */
-        public void lessOpaque(Rectangle rect)
-        {
+        public void lessOpaque(Rectangle rect) {
             try {
                 recty = rect;
 
-                using (var G = Graphics.FromImage(pastImage))
-                {
+                using (var G = Graphics.FromImage(pastImage)) {
                     Bitmap pic = new Bitmap(pastImage); //Store the inverse in a bitmap
-                    for (int y = recty.Top; (y <= recty.Bottom); y++) //Y-Axis
-                    {
-                        for (int x = recty.Left; (x <= recty.Right); x++) //X-Axis
-                        {
+                    for (int y = recty.Top; (y <= recty.Bottom); y++) { //Y-Axis
+                        for (int x = recty.Left; (x <= recty.Right); x++) {  //X-Axis
                             Color inv = pic.GetPixel(x, y); //Get the color per pixel
 
-                            if ((inv.A - 10) >= 0)
-                            {
+                            if ((inv.A - 10) >= 0) {
                                 inv = Color.FromArgb((inv.A - 10), inv.R, inv.G, inv.B); //Get negative values
                                 pic.SetPixel(x, y, inv); //Set negative values
                             }
-                            else
-                            {
+                            else {
                                 break;
                             }
                         }
@@ -164,8 +141,7 @@ namespace Tabula
                     G.Dispose(); //Bye
                 }
             }
-            catch (ArgumentNullException)
-            {
+            catch (ArgumentNullException) {
 
             }
 
@@ -174,27 +150,21 @@ namespace Tabula
         /**
          * Opacity Increase
          */
-        public void moreOpaque(Rectangle rect)
-        {
+        public void moreOpaque(Rectangle rect) {
             try {
                 recty = rect;
 
-                using (var G = Graphics.FromImage(pastImage))
-                {
+                using (var G = Graphics.FromImage(pastImage)) {
                     Bitmap pic = new Bitmap(pastImage); //Store the inverse in a bitmap
-                    for (int y = recty.Top; (y <= recty.Bottom); y++) //Y-Axis
-                    {
-                        for (int x = recty.Left; (x <= recty.Right); x++) //X-Axis
-                        {
+                    for (int y = recty.Top; (y <= recty.Bottom); y++) {  //Y-Axis
+                        for (int x = recty.Left; (x <= recty.Right); x++) { //X-Axis
                             Color inv = pic.GetPixel(x, y); //Get the color per pixel
 
-                            if ((inv.A + 10) <= 255)
-                            {
+                            if ((inv.A + 10) <= 255) {
                                 inv = Color.FromArgb((inv.A + 10), inv.R, inv.G, inv.B); //Get negative values
                                 pic.SetPixel(x, y, inv); //Set negative values
                             }
-                            else
-                            {
+                            else {
                                 break;
                             }
                         }
@@ -207,8 +177,7 @@ namespace Tabula
                     G.Dispose(); //Bye
                 }
             }
-            catch (ArgumentNullException)
-            {
+            catch (ArgumentNullException) {
 
             }
         }
@@ -216,12 +185,10 @@ namespace Tabula
         /**
          * Prep Flip
          */
-        public void useFlip(Rectangle selectedRectum, String axis)
-        {
+        public void useFlip(Rectangle selectedRectum, String axis) {
             try {
                 recty = selectedRectum;
-                switch (axis.ToUpper())
-                {
+                switch (axis.ToUpper()) {
                     case ("X"):
                         flipHoriz();
                         break;
@@ -232,8 +199,7 @@ namespace Tabula
                         break;
                 }
             }
-            catch (NullReferenceException)
-            {
+            catch (NullReferenceException) {
 
             }
         }
@@ -241,13 +207,11 @@ namespace Tabula
         /**
          * Flip Vertically
          */
-        private void flipVert()
-        {
+        private void flipVert() {
             //Flip entire image
             baseCanvas.Image.RotateFlip(RotateFlipType.Rotate180FlipX);
 
-            using (var G = Graphics.FromImage(pastImage))
-            {
+            using (var G = Graphics.FromImage(pastImage)) {
                 //Draws image from before as a base
                 G.DrawImage(pastImage, 0, 0);
                 //Draws selected area of flipped image
@@ -261,13 +225,11 @@ namespace Tabula
         /**
          * Flip Horizontally
          */
-        private void flipHoriz()
-        {
+        private void flipHoriz() {
             //Flip entire image
             baseCanvas.Image.RotateFlip(RotateFlipType.Rotate180FlipY);
 
-            using (var G = Graphics.FromImage(pastImage))
-            {
+            using (var G = Graphics.FromImage(pastImage)) {
                 //Draws image from before as a base
                 G.DrawImage(pastImage, 0, 0);
                 //Draws selected area of flipped image
@@ -281,15 +243,13 @@ namespace Tabula
         /**
          * Prep Fill
          */
-        public void useFill(Rectangle selectedRectum, Color selectedColor)
-        {
+        public void useFill(Rectangle selectedRectum, Color selectedColor) {
             try {
                 recty = selectedRectum;
                 chosenShade = selectedColor;
                 fill();
             }
-            catch (ArgumentNullException)
-            {
+            catch (ArgumentNullException) {
 
             }
         }
@@ -297,12 +257,9 @@ namespace Tabula
         /**
          * Fill
          */
-        private void fill()
-        {
-            //Change the graphics of the image
+        private void fill() { //Change the graphics of the image
             using (var G = Graphics.FromImage(pastImage))
-            using (SolidBrush brush = new SolidBrush(chosenShade))
-            {
+            using (SolidBrush brush = new SolidBrush(chosenShade)) {
                 //Draws base image first
                 G.DrawImage(pastImage, 0, 0);
                 //Draws color on top of that
@@ -316,14 +273,12 @@ namespace Tabula
         /**
          * Prep B&W
          */
-        public void useBW(Rectangle selectedRectum)
-        {
+        public void useBW(Rectangle selectedRectum) {
             try {
                 recty = selectedRectum;
                 blackAndWhite();
             }
-            catch (NullReferenceException)
-            {
+            catch (NullReferenceException) {
 
             }
         }
@@ -331,10 +286,9 @@ namespace Tabula
         /**
          * B&W
          */
-        private void blackAndWhite()
-        {
-            try {
-                //Creation of values that are used to change the apperance of the image. this set of creates a b&w effect
+        private void blackAndWhite() {
+            try { //Creation of values that are used to change the apperance of the image. this set of creates a b&w effect
+
                 float[][] bwValues = {
             new float[] {.3f, .3f, .3f, 0, 0},
             new float[] {.59f, .59f, .59f, 0, 0},
@@ -350,16 +304,14 @@ namespace Tabula
 
                 IA.SetColorMatrix(bwMatrix); //sets the image Attributes color matrix the 2D array above
 
-                using (var G = Graphics.FromImage(pastImage)) //Change the graphics of the image
-                {
+                using (var G = Graphics.FromImage(pastImage)) {  //Change the graphics of the image
                     G.DrawImage(pastImage, 0, 0); //Draws base image first & Draws sepia's image on top
                     G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel, IA);
                     G.Dispose();
                 }
                 baseCanvas.Image = pastImage;
             }
-            catch (ArgumentNullException)
-            {
+            catch (ArgumentNullException) {
 
             }
         }
@@ -367,15 +319,13 @@ namespace Tabula
         /**
          * Prep Hue
          */
-        public void useHue(Rectangle selectedRectum, Color selectedColor)
-        {
+        public void useHue(Rectangle selectedRectum, Color selectedColor) {
             try {
                 recty = selectedRectum;
                 chosenShade = selectedColor;
                 hue();
             }
-            catch (NullReferenceException)
-            {
+            catch (NullReferenceException) {
 
             }
         }
@@ -383,14 +333,12 @@ namespace Tabula
         /**
          * Hue
          */
-        private void hue()
-        {
+        private void hue() {
             try {
                 Color newColor = Color.FromArgb(150, chosenShade); //Change the graphics of the image
 
                 using (var G = Graphics.FromImage(pastImage))
-                using (SolidBrush brush = new SolidBrush(newColor))
-                {
+                using (SolidBrush brush = new SolidBrush(newColor)) {
                     G.DrawImage(pastImage, 0, 0); //Draws base image first
 
                     G.FillRectangle(brush, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top); //Draws color on top of that
@@ -407,17 +355,14 @@ namespace Tabula
         /**
          * Prep Brightness
          */
-        public void useBright(string upDown, Rectangle selectedRectum)
-        {
+        public void useBright(string upDown, Rectangle selectedRectum) {
             try {
                 recty = selectedRectum;
 
-                if (upDown == "up")
-                {
+                if (upDown == "up") {
                     increaseBrightness();
                 }
-                else if (upDown == "down")
-                {
+                else if (upDown == "down") {
                     decreaseBrightness();
                 }
                 else { }
@@ -428,8 +373,7 @@ namespace Tabula
         /**
          * Increase Brightness
          */
-        private void increaseBrightness()
-        {
+        private void increaseBrightness() {
             Bitmap originalImage = (Bitmap)pastImage;
             //Bitmap adjustedImage;
             float brightness = 1.0f; // no change in brightness
@@ -451,8 +395,7 @@ namespace Tabula
             imageAttributes.SetColorMatrix(new ColorMatrix(ptsArray), ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
             imageAttributes.SetGamma(gamma, ColorAdjustType.Bitmap);
 
-            using (var G = Graphics.FromImage(pastImage)) //Change the graphics of the image
-            {
+            using (var G = Graphics.FromImage(pastImage)) {  //Change the graphics of the image
                 G.DrawImage(pastImage, 0, 0); //Draws base image first & Draws sepia's image on top
                 G.DrawImage(originalImage, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel, imageAttributes);
                 G.Dispose();
@@ -463,8 +406,7 @@ namespace Tabula
         /**
          * Decrease Brightness
          */
-        private void decreaseBrightness()
-        {
+        private void decreaseBrightness() {
             Bitmap originalImage = (Bitmap)pastImage;
             //Bitmap adjustedImage;
             float brightness = 1.0f; // no change in brightness
@@ -486,8 +428,7 @@ namespace Tabula
             imageAttributes.SetColorMatrix(new ColorMatrix(ptsArray), ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
             imageAttributes.SetGamma(gamma, ColorAdjustType.Bitmap);
 
-            using (var G = Graphics.FromImage(pastImage)) //Change the graphics of the image
-            {
+            using (var G = Graphics.FromImage(pastImage)) { //Change the graphics of the image
                 G.DrawImage(pastImage, 0, 0); //Draws base image first & Draws sepia's image on top
                 G.DrawImage(originalImage, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel, imageAttributes);
                 G.Dispose();
@@ -498,15 +439,13 @@ namespace Tabula
         /**
          * Prep Rotator
          */
-        public void rotatePrep(Rectangle rect, Color selectedColor, float rotAngle)
-        {
+        public void rotatePrep(Rectangle rect, Color selectedColor, float rotAngle) {
             try {
                 recty = rect;
                 chosenShade = selectedColor;
                 RotateImg(rotAngle);
             }
-            catch (ArgumentNullException)
-            {
+            catch (ArgumentNullException) {
 
             }
         }
@@ -514,10 +453,8 @@ namespace Tabula
         /**
          * Rotate Image 
          */
-        private void RotateImg(float rotAngle)
-        {
-            using (var G = Graphics.FromImage(pastImage)) //Change the graphics of the image
-            {
+        private void RotateImg(float rotAngle) {
+            using (var G = Graphics.FromImage(pastImage)) { //Change the graphics of the image
                 G.DrawImage(pastImage, 0, 0); //Draws base image first
 
                 G.TranslateTransform((float)pastImage.Width / 2, (float)pastImage.Height / 2);

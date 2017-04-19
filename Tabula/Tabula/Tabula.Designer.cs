@@ -56,6 +56,11 @@
             this.transparencyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.increaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.decreaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.brightnessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.increaseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.decreaseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.colorButton = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsButton = new System.Windows.Forms.ToolStripMenuItem();
             this.selectToolButton = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,11 +84,6 @@
             this.availableColors = new System.Windows.Forms.ColorDialog();
             this.MousePos = new System.Windows.Forms.Label();
             this.BrushSizeBar = new System.Windows.Forms.TrackBar();
-            this.bWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.brightnessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.increaseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.decreaseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenuBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.baseCanvas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrushSizeBar)).BeginInit();
@@ -149,21 +149,21 @@
             // saveAsJPEG
             // 
             this.saveAsJPEG.Name = "saveAsJPEG";
-            this.saveAsJPEG.Size = new System.Drawing.Size(269, 38);
+            this.saveAsJPEG.Size = new System.Drawing.Size(182, 38);
             this.saveAsJPEG.Text = "JPEG";
             this.saveAsJPEG.Click += new System.EventHandler(this.saveAsJPEG_Click);
             // 
             // saveAsBitmap
             // 
             this.saveAsBitmap.Name = "saveAsBitmap";
-            this.saveAsBitmap.Size = new System.Drawing.Size(269, 38);
+            this.saveAsBitmap.Size = new System.Drawing.Size(182, 38);
             this.saveAsBitmap.Text = "Bitmap";
             this.saveAsBitmap.Click += new System.EventHandler(this.saveAsBitmap_Click);
             // 
             // saveAsPNG
             // 
             this.saveAsPNG.Name = "saveAsPNG";
-            this.saveAsPNG.Size = new System.Drawing.Size(269, 38);
+            this.saveAsPNG.Size = new System.Drawing.Size(182, 38);
             this.saveAsPNG.Text = "PNG";
             this.saveAsPNG.Click += new System.EventHandler(this.saveAsPNG_Click);
             // 
@@ -330,6 +330,45 @@
             this.decreaseToolStripMenuItem.Text = "Decrease";
             this.decreaseToolStripMenuItem.Click += new System.EventHandler(this.decreaseToolStripMenuItem_Click);
             // 
+            // bWToolStripMenuItem
+            // 
+            this.bWToolStripMenuItem.Name = "bWToolStripMenuItem";
+            this.bWToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.G)));
+            this.bWToolStripMenuItem.Size = new System.Drawing.Size(338, 38);
+            this.bWToolStripMenuItem.Text = "Grayscale";
+            this.bWToolStripMenuItem.Click += new System.EventHandler(this.bWToolStripMenuItem_Click);
+            // 
+            // hueToolStripMenuItem
+            // 
+            this.hueToolStripMenuItem.Name = "hueToolStripMenuItem";
+            this.hueToolStripMenuItem.Size = new System.Drawing.Size(338, 38);
+            this.hueToolStripMenuItem.Text = "Hue";
+            this.hueToolStripMenuItem.Click += new System.EventHandler(this.hueToolStripMenuItem_Click);
+            // 
+            // brightnessToolStripMenuItem
+            // 
+            this.brightnessToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.increaseToolStripMenuItem1,
+            this.decreaseToolStripMenuItem1});
+            this.brightnessToolStripMenuItem.Name = "brightnessToolStripMenuItem";
+            this.brightnessToolStripMenuItem.Size = new System.Drawing.Size(338, 38);
+            this.brightnessToolStripMenuItem.Text = "Brightness";
+            // 
+            // increaseToolStripMenuItem1
+            // 
+            this.increaseToolStripMenuItem1.Name = "increaseToolStripMenuItem1";
+            this.increaseToolStripMenuItem1.Size = new System.Drawing.Size(201, 38);
+            this.increaseToolStripMenuItem1.Text = "Increase";
+            this.increaseToolStripMenuItem1.Click += new System.EventHandler(this.increaseToolStripMenuItem1_Click);
+            // 
+            // decreaseToolStripMenuItem1
+            // 
+            this.decreaseToolStripMenuItem1.Name = "decreaseToolStripMenuItem1";
+            this.decreaseToolStripMenuItem1.Size = new System.Drawing.Size(201, 38);
+            this.decreaseToolStripMenuItem1.Text = "Decrease";
+            this.decreaseToolStripMenuItem1.Click += new System.EventHandler(this.decreaseToolStripMenuItem1_Click);
+            // 
             // colorButton
             // 
             this.colorButton.Name = "colorButton";
@@ -386,28 +425,28 @@
             // circleToolButton
             // 
             this.circleToolButton.Name = "circleToolButton";
-            this.circleToolButton.Size = new System.Drawing.Size(269, 38);
+            this.circleToolButton.Size = new System.Drawing.Size(190, 38);
             this.circleToolButton.Text = "Circle";
             this.circleToolButton.Click += new System.EventHandler(this.circleToolButton_Click);
             // 
             // squareToolButton
             // 
             this.squareToolButton.Name = "squareToolButton";
-            this.squareToolButton.Size = new System.Drawing.Size(269, 38);
+            this.squareToolButton.Size = new System.Drawing.Size(190, 38);
             this.squareToolButton.Text = "Square";
             this.squareToolButton.Click += new System.EventHandler(this.squareToolButton_Click);
             // 
             // lineToolButton
             // 
             this.lineToolButton.Name = "lineToolButton";
-            this.lineToolButton.Size = new System.Drawing.Size(269, 38);
+            this.lineToolButton.Size = new System.Drawing.Size(190, 38);
             this.lineToolButton.Text = "Line";
             this.lineToolButton.Click += new System.EventHandler(this.lineToolButton_Click);
             // 
             // triangleToolButton
             // 
             this.triangleToolButton.Name = "triangleToolButton";
-            this.triangleToolButton.Size = new System.Drawing.Size(269, 38);
+            this.triangleToolButton.Size = new System.Drawing.Size(190, 38);
             this.triangleToolButton.Text = "Triangle";
             this.triangleToolButton.Click += new System.EventHandler(this.triangleToolButton_Click);
             // 
@@ -495,6 +534,7 @@
             this.baseCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.baseCanvas.InitialImage = ((System.Drawing.Image)(resources.GetObject("baseCanvas.InitialImage")));
             this.baseCanvas.Location = new System.Drawing.Point(0, 37);
+            this.baseCanvas.MaximumSize = new System.Drawing.Size(1653, 992);
             this.baseCanvas.Name = "baseCanvas";
             this.baseCanvas.Size = new System.Drawing.Size(1653, 992);
             this.baseCanvas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -528,45 +568,6 @@
             this.BrushSizeBar.TickFrequency = 2;
             this.BrushSizeBar.Visible = false;
             this.BrushSizeBar.Scroll += new System.EventHandler(this.BrushSizeBar_Scroll);
-            // 
-            // bWToolStripMenuItem
-            // 
-            this.bWToolStripMenuItem.Name = "bWToolStripMenuItem";
-            this.bWToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.G)));
-            this.bWToolStripMenuItem.Size = new System.Drawing.Size(338, 38);
-            this.bWToolStripMenuItem.Text = "Grayscale";
-            this.bWToolStripMenuItem.Click += new System.EventHandler(this.bWToolStripMenuItem_Click);
-            // 
-            // hueToolStripMenuItem
-            // 
-            this.hueToolStripMenuItem.Name = "hueToolStripMenuItem";
-            this.hueToolStripMenuItem.Size = new System.Drawing.Size(338, 38);
-            this.hueToolStripMenuItem.Text = "Hue";
-            this.hueToolStripMenuItem.Click += new System.EventHandler(this.hueToolStripMenuItem_Click);
-            // 
-            // brightnessToolStripMenuItem
-            // 
-            this.brightnessToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.increaseToolStripMenuItem1,
-            this.decreaseToolStripMenuItem1});
-            this.brightnessToolStripMenuItem.Name = "brightnessToolStripMenuItem";
-            this.brightnessToolStripMenuItem.Size = new System.Drawing.Size(338, 38);
-            this.brightnessToolStripMenuItem.Text = "Brightness";
-            // 
-            // increaseToolStripMenuItem1
-            // 
-            this.increaseToolStripMenuItem1.Name = "increaseToolStripMenuItem1";
-            this.increaseToolStripMenuItem1.Size = new System.Drawing.Size(269, 38);
-            this.increaseToolStripMenuItem1.Text = "Increase";
-            this.increaseToolStripMenuItem1.Click += new System.EventHandler(this.increaseToolStripMenuItem1_Click);
-            // 
-            // decreaseToolStripMenuItem1
-            // 
-            this.decreaseToolStripMenuItem1.Name = "decreaseToolStripMenuItem1";
-            this.decreaseToolStripMenuItem1.Size = new System.Drawing.Size(269, 38);
-            this.decreaseToolStripMenuItem1.Text = "Decrease";
-            this.decreaseToolStripMenuItem1.Click += new System.EventHandler(this.decreaseToolStripMenuItem1_Click);
             // 
             // Tabula
             // 

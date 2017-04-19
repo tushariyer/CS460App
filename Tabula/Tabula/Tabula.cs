@@ -64,8 +64,14 @@ namespace Tabula
          ---------------------------*/
         private void defaultSelect()
         {
-            //baseCanvas.SizeMode = PictureBoxSizeMode.StretchImage; //Auto-scales the image on load. Will work on resizing of form window as well.
-            SelectRect = new Rectangle(0, 0, baseCanvas.Image.Width, baseCanvas.Image.Height);
+            try
+            {
+                SelectRect = new Rectangle(0, 0, baseCanvas.Image.Width, baseCanvas.Image.Height);
+            }
+            catch (NullReferenceException)
+            {
+
+            }
         }
         
         /**
@@ -815,7 +821,7 @@ namespace Tabula
         private void hueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             savePrevImage();
-            colorButton_Click(sender, e);
+            selectColorToolStripMenuItem_Click(sender, e);
             if (SelectRect == null)
             {
                 defaultSelect();
@@ -869,7 +875,7 @@ namespace Tabula
          */
         private void fillColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            colorButton_Click(sender, e);
+            selectColorToolStripMenuItem_Click(sender, e);
 
             ImageEffects phil = new ImageEffects(baseCanvas);
 
@@ -900,8 +906,7 @@ namespace Tabula
          */
         private void colorButton_Click(object sender, EventArgs e)
         {
-            ColorSelector colorGrid = new ColorSelector();
-            selectedColor = colorGrid.displayShades(availableColors);
+            //No longer needed
         }
 
         /**
@@ -948,7 +953,7 @@ namespace Tabula
             }
             else
             {
-                colorButton_Click(sender, e);
+                selectColorToolStripMenuItem_Click(sender, e);
                 CurrentTool = ETools.Pen;
                 BrushSizeBar.Visible = true;
             }
@@ -989,16 +994,32 @@ namespace Tabula
             //Should now call the methods based on the arrow keys
         }
 
+        /**
+         * Rotate Forward
+         */
         private void forwardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ImageEffects rotator = new ImageEffects(baseCanvas);
             rotator.rotatePrep(SelectRect, selectedColor, 5.0f);
         }
 
+        /**
+         * Rotate Backward
+         */
         private void backwardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ImageEffects rotator = new ImageEffects(baseCanvas);
             rotator.rotatePrep(SelectRect, selectedColor, -5.0f);
+        }
+
+        /**
+         * Colour button.
+         * Passes the ColorDialog from the form to ColorSelector so it can allow the user to choose. Stores the value in selectedColor. Other methods can use it.
+         */
+        private void selectColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorSelector colorGrid = new ColorSelector();
+            selectedColor = colorGrid.displayShades(availableColors);
         }
     }
 }

@@ -83,9 +83,9 @@ namespace Tabula
             using (var G = Graphics.FromImage(pastImage))
             {
                 Bitmap pic = new Bitmap(pastImage); //Store the inverse in a bitmap
-                for (int y = recty.Top; (y <= recty.Bottom); y++) //Y-Axis
+                for (int y = recty.Top; (y < recty.Bottom); y++) //Y-Axis
                 {
-                    for (int x = recty.Left; (x <= recty.Right); x++) //X-Axis
+                    for (int x = recty.Left; (x < recty.Right); x++) //X-Axis
                     {
                         Color inv = pic.GetPixel(x, y); //Get the color per pixel
                         inv = Color.FromArgb(255, (255 - inv.R), (255 - inv.G), (255 - inv.B)); //Get negative values

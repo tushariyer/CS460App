@@ -65,7 +65,7 @@ namespace Tabula
         private void defaultSelect()
         {
             //baseCanvas.SizeMode = PictureBoxSizeMode.StretchImage; //Auto-scales the image on load. Will work on resizing of form window as well.
-            SelectRect = new Rectangle(0, 0, baseCanvas.Width, baseCanvas.Height);
+            SelectRect = new Rectangle(0, 0, baseCanvas.Image.Width, baseCanvas.Image.Height);
         }
         
         /**
@@ -615,9 +615,16 @@ namespace Tabula
             {
                 defaultSelect();
             }
-            CurrentTool = ETools.Shapes;
-            shapeSelected = EShapes.Line;
-            BrushSizeBar.Visible = false; //Hide the bar if its not in use
+            if (baseCanvas.Image != null)
+            {
+                CurrentTool = ETools.Shapes;
+                shapeSelected = EShapes.Line;
+                BrushSizeBar.Visible = false; //Hide the bar if its not in use
+            }
+            else
+            {
+                MessageBox.Show("No Canvas to draw upon.");
+            }
         }
 
         /**
@@ -629,9 +636,16 @@ namespace Tabula
             {
                 defaultSelect();
             }
-            CurrentTool = ETools.Shapes;
-            shapeSelected = EShapes.Circle;
-            BrushSizeBar.Visible = false; //Hide the bar if its not in use
+            if (baseCanvas.Image != null)
+            {
+                CurrentTool = ETools.Shapes;
+                shapeSelected = EShapes.Circle;
+                BrushSizeBar.Visible = false; //Hide the bar if its not in use
+            }
+            else
+            {
+                MessageBox.Show("No Canvas to draw upon.");
+            }
         }
 
         /**
@@ -643,9 +657,16 @@ namespace Tabula
             {
                 defaultSelect();
             }
-            CurrentTool = ETools.Shapes;
-            shapeSelected = EShapes.Square;
-            BrushSizeBar.Visible = false; //Hide the bar if its not in use
+            if (baseCanvas.Image != null)
+            {
+                CurrentTool = ETools.Shapes;
+                shapeSelected = EShapes.Square;
+                BrushSizeBar.Visible = false; //Hide the bar if its not in use
+            }
+            else
+            {
+                MessageBox.Show("No Canvas to draw upon.");
+            }
         }
 
         /**
@@ -657,9 +678,16 @@ namespace Tabula
             {
                 defaultSelect();
             }
-            CurrentTool = ETools.Shapes;
-            shapeSelected = EShapes.Triangle;
-            BrushSizeBar.Visible = false; //Hide the bar if its not in use
+            if (baseCanvas.Image != null)
+            {
+                CurrentTool = ETools.Shapes;
+                shapeSelected = EShapes.Triangle;
+                BrushSizeBar.Visible = false; //Hide the bar if its not in use
+            }
+            else
+            {
+                MessageBox.Show("No Canvas to draw upon.");
+            }
         }
 
         /**-----------------------

@@ -638,6 +638,10 @@ namespace Tabula
         private void invertEffect_Click(object sender, EventArgs e)
         {
             savePrevImage();
+            if (SelectRect == null)
+            {
+                defaultSelect();
+            }
             ImageEffects inv = new ImageEffects(baseCanvas);
             inv.useInverse(SelectRect);
         }

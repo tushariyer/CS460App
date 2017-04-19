@@ -299,8 +299,7 @@ namespace Tabula {
 
                 ColorMatrix bwMatrix = new ColorMatrix(bwValues); //Creates a drawing matrix
 
-                //Creates default Image Attributes because it's needed for the draw image function below
-                ImageAttributes IA = new ImageAttributes();
+                ImageAttributes IA = new ImageAttributes(); //Creates default Image Attributes because it's needed for the draw image function below
 
                 IA.SetColorMatrix(bwMatrix); //sets the image Attributes color matrix the 2D array above
 
@@ -375,7 +374,6 @@ namespace Tabula {
          */
         private void increaseBrightness() {
             Bitmap originalImage = (Bitmap)pastImage;
-            //Bitmap adjustedImage;
             float brightness = 1.0f; // no change in brightness
             float contrast = 1.5f;
             float gamma = 1.0f; // no change in gamma
@@ -408,7 +406,6 @@ namespace Tabula {
          */
         private void decreaseBrightness() {
             Bitmap originalImage = (Bitmap)pastImage;
-            //Bitmap adjustedImage;
             float brightness = 1.0f; // no change in brightness
             float contrast = 0.5f;
             float gamma = 1.0f; // no change in gamma

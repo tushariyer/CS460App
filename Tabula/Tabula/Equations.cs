@@ -6,35 +6,29 @@ using System.Windows.Forms;
 /**
  * Enum for Drawable shapes
  */
-enum EShapes
-{
+enum EShapes {
     Line,
     Circle,
     Square,
     Triangle
 };
 
-namespace Tabula
-{
-    class Equations
-    {
+namespace Tabula {
+    class Equations {
         EShapes shapeSelected;
 
         /**
          * Constructor
          */
-        public Equations(EShapes shapeSelected)
-        {
+        public Equations(EShapes shapeSelected) {
             this.shapeSelected = shapeSelected;
         }
 
         /**
          * Draw Line
          */
-        public static void DrawLine(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea, Color toUse, Rectangle recty)
-        {
-            using (Graphics g = Graphics.FromImage(baseCanvas.Image))
-            {
+        public static void DrawLine(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea, Color toUse, Rectangle recty) {
+            using (Graphics g = Graphics.FromImage(baseCanvas.Image)) {
 
                 g.DrawLine(pen, startX, startY, endX, endY);
                 baseCanvas.Refresh();
@@ -44,13 +38,11 @@ namespace Tabula
         /**
          * Draw Circle
          */
-        public static void DrawCircle(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea, Color toUse, Rectangle recty)
-        {
+        public static void DrawCircle(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea, Color toUse, Rectangle recty) {
             pen.Color = toUse;
             Image pastImage = (Image)baseCanvas.Image.Clone();
             int radius = (int)Math.Round(Math.Sqrt(Math.Pow(endY - startY, 2) + Math.Pow(endX - startX, 2)));
-            using (var G = Graphics.FromImage(pastImage))
-            {
+            using (var G = Graphics.FromImage(pastImage)) {
                 G.DrawEllipse(pen, startX - (radius), startY - (radius), 2 * radius, 2 * radius);
 
                 G.DrawImage(pastImage, 0, 0);
@@ -66,12 +58,10 @@ namespace Tabula
         /**
          * Draw Square
          */
-        public static void DrawSquare(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea, Color toUse, Rectangle recty)
-        {
+        public static void DrawSquare(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea, Color toUse, Rectangle recty) {
             pen.Color = toUse;
             Image pastImage = (Image)baseCanvas.Image.Clone();
-            using (var G = Graphics.FromImage(pastImage))
-            {
+            using (var G = Graphics.FromImage(pastImage)) {
                 G.DrawRectangle(pen, startX, startY, endX - startX, endY - startY);
 
                 G.DrawImage(pastImage, 0, 0);
@@ -86,12 +76,10 @@ namespace Tabula
         /**
          * Draw Triangle
          */
-        public static void DrawTriangle(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea, Color toUse, Rectangle recty)
-        {
+        public static void DrawTriangle(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea, Color toUse, Rectangle recty) {
             pen.Color = toUse;
             Image pastImage = (Image)baseCanvas.Image.Clone();
-            using (var G = Graphics.FromImage(pastImage))
-            {
+            using (var G = Graphics.FromImage(pastImage)) {
                 G.DrawLine(pen, startX, startY, endX, endY);
                 G.DrawLine(pen, endX, endY * 2, endX, endY);
                 G.DrawLine(pen, startX, startY, endX, endY * 2);

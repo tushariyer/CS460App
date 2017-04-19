@@ -284,12 +284,12 @@ namespace Tabula
             new float[]{0, 0, 0, 1, 0},
             new float[]{0, 0, 0, 0, 1}
             };
-            
+
             ColorMatrix bwMatrix = new ColorMatrix(bwValues); //Creates a drawing matrix
 
             //Creates default Image Attributes because it's needed for the draw image function below
             ImageAttributes IA = new ImageAttributes();
-            
+
             IA.SetColorMatrix(bwMatrix); //sets the image Attributes color matrix the 2D array above
 
             using (var G = Graphics.FromImage(pastImage)) //Change the graphics of the image
@@ -322,14 +322,14 @@ namespace Tabula
             using (SolidBrush brush = new SolidBrush(newColor))
             {
                 G.DrawImage(pastImage, 0, 0); //Draws base image first
-                
+
                 G.FillRectangle(brush, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top); //Draws color on top of that
                 G.Dispose();
                 brush.Dispose();
             }
             baseCanvas.Image = pastImage;
         }
-        
+
         /**
          * Prep Brightness
          */
@@ -351,7 +351,8 @@ namespace Tabula
         /**
          * Increase Brightness
          */
-        public void increaseBrightness() {
+        public void increaseBrightness()
+        {
             Bitmap originalImage = (Bitmap)pastImage;
             //Bitmap adjustedImage;
             float brightness = 1.0f; // no change in brightness
@@ -368,7 +369,7 @@ namespace Tabula
             new float[] {0, 0, 0, 1.0f, 0}, // don't scale alpha
             new float[] {adjustedBrightness, adjustedBrightness, adjustedBrightness, 0, 1}};
 
-            
+
             imageAttributes.ClearColorMatrix();
             imageAttributes.SetColorMatrix(new ColorMatrix(ptsArray), ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
             imageAttributes.SetGamma(gamma, ColorAdjustType.Bitmap);
@@ -417,6 +418,9 @@ namespace Tabula
             baseCanvas.Image = pastImage;
         }
 
+        /**
+         * Prep Rotator
+         */
         public void rotatePrep(Rectangle rect, Color selectedColor, float rotAngle)
         {
             recty = rect;
@@ -425,7 +429,7 @@ namespace Tabula
         }
 
         /**
-         * Rotate Image
+         * Rotate Image 
          */
         public void RotateImg(float rotAngle)
         {

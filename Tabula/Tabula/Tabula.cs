@@ -864,8 +864,8 @@ namespace Tabula
          */
         private void rotateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ImageEffects rotater = new ImageEffects(baseCanvas);
-            rotater.rotatePrep(SelectRect, selectedColor, 5.0f);
+            ImageEffects rotator = new ImageEffects(baseCanvas);
+            rotator.rotatePrep(SelectRect, selectedColor, 5.0f);
         }
     }
 }

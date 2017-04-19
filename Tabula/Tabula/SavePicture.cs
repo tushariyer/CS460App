@@ -1,5 +1,8 @@
 ﻿using System.Windows.Forms;
 using System.Drawing;
+using System.IO;
+using System.ComponentModel;
+using System;
 
 namespace Tabula
 {
@@ -29,7 +32,7 @@ namespace Tabula
 
             if (saveFile.ShowDialog() == DialogResult.OK)
             {
-                saveName = saveFile.FileName;
+                saveName = CheckExtension(saveFile.FileName);
                 photoSave.Save(saveName, System.Drawing.Imaging.ImageFormat.Jpeg);
             }
         }
@@ -50,8 +53,8 @@ namespace Tabula
 
             if (saveFile.ShowDialog() == DialogResult.OK)
             {
-                saveName = saveFile.FileName;
-                photoSave.Save(saveName, System.Drawing.Imaging.ImageFormat.Jpeg);
+                saveName = CheckExtension(saveFile.FileName);
+                photoSave.Save(saveName, System.Drawing.Imaging.ImageFormat.Bmp);
             }
         }
 
@@ -62,6 +65,7 @@ namespace Tabula
         {
             SaveFileDialog saveFile = new SaveFileDialog();
 
+            //saveFile.FileOk += CheckExtension;
             saveFile.Filter = "PNG (*.png|*.png";
             saveFile.FilterIndex = 1;
 
@@ -71,10 +75,24 @@ namespace Tabula
 
             if (saveFile.ShowDialog() == DialogResult.OK)
             {
-                saveName = saveFile.FileName;
-                photoSave.Save(saveName, System.Drawing.Imaging.ImageFormat.Jpeg);
+                saveName = CheckExtension(saveFile.FileName);
+                photoSave.Save(saveName, System.Drawing.Imaging.ImageFormat.Png);
             }
             else { }
+        }
+
+        /**
+         * Check File Extention
+         */
+        String CheckExtension(String sv)
+        {
+            if (Path.HasExtension(sv) == false || Path.GetExtension(sv).ToLower() != ".png" || Path.GetExtension(sv).ToLower() != ".jpg" || Path.GetExtension(sv).ToLower() != ".jpeg" || Path.GetExtension(sv).ToLower() != ".bmp")
+            {
+                MessageBox.Show("Invalid extention.\nSaving as PNG");
+                sv += ".png";
+                Console.WriteLine(sv);
+            }
+            return sv;
         }
     }
 }

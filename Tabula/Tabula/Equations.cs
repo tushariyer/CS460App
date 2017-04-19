@@ -33,19 +33,12 @@ namespace Tabula
          */
         public static void DrawLine(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea, Color toUse, Rectangle recty)
         {
-            pen.Color = toUse;
-            Image pastImage = (Image)baseCanvas.Image.Clone();
-            using (var G = Graphics.FromImage(pastImage))
+            using (Graphics g = Graphics.FromImage(baseCanvas.Image))
             {
-                G.DrawLine(pen, startX, startY, endX, endY);
 
-                G.DrawImage(pastImage, 0, 0);
-                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel);
-                G.Dispose();
-
-                baseCanvas.Image = pastImage;
+                g.DrawLine(pen, startX, startY, endX, endY);
+                baseCanvas.Refresh();
             }
-            baseCanvas.Refresh();
         }
 
         /**

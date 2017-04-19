@@ -93,6 +93,11 @@ namespace Tabula
                     defaultSelect();
                 }
             }
+            else
+            {
+                NewCreation newBlank = new NewCreation(baseCanvas);
+                defaultSelect();
+            }
         }
         
         /**
@@ -548,7 +553,7 @@ namespace Tabula
                 switch (shapeSelected)
                 {
                     case (EShapes.Line):
-                        Equations.DrawLine(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea, selectedColor, SelectRect);
+                        Equations.DrawLine(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[X], EndMousePos[Y], SelectionArea, selectedColor, SelectRect);
                         break;
                     case (EShapes.Circle):
                         Equations.DrawCircle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea, selectedColor, SelectRect);

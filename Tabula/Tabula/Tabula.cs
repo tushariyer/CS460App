@@ -46,6 +46,9 @@ namespace Tabula
         private ETools CurrentTool;
         private EShapes shapeSelected;
 
+
+        public int CurrentPictureAngle = 0;
+
         //Checking booleans
         private bool bInSelectedRect;
         public bool bSelected;
@@ -865,7 +868,207 @@ namespace Tabula
         private void rotateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ImageEffects rotator = new ImageEffects(baseCanvas);
-            rotator.rotatePrep(SelectRect, selectedColor, 5.0f);
+
+
+            System.Windows.Forms.MessageBox.Show("My message here");
+
+            //rotator.rotatePrep(new Rectangle(SelectRect.Left, SelectRect.Top, 1, 1),selectedColor, CurrentPictureAngle);
+            //CropImage();
+            if (CurrentPictureAngle < 360)
+            {
+                CurrentPictureAngle += 5;
+            }
+            else
+            {
+                CurrentPictureAngle = 0;
+            }
+
+            if(CopiedImage == null)
+            {
+                CropImage();
+            }
+            CopiedImage = RotateImage(CopiedImage, CurrentPictureAngle);
+            Paste(CopiedImage, baseCanvas.Image, SelectRect.Left, SelectRect.Top);
+
+
+            
+
+            using (Form form = new Form())
+            {
+                form.StartPosition = FormStartPosition.CenterScreen;
+                form.Size = CopiedImage.Size;
+                PictureBox pb = new PictureBox();
+                pb.Dock = DockStyle.Fill;
+                pb.Image = CopiedImage;
+                form.Controls.Add(pb);
+                form.ShowDialog();
+            }
+
+
+        }
+
+
+       //// public Bitmap RotateImg(Bitmap bmp, float angle, Color bkColor)
+       // {
+
+       //     angle = angle % 360;
+       //     if (angle > 180)
+       //         angle -= 360;
+
+       //     System.Drawing.Imaging.PixelFormat pf = default(System.Drawing.Imaging.PixelFormat);
+       //     if (bkColor == Color.Transparent)
+       //     {
+       //         pf = System.Drawing.Imaging.PixelFormat.Format32bppArgb;
+       //     }
+       //     else
+       //     {
+       //         pf = bmp.PixelFormat;
+       //     }
+
+       //     float sin = (float)Math.Abs(Math.Sin(angle * Math.PI / 180.0)); // this function takes radians
+       //     float cos = (float)Math.Abs(Math.Cos(angle * Math.PI / 180.0)); // this one too
+       //     float newImgWidth = sin * bmp.Height + cos * bmp.Width;
+       //     float newImgHeight = sin * bmp.Width + cos * bmp.Height;
+       //     float originX = 0f;
+       //     float originY = 0f;
+
+       //     if (angle > 0)
+       //     {
+       //         if (angle <= 90)
+       //             originX = sin * bmp.Height;
+       //         else
+       //         {
+       //             originX = newImgWidth;
+       //             originY = newImgHeight - sin * bmp.Width;
+       //         }
+       //     }
+       //     else
+       //     {
+       //         if (angle >= -90)
+       //             originY = sin * bmp.Width;
+       //         else
+       //         {
+       //             originX = newImgWidth - sin * bmp.Height;
+       //             originY = newImgHeight;
+       //         }
+       //     }
+
+       //     Bitmap newImg = new Bitmap((int)newImgWidth, (int)newImgHeight, pf);
+       //     Graphics g = Graphics.FromImage(newImg);
+       //     g.Clear(bkColor);
+       //     g.TranslateTransform(originX, originY); // offset the origin to our calculated values
+       //     g.RotateTransform(angle); // set up rotate
+       //     g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
+       //     g.DrawImageUnscaled(bmp, 0, 0); // draw the image at 0, 0
+       //     g.Dispose();
+
+       //     baseCanvas.Refresh();
+
+       //     return newImg;
+       // }
+
+
+        public Bitmap RotateImage(Image image, float angle)
+        {
+            if (image == null)
+                throw new ArgumentNullException("image");
+
+            const double pi2 = Math.PI / 2.0;
+
+
+            double oldWidth = (double)image.Width;
+            double oldHeight = (double)image.Height;
+
+            // Convert degrees to radians
+            double theta = ((double)angle) * Math.PI / 180.0;
+            double locked_theta = theta;
+
+            // Ensure theta is now [0, 2pi)
+            while (locked_theta < 0.0)
+                locked_theta += 2 * Math.PI;
+
+            double newWidth, newHeight;
+            int nWidth, nHeight; // The newWidth/newHeight expressed as ints
+
+
+
+            double adjacentTop, oppositeTop;
+            double adjacentBottom, oppositeBottom;
+
+
+            if ((locked_theta >= 0.0 && locked_theta < pi2) ||
+                (locked_theta >= Math.PI && locked_theta < (Math.PI + pi2)))
+            {
+                adjacentTop = Math.Abs(Math.Cos(locked_theta)) * oldWidth;
+                oppositeTop = Math.Abs(Math.Sin(locked_theta)) * oldWidth;
+
+                adjacentBottom = Math.Abs(Math.Cos(locked_theta)) * oldHeight;
+                oppositeBottom = Math.Abs(Math.Sin(locked_theta)) * oldHeight;
+            }
+            else
+            {
+                adjacentTop = Math.Abs(Math.Sin(locked_theta)) * oldHeight;
+                oppositeTop = Math.Abs(Math.Cos(locked_theta)) * oldHeight;
+
+                adjacentBottom = Math.Abs(Math.Sin(locked_theta)) * oldWidth;
+                oppositeBottom = Math.Abs(Math.Cos(locked_theta)) * oldWidth;
+            }
+
+            newWidth = adjacentTop + oppositeBottom;
+            newHeight = adjacentBottom + oppositeTop;
+
+            nWidth = (int)Math.Ceiling(newWidth);
+            nHeight = (int)Math.Ceiling(newHeight);
+
+            Bitmap rotatedBmp = new Bitmap(nWidth, nHeight);
+
+            using (Graphics g = Graphics.FromImage(rotatedBmp))
+            {
+
+                Point[] points;
+
+                if (locked_theta >= 0.0 && locked_theta < pi2)
+                {
+                    points = new Point[] {
+                                             new Point( (int) oppositeBottom, 0 ),
+                                             new Point( nWidth, (int) oppositeTop ),
+                                             new Point( 0, (int) adjacentBottom )
+                                         };
+
+                }
+                else if (locked_theta >= pi2 && locked_theta < Math.PI)
+                {
+                    points = new Point[] {
+                                             new Point( nWidth, (int) oppositeTop ),
+                                             new Point( (int) adjacentTop, nHeight ),
+                                             new Point( (int) oppositeBottom, 0 )
+                                         };
+                }
+                else if (locked_theta >= Math.PI && locked_theta < (Math.PI + pi2))
+                {
+                    points = new Point[] {
+                                             new Point( (int) adjacentTop, nHeight ),
+                                             new Point( 0, (int) adjacentBottom ),
+                                             new Point( nWidth, (int) oppositeTop )
+                                         };
+                }
+                else
+                {
+                    points = new Point[] {
+                                             new Point( 0, (int) adjacentBottom ),
+                                             new Point( (int) oppositeBottom, 0 ),
+                                             new Point( (int) adjacentTop, nHeight )
+                                         };
+                }
+
+                SelectRect.Width = (int)newWidth;
+                SelectRect.Height = (int)newHeight;
+
+
+                g.DrawImage(image, points);
+            }
+
+            return rotatedBmp;
         }
     }
 }

@@ -134,8 +134,25 @@ namespace Tabula
          */
         private void exitButton_Click(object sender, EventArgs e)
         {
-            QuitApp die = new QuitApp();
-            die.beginQuit(baseCanvas);
+            if (baseCanvas.Image != null)
+            {
+                savePrevImage();
+                DialogResult check = MessageBox.Show("Do you want to save?", "Warning!", MessageBoxButtons.YesNo);
+                if (check == DialogResult.Yes)
+                {
+                    saveAsPNG_Click(sender, e);
+                }
+                else if (check == DialogResult.No)
+                {
+                    QuitApp die = new QuitApp();
+                    die.beginQuit(baseCanvas);
+                }
+            }
+            else
+            {
+                QuitApp die = new QuitApp();
+                die.beginQuit(baseCanvas);
+            }
         }
 
         /**-----------------------

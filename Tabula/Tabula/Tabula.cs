@@ -64,7 +64,7 @@ namespace Tabula
          ---------------------------*/
         private void defaultSelect()
         {
-            baseCanvas.SizeMode = PictureBoxSizeMode.StretchImage; //Auto-scales the image on load. Will work on resizing of form window as well.
+            //baseCanvas.SizeMode = PictureBoxSizeMode.StretchImage; //Auto-scales the image on load. Will work on resizing of form window as well.
             SelectRect = new Rectangle(0, 0, baseCanvas.Width, baseCanvas.Height);
         }
         

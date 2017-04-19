@@ -614,6 +614,7 @@
             // 
             // BrushSizeBar
             // 
+            this.BrushSizeBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BrushSizeBar.Location = new System.Drawing.Point(1427, 27);
             this.BrushSizeBar.Maximum = 50;
             this.BrushSizeBar.Name = "BrushSizeBar";

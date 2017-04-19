@@ -80,11 +80,15 @@ namespace Tabula {
                 else if (check == DialogResult.No) {
                     NewCreation newBlank = new NewCreation(baseCanvas);
                     defaultSelect();
+                    baseCanvas.SizeMode = PictureBoxSizeMode.AutoSize;
+                    baseCanvas.Refresh();
                 }
             }
             else {
                 NewCreation newBlank = new NewCreation(baseCanvas);
                 defaultSelect();
+                baseCanvas.SizeMode = PictureBoxSizeMode.AutoSize;
+                baseCanvas.Refresh();
             }
         }
 

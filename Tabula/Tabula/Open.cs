@@ -31,7 +31,7 @@ namespace Tabula
                 fileName = openFile.FileName;
                 if (isImageType(fileName.ToLower()))
                 {
-                    pb.MaximumSize = Image.FromFile(fileName).Size;
+                    pb.Size = Image.FromFile(fileName).Size;
                     pb.Image = Image.FromFile(fileName);
                 }
                 else

@@ -200,36 +200,43 @@ namespace Tabula
          */
         public void CutImage()
         {
-            CropImage();
-            if (SelectRect.Width < 0 && SelectRect.Height < 0) //Bottom-Right to Top-Left
+            if (baseCanvas.Image != null)
             {
-                using (Graphics g = Graphics.FromImage(baseCanvas.Image))
+                CropImage();
+                if (SelectRect.Width < 0 && SelectRect.Height < 0) //Bottom-Right to Top-Left
                 {
-                    g.FillRectangle(new SolidBrush(Color.White), new Rectangle(SelectRect.Right, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                    using (Graphics g = Graphics.FromImage(baseCanvas.Image))
+                    {
+                        g.FillRectangle(new SolidBrush(Color.White), new Rectangle(SelectRect.Right, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                    }
                 }
+                else if (SelectRect.Width >= 0 && SelectRect.Height >= 0)  //Top-Left to Bottom-Right
+                {
+                    using (Graphics g = Graphics.FromImage(baseCanvas.Image))
+                    {
+                        g.FillRectangle(new SolidBrush(Color.White), new Rectangle(SelectRect.Left, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                    }
+                }
+                else if (SelectRect.Width < 0 && SelectRect.Height >= 0) //Top-Right to Bottom-Left
+                {
+                    using (Graphics g = Graphics.FromImage(baseCanvas.Image))
+                    {
+                        g.FillRectangle(new SolidBrush(Color.White), new Rectangle(SelectRect.Right, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                    }
+                }
+                else //Bottom-Left - Top-Right
+                {
+                    using (Graphics g = Graphics.FromImage(baseCanvas.Image))
+                    {
+                        g.FillRectangle(new SolidBrush(Color.White), new Rectangle(SelectRect.Left, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                    }
+                }
+                baseCanvas.Refresh();
             }
-            else if (SelectRect.Width >= 0 && SelectRect.Height >= 0)  //Top-Left to Bottom-Right
+            else
             {
-                using (Graphics g = Graphics.FromImage(baseCanvas.Image))
-                {
-                    g.FillRectangle(new SolidBrush(Color.White), new Rectangle(SelectRect.Left, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
-                }
+                MessageBox.Show("Nothing to Cut!");
             }
-            else if (SelectRect.Width < 0 && SelectRect.Height >= 0) //Top-Right to Bottom-Left
-            {
-                using (Graphics g = Graphics.FromImage(baseCanvas.Image))
-                {
-                    g.FillRectangle(new SolidBrush(Color.White), new Rectangle(SelectRect.Right, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
-                }
-            }
-            else //Bottom-Left - Top-Right
-            {
-                using (Graphics g = Graphics.FromImage(baseCanvas.Image))
-                {
-                    g.FillRectangle(new SolidBrush(Color.White), new Rectangle(SelectRect.Left, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
-                }
-            }
-            baseCanvas.Refresh();
         }
         
         /**
@@ -237,35 +244,30 @@ namespace Tabula
          */
         public void CropImage()
         {
-            savePrevImage();
-            Bitmap bmp = (Bitmap)baseCanvas.Image.Clone();
-            if (SelectRect.Width < 0 && SelectRect.Height < 0) //Bottom-Right to Top-Left
-            {
-                CopiedImage = bmp.Clone(new Rectangle(SelectRect.Right, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
+            if (baseCanvas.Image != null) {
+                savePrevImage();
+                Bitmap bmp = (Bitmap)baseCanvas.Image.Clone();
+                if (SelectRect.Width < 0 && SelectRect.Height < 0) //Bottom-Right to Top-Left
+                {
+                    CopiedImage = bmp.Clone(new Rectangle(SelectRect.Right, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
+                }
+                else if (SelectRect.Width >= 0 && SelectRect.Height >= 0) //Top-Left to Bottom-Right
+                {
+                   CopiedImage = bmp.Clone(new Rectangle(SelectRect.Left, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
+                }
+                else if (SelectRect.Width < 0 && SelectRect.Height >= 0) //Top-Right to Bottom-Left
+                {
+                    CopiedImage = bmp.Clone(new Rectangle(SelectRect.Right, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
+                }
+                else //Bottom-Left to Top-Right
+                {
+                    CopiedImage = bmp.Clone(new Rectangle(SelectRect.Left, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
+                }
             }
-            else if (SelectRect.Width >= 0 && SelectRect.Height >= 0) //Top-Left to Bottom-Right
+            else
             {
-                CopiedImage = bmp.Clone(new Rectangle(SelectRect.Left, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
+                MessageBox.Show("Nothing to Copy!");
             }
-            else if (SelectRect.Width < 0 && SelectRect.Height >= 0) //Top-Right to Bottom-Left
-            {
-                CopiedImage = bmp.Clone(new Rectangle(SelectRect.Right, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
-            }
-            else //Bottom-Left to Top-Right
-            {
-                CopiedImage = bmp.Clone(new Rectangle(SelectRect.Left, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)), bmp.PixelFormat);
-            }
-
-            //using (Form form = new Form())
-            //{
-            //    form.StartPosition = FormStartPosition.CenterScreen;
-            //    form.Size = CopiedImage.Size;
-            //    PictureBox pb = new PictureBox();
-            //    pb.Dock = DockStyle.Fill;
-            //    pb.Image = CopiedImage;
-            //    form.Controls.Add(pb);
-            //    form.ShowDialog();
-            //}
         }
         
         /**
@@ -273,36 +275,43 @@ namespace Tabula
          */
         public void Paste(Bitmap ImageToPaste, Image SourceImage)
         {
-            savePrevImage();
-            if (SelectRect.Width < 0 && SelectRect.Height < 0) //Bottom-Right to Top-Left
+            if (baseCanvas.Image != null)
             {
-                using (Graphics g = Graphics.FromImage(SourceImage))
+                savePrevImage();
+                if (SelectRect.Width < 0 && SelectRect.Height < 0) //Bottom-Right to Top-Left
                 {
-                    g.DrawImage(ImageToPaste, new Rectangle(SelectRect.Right, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                    using (Graphics g = Graphics.FromImage(SourceImage))
+                    {
+                        g.DrawImage(ImageToPaste, new Rectangle(SelectRect.Right, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                    }
                 }
+                else if (SelectRect.Width >= 0 && SelectRect.Height >= 0)  //Top-Left to Bottom-Right
+                {
+                    using (Graphics g = Graphics.FromImage(SourceImage))
+                    {
+                        g.DrawImage(ImageToPaste, new Rectangle(SelectRect.Left, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                    }
+                }
+                else if (SelectRect.Width < 0 && SelectRect.Height >= 0) //Top-Right to Bottom-Left
+                {
+                    using (Graphics g = Graphics.FromImage(SourceImage))
+                    {
+                        g.DrawImage(ImageToPaste, new Rectangle(SelectRect.Right, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                    }
+                }
+                else //Bottom-Left - Top-Right
+                {
+                    using (Graphics g = Graphics.FromImage(SourceImage))
+                    {
+                        g.DrawImage(ImageToPaste, new Rectangle(SelectRect.Left, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                    }
+                }
+                baseCanvas.Refresh();
             }
-            else if (SelectRect.Width >= 0 && SelectRect.Height >= 0)  //Top-Left to Bottom-Right
+            else
             {
-                using (Graphics g = Graphics.FromImage(SourceImage))
-                {
-                    g.DrawImage(ImageToPaste, new Rectangle(SelectRect.Left, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
-                }
+                MessageBox.Show("Nothing to Paste!");
             }
-            else if (SelectRect.Width < 0 && SelectRect.Height >= 0) //Top-Right to Bottom-Left
-            {
-                using (Graphics g = Graphics.FromImage(SourceImage))
-                {
-                    g.DrawImage(ImageToPaste, new Rectangle(SelectRect.Right, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
-                }
-            }
-            else //Bottom-Left - Top-Right
-            {
-                using (Graphics g = Graphics.FromImage(SourceImage))
-                {
-                    g.DrawImage(ImageToPaste, new Rectangle(SelectRect.Left, SelectRect.Bottom, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
-                }
-            }
-            baseCanvas.Refresh();
         }
 
         /**
@@ -310,42 +319,43 @@ namespace Tabula
          */
         public void Paste(Bitmap ImageToPaste, Image SourceImage, int X, int Y)
         {
-            savePrevImage();
-            //using (Graphics g = Graphics.FromImage(SourceImage))
-            //{
-            //    g.DrawImage(ImageToPaste, new Rectangle(X, Y, SelectRect.Width, SelectRect.Height));
-            //}
-
-            //----
-            if (SelectRect.Width < 0 && SelectRect.Height < 0) //Bottom-Right to Top-Left
+            if (baseCanvas.Image != null)
             {
-                using (Graphics g = Graphics.FromImage(SourceImage))
+                savePrevImage();
+                if (SelectRect.Width < 0 && SelectRect.Height < 0) //Bottom-Right to Top-Left
                 {
-                    g.DrawImage(ImageToPaste, new Rectangle(X, Y, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                    using (Graphics g = Graphics.FromImage(SourceImage))
+                    {
+                       g.DrawImage(ImageToPaste, new Rectangle(X, Y, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                    }
                 }
+                else if (SelectRect.Width >= 0 && SelectRect.Height >= 0)  //Top-Left to Bottom-Right
+                {
+                    using (Graphics g = Graphics.FromImage(SourceImage))
+                    {
+                        g.DrawImage(ImageToPaste, new Rectangle(X, Y, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                    }
+                }
+                else if (SelectRect.Width < 0 && SelectRect.Height >= 0) //Top-Right to Bottom-Left
+                {
+                    using (Graphics g = Graphics.FromImage(SourceImage))
+                    {
+                        g.DrawImage(ImageToPaste, new Rectangle(X, Y, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                    }
+                }
+                else //Bottom-Left - Top-Right
+                {
+                    using (Graphics g = Graphics.FromImage(SourceImage))
+                    {
+                        g.DrawImage(ImageToPaste, new Rectangle(X, Y, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
+                    }
+                }
+                baseCanvas.Refresh();
             }
-            else if (SelectRect.Width >= 0 && SelectRect.Height >= 0)  //Top-Left to Bottom-Right
+            else
             {
-                using (Graphics g = Graphics.FromImage(SourceImage))
-                {
-                    g.DrawImage(ImageToPaste, new Rectangle(X, Y, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
-                }
+                MessageBox.Show("Nothing to Paste!");
             }
-            else if (SelectRect.Width < 0 && SelectRect.Height >= 0) //Top-Right to Bottom-Left
-            {
-                using (Graphics g = Graphics.FromImage(SourceImage))
-                {
-                    g.DrawImage(ImageToPaste, new Rectangle(X, Y, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
-                }
-            }
-            else //Bottom-Left - Top-Right
-            {
-                using (Graphics g = Graphics.FromImage(SourceImage))
-                {
-                    g.DrawImage(ImageToPaste, new Rectangle(X, Y, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height)));
-                }
-            }
-            baseCanvas.Refresh();
         }
 
         /**
@@ -577,6 +587,10 @@ namespace Tabula
          */
         private void shapesToolButton_Click(object sender, EventArgs e)
         {
+            if (baseCanvas == null)
+            {
+                MessageBox.Show("Load a canvas.");
+            }
             if (SelectRect == null)
             {
                 defaultSelect();

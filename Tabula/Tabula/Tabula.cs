@@ -901,7 +901,7 @@ namespace Tabula {
         }
 
         private void Tabula_Load(object sender, EventArgs e) {
-
+            //Keep empty
         }
     }
 }

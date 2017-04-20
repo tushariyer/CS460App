@@ -574,13 +574,14 @@ namespace Tabula
                 baseCanvas.Invalidate();
             }
 
+            //if the mouse has been pressed.
             if (bCanDrawShape)
             {
+                //draw the image onto the PICTURE BOX, and then invalidate it.
                 switch (shapeSelected)
                 {
                     case (EShapes.Line):
                         Equations.DrawLine(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, true);
-                        baseCanvas.Invalidate();
                         break;
                     case (EShapes.Circle):
                         Equations.DrawCircle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, true);

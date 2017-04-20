@@ -459,12 +459,14 @@ namespace Tabula {
             }
             if (CurrentTool == ETools.Move) {
 
-                CropImage(); //Copied the selected image to the "clipboard"
+                CutImage(); //Copied the selected image to the "clipboard"
 
+                //undoToolStripMenuItem_Click(sender, e);
                 Paste(CopiedImage, baseCanvas.Image, e.X, e.Y); //set the current copied image to the mouse position.
+                SelectRect.Location = new Point(e.X, e.Y);
 
                 CurrentTool = ETools.None; //clear the tool to stop the constant repasting.
-                SelectRect = new Rectangle(0, 0, 0, 0);
+                //SelectRect = new Rectangle(0, 0, 0, 0);
             }
             else if (CurrentTool == ETools.None) {
                 defaultSelect();

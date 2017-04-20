@@ -2,23 +2,19 @@
 using System.Drawing;
 using System.IO;
 
-namespace Tabula
-{
-    class Open
-    {
+namespace Tabula {
+    class Open {
         /**
          * Constructor
          */
-        public Open()
-        {
+        public Open() {
 
         }
 
         /**
          * Uses OpenFileDialog to import an image and store it in an Image object.
          */
-        public void importImage(PictureBox pb)
-        {
+        public void importImage(PictureBox pb) {
             //Opens a dialog box to choose a file
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.Filter = "All Files (*.*)|*.*";
@@ -26,27 +22,22 @@ namespace Tabula
 
             string fileName = ""; //Includes path to file
 
-            if (openFile.ShowDialog() == DialogResult.OK)
-            {
+            if (openFile.ShowDialog() == DialogResult.OK) {
                 fileName = openFile.FileName;
-                if (isImageType(fileName.ToLower()))
-                {
+                if (isImageType(fileName.ToLower())) {
                     pb.Size = Image.FromFile(fileName).Size;
                     pb.Image = Image.FromFile(fileName);
                 }
-                else
-                {
+                else {
                     MessageBox.Show("Please select an image file.");
                 }
             }
-            else
-            {
+            else {
                 MessageBox.Show("Please select an image to import.");
             }
         }
 
-        public bool isImageType(string dir)
-        {
+        public bool isImageType(string dir) {
             //Check for image format. 
             return (dir.EndsWith(".png") || dir.EndsWith(".jpg") || dir.EndsWith(".jpeg") || dir.EndsWith(".ico") || dir.EndsWith(".bmp") || dir.EndsWith(".gif") || dir.EndsWith(".pdf"));
         }

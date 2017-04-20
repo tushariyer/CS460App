@@ -729,6 +729,7 @@ namespace Tabula {
          */
         private void fillColorToolStripMenuItem_Click(object sender, EventArgs e) {
             selectColorToolStripMenuItem_Click(sender, e);
+            savePrevImage();
 
             ImageEffects phil = new ImageEffects(baseCanvas);
 

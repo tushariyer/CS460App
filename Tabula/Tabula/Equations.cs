@@ -34,20 +34,19 @@ namespace Tabula {
             //checks whether to create a temp shape, so real shape that will draw onto the image, not the picture box
             if (!btemp) {
                 using (Graphics g = Graphics.FromImage(baseCanvas.Image)) {
-                    //draws the shape on the IMAGE
-                    g.DrawLine(pen, startX, startY, endX, endY);
+                    g.DrawLine(pen, startX, startY, endX, endY); //draws the shape on the IMAGE
                     baseCanvas.Refresh();
+                    g.Dispose();
                 }
             }
             else {
                 using (SelectionArea = baseCanvas.CreateGraphics()) {
-                    //draws the shape on the PICTURE BOX
-                    SelectionArea.DrawLine(pen, startX, startY, endX, endY);
+                    SelectionArea.DrawLine(pen, startX, startY, endX, endY); //draws the shape on the PICTURE BOX
+                    baseCanvas.Invalidate();  //deletes it from the picture box, creates the moving preview effect.
                     SelectionArea.Dispose();
-                    //deletes it from the picture box, creates the moving preview effect.
-                    baseCanvas.Invalidate();
                 }
             }
+            pen.Dispose();
         }
 
         /**
@@ -76,6 +75,7 @@ namespace Tabula {
                 }
             }
             baseCanvas.Refresh();
+            pen.Dispose();
         }
 
         /**
@@ -113,12 +113,11 @@ namespace Tabula {
                     }
                     recty = new Rectangle(startX, startY, endX - startX, endY - startY);
                     G.DrawRectangle(pen, recty);
+                    G.Dispose();
                 }
             }
-
-
-
             baseCanvas.Refresh();
+            pen.Dispose();
         }
 
         /**
@@ -158,6 +157,7 @@ namespace Tabula {
             }
             //refreshes the canvas so the draw changes show
             baseCanvas.Refresh();
+            pen.Dispose();
         }
 
     }

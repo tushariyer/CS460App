@@ -89,6 +89,7 @@
             this.availableColors = new System.Windows.Forms.ColorDialog();
             this.MousePos = new System.Windows.Forms.Label();
             this.BrushSizeBar = new System.Windows.Forms.TrackBar();
+            this.blurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.topMenuBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.baseCanvas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrushSizeBar)).BeginInit();
@@ -285,7 +286,8 @@
             this.transparencyToolStripMenuItem,
             this.bWToolStripMenuItem,
             this.hueToolStripMenuItem,
-            this.brightnessToolStripMenuItem});
+            this.brightnessToolStripMenuItem,
+            this.blurToolStripMenuItem});
             this.effectsButton.Name = "effectsButton";
             this.effectsButton.Size = new System.Drawing.Size(71, 28);
             this.effectsButton.Text = "Effects";
@@ -626,6 +628,15 @@
             this.BrushSizeBar.Visible = false;
             this.BrushSizeBar.Scroll += new System.EventHandler(this.BrushSizeBar_Scroll);
             // 
+            // blurToolStripMenuItem
+            // 
+            this.blurToolStripMenuItem.Name = "blurToolStripMenuItem";
+            this.blurToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.B)));
+            this.blurToolStripMenuItem.Size = new System.Drawing.Size(261, 30);
+            this.blurToolStripMenuItem.Text = "Blur";
+            this.blurToolStripMenuItem.Click += new System.EventHandler(this.blurToolStripMenuItem_Click);
+            // 
             // Tabula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -712,6 +723,7 @@
         private System.Windows.Forms.ToolStripMenuItem colorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectColorToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem fillColorToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem blurToolStripMenuItem;
     }
 }
 

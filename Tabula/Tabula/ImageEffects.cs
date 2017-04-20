@@ -465,5 +465,10 @@ namespace Tabula {
             }
             baseCanvas.Image = pastImage;
         }
+
+        public static Image Blur(Image pb, Rectangle rectum) {
+            return new Bitmap((Bitmap)pb.Clone(), new Size(rectum.Width + 100, rectum.Height + 100));
+
+        }
     }
 }

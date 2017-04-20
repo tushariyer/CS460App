@@ -85,6 +85,9 @@
     <Compile Include="TextInput.cs" />
     <Compile Include="TranslateMedia.cs" />
     <Compile Include="Zoom.cs" />
+    <EmbeddedResource Include="Tabula.en-US.resx">
+      <DependentUpon>Tabula.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tabula.resx">
       <DependentUpon>Tabula.cs</DependentUpon>
     </EmbeddedResource>

@@ -899,5 +899,9 @@ namespace Tabula {
         private void effectsButton_Click(object sender, EventArgs e) {
             //Keep empty
         }
+
+        private void Tabula_Load(object sender, EventArgs e) {
+
+        }
     }
 }

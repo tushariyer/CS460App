@@ -121,6 +121,464 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="topMenuBar.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri, 9pt</value>
+  </data>
+  <data name="fileButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 33</value>
+  </data>
+  <data name="fileButton.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="editButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 33</value>
+  </data>
+  <data name="editButton.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="effectsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 33</value>
+  </data>
+  <data name="effectsButton.Text" xml:space="preserve">
+    <value>Effects</value>
+  </data>
+  <data name="toolsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 33</value>
+  </data>
+  <data name="toolsButton.Text" xml:space="preserve">
+    <value>Tools</value>
+  </data>
+  <data name="topMenuBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="topMenuBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1653, 37</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="topMenuBar.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="topMenuBar.Text" xml:space="preserve">
+    <value>topMenuBar</value>
+  </data>
+  <data name="&gt;&gt;topMenuBar.Name" xml:space="preserve">
+    <value>topMenuBar</value>
+  </data>
+  <data name="&gt;&gt;topMenuBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;topMenuBar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;topMenuBar.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="newFileButton.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+N</value>
+  </data>
+  <data name="newFileButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 38</value>
+  </data>
+  <data name="newFileButton.Text" xml:space="preserve">
+    <value>New File</value>
+  </data>
+  <data name="openFileButton.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+O</value>
+  </data>
+  <data name="openFileButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 38</value>
+  </data>
+  <data name="openFileButton.Text" xml:space="preserve">
+    <value>Open File</value>
+  </data>
+  <data name="saveFileSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 38</value>
+  </data>
+  <data name="saveFileSave.Text" xml:space="preserve">
+    <value>Save File</value>
+  </data>
+  <data name="saveAsJPEG.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 38</value>
+  </data>
+  <data name="saveAsJPEG.Text" xml:space="preserve">
+    <value>JPEG</value>
+  </data>
+  <data name="saveAsBitmap.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 38</value>
+  </data>
+  <data name="saveAsBitmap.Text" xml:space="preserve">
+    <value>Bitmap</value>
+  </data>
+  <data name="saveAsPNG.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 38</value>
+  </data>
+  <data name="saveAsPNG.Text" xml:space="preserve">
+    <value>PNG</value>
+  </data>
+  <data name="optionsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 38</value>
+  </data>
+  <data name="optionsButton.Text" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="aboutButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 38</value>
+  </data>
+  <data name="aboutButton.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="printButton.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+P</value>
+  </data>
+  <data name="printButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 38</value>
+  </data>
+  <data name="printButton.Text" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="exitButton.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Q</value>
+  </data>
+  <data name="exitButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 38</value>
+  </data>
+  <data name="exitButton.Text" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="undoButton.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Z</value>
+  </data>
+  <data name="undoButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 38</value>
+  </data>
+  <data name="undoButton.Text" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="redoButton.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Y</value>
+  </data>
+  <data name="redoButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 38</value>
+  </data>
+  <data name="redoButton.Text" xml:space="preserve">
+    <value>Redo</value>
+  </data>
+  <data name="cutButton.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+X</value>
+  </data>
+  <data name="cutButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 38</value>
+  </data>
+  <data name="cutButton.Text" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="copyButton.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+C</value>
+  </data>
+  <data name="copyButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 38</value>
+  </data>
+  <data name="copyButton.Text" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="pasteButton.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+V</value>
+  </data>
+  <data name="pasteButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 38</value>
+  </data>
+  <data name="pasteButton.Text" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+  <data name="transformButton.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+T</value>
+  </data>
+  <data name="transformButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 38</value>
+  </data>
+  <data name="transformButton.Text" xml:space="preserve">
+    <value>Translate</value>
+  </data>
+  <data name="zoomInToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+3</value>
+  </data>
+  <data name="zoomInToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 38</value>
+  </data>
+  <data name="zoomInToolStripMenuItem.Text" xml:space="preserve">
+    <value>Zoom In</value>
+  </data>
+  <data name="zoomOutToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+4</value>
+  </data>
+  <data name="zoomOutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>281, 38</value>
+  </data>
+  <data name="zoomOutToolStripMenuItem.Text" xml:space="preserve">
+    <value>Zoom Out</value>
+  </data>
+  <data name="sepiaEffect.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+S</value>
+  </data>
+  <data name="sepiaEffect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>338, 38</value>
+  </data>
+  <data name="sepiaEffect.Text" xml:space="preserve">
+    <value>Sepia</value>
+  </data>
+  <data name="invertEffect.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+I</value>
+  </data>
+  <data name="invertEffect.Size" type="System.Drawing.Size, System.Drawing">
+    <value>338, 38</value>
+  </data>
+  <data name="invertEffect.Text" xml:space="preserve">
+    <value>Invert</value>
+  </data>
+  <data name="transparencyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>338, 38</value>
+  </data>
+  <data name="transparencyToolStripMenuItem.Text" xml:space="preserve">
+    <value>Transparency</value>
+  </data>
+  <data name="increaseToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+1</value>
+  </data>
+  <data name="increaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 38</value>
+  </data>
+  <data name="increaseToolStripMenuItem.Text" xml:space="preserve">
+    <value>Increase</value>
+  </data>
+  <data name="decreaseToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+2</value>
+  </data>
+  <data name="decreaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 38</value>
+  </data>
+  <data name="decreaseToolStripMenuItem.Text" xml:space="preserve">
+    <value>Decrease</value>
+  </data>
+  <data name="bWToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+G</value>
+  </data>
+  <data name="bWToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>338, 38</value>
+  </data>
+  <data name="bWToolStripMenuItem.Text" xml:space="preserve">
+    <value>Grayscale</value>
+  </data>
+  <data name="hueToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+H</value>
+  </data>
+  <data name="hueToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>338, 38</value>
+  </data>
+  <data name="hueToolStripMenuItem.Text" xml:space="preserve">
+    <value>Hue</value>
+  </data>
+  <data name="brightnessToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>338, 38</value>
+  </data>
+  <data name="brightnessToolStripMenuItem.Text" xml:space="preserve">
+    <value>Brightness</value>
+  </data>
+  <data name="increaseToolStripMenuItem1.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+3</value>
+  </data>
+  <data name="increaseToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 38</value>
+  </data>
+  <data name="increaseToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Increase</value>
+  </data>
+  <data name="decreaseToolStripMenuItem1.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+4</value>
+  </data>
+  <data name="decreaseToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>330, 38</value>
+  </data>
+  <data name="decreaseToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Decrease</value>
+  </data>
+  <data name="selectToolButton.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Alt+S</value>
+  </data>
+  <data name="selectToolButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 38</value>
+  </data>
+  <data name="selectToolButton.Text" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="penToolButton.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Alt+P</value>
+  </data>
+  <data name="penToolButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 38</value>
+  </data>
+  <data name="penToolButton.Text" xml:space="preserve">
+    <value>Pen</value>
+  </data>
+  <data name="shapesToolButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 38</value>
+  </data>
+  <data name="shapesToolButton.Text" xml:space="preserve">
+    <value>Shapes</value>
+  </data>
+  <data name="circleToolButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 38</value>
+  </data>
+  <data name="circleToolButton.Text" xml:space="preserve">
+    <value>Circle</value>
+  </data>
+  <data name="squareToolButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 38</value>
+  </data>
+  <data name="squareToolButton.Text" xml:space="preserve">
+    <value>Square</value>
+  </data>
+  <data name="lineToolButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 38</value>
+  </data>
+  <data name="lineToolButton.Text" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="triangleToolButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 38</value>
+  </data>
+  <data name="triangleToolButton.Text" xml:space="preserve">
+    <value>Triangle</value>
+  </data>
+  <data name="deselectButton.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Alt+D</value>
+  </data>
+  <data name="deselectButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 38</value>
+  </data>
+  <data name="deselectButton.Text" xml:space="preserve">
+    <value>Deselect All</value>
+  </data>
+  <data name="moveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 38</value>
+  </data>
+  <data name="moveToolStripMenuItem.Text" xml:space="preserve">
+    <value>Move</value>
+  </data>
+  <data name="memeToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+M</value>
+  </data>
+  <data name="memeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 38</value>
+  </data>
+  <data name="memeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Meme</value>
+  </data>
+  <data name="flipToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 38</value>
+  </data>
+  <data name="flipToolStripMenuItem.Text" xml:space="preserve">
+    <value>Flip</value>
+  </data>
+  <data name="verticalToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+V</value>
+  </data>
+  <data name="verticalToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>345, 38</value>
+  </data>
+  <data name="verticalToolStripMenuItem.Text" xml:space="preserve">
+    <value>Vertical</value>
+  </data>
+  <data name="horizontalToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Shift+H</value>
+  </data>
+  <data name="horizontalToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>345, 38</value>
+  </data>
+  <data name="horizontalToolStripMenuItem.Text" xml:space="preserve">
+    <value>Horizontal</value>
+  </data>
+  <data name="rotateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 38</value>
+  </data>
+  <data name="rotateToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rotate</value>
+  </data>
+  <data name="forwardToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Right</value>
+  </data>
+  <data name="forwardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 38</value>
+  </data>
+  <data name="forwardToolStripMenuItem.Text" xml:space="preserve">
+    <value>Forward</value>
+  </data>
+  <data name="backwardToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Left</value>
+  </data>
+  <data name="backwardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>304, 38</value>
+  </data>
+  <data name="backwardToolStripMenuItem.Text" xml:space="preserve">
+    <value>Backward</value>
+  </data>
+  <data name="resizeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 38</value>
+  </data>
+  <data name="resizeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Resize</value>
+  </data>
+  <data name="selectColorToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Alt+C</value>
+  </data>
+  <data name="selectColorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 38</value>
+  </data>
+  <data name="selectColorToolStripMenuItem.Text" xml:space="preserve">
+    <value>Select Color</value>
+  </data>
+  <data name="fillColorToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Alt+F</value>
+  </data>
+  <data name="fillColorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 38</value>
+  </data>
+  <data name="fillColorToolStripMenuItem.Text" xml:space="preserve">
+    <value>Fill Color</value>
+  </data>
+  <data name="textBoxToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 38</value>
+  </data>
+  <data name="textBoxToolStripMenuItem.Text" xml:space="preserve">
+    <value>Text Box</value>
+  </data>
+  <data name="colorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 38</value>
+  </data>
+  <data name="colorToolStripMenuItem.Text" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="selectColorToolStripMenuItem1.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Alt+C</value>
+  </data>
+  <data name="selectColorToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 38</value>
+  </data>
+  <data name="selectColorToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Select Color</value>
+  </data>
+  <data name="fillColorToolStripMenuItem1.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Alt+F</value>
+  </data>
+  <data name="fillColorToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>294, 38</value>
+  </data>
+  <data name="fillColorToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Fill Color</value>
+  </data>
+  <data name="baseCanvas.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <data name="baseCanvas.InitialImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAACxgAAAZiCAYAAAAKP6EhAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAACH
@@ -531,10 +989,478 @@
         AAAAAAAAEYwBAAAAAAAAAAAAgLcdQQoML0YBr7EAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="baseCanvas.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 37</value>
+  </data>
+  <data name="baseCanvas.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1653, 992</value>
+  </data>
+  <data name="baseCanvas.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="baseCanvas.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;baseCanvas.Name" xml:space="preserve">
+    <value>baseCanvas</value>
+  </data>
+  <data name="&gt;&gt;baseCanvas.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;baseCanvas.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;baseCanvas.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <metadata name="availableColors.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>224, 17</value>
+  </metadata>
+  <data name="MousePos.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="MousePos.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="MousePos.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1477, 11</value>
+  </data>
+  <data name="MousePos.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 26</value>
+  </data>
+  <data name="MousePos.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="MousePos.Text" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;MousePos.Name" xml:space="preserve">
+    <value>MousePos</value>
+  </data>
+  <data name="&gt;&gt;MousePos.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MousePos.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MousePos.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="BrushSizeBar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="BrushSizeBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1427, 27</value>
+  </data>
+  <data name="BrushSizeBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>226, 90</value>
+  </data>
+  <data name="BrushSizeBar.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="BrushSizeBar.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;BrushSizeBar.Name" xml:space="preserve">
+    <value>BrushSizeBar</value>
+  </data>
+  <data name="&gt;&gt;BrushSizeBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BrushSizeBar.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;BrushSizeBar.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1294, 8</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 26</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Mouse Coordinates</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>45</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>11, 26</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1653, 1029</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Calibri, 7.875pt</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Tabula</value>
+  </data>
+  <data name="&gt;&gt;fileButton.Name" xml:space="preserve">
+    <value>fileButton</value>
+  </data>
+  <data name="&gt;&gt;fileButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;newFileButton.Name" xml:space="preserve">
+    <value>newFileButton</value>
+  </data>
+  <data name="&gt;&gt;newFileButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;openFileButton.Name" xml:space="preserve">
+    <value>openFileButton</value>
+  </data>
+  <data name="&gt;&gt;openFileButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveFileSave.Name" xml:space="preserve">
+    <value>saveFileSave</value>
+  </data>
+  <data name="&gt;&gt;saveFileSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveAsJPEG.Name" xml:space="preserve">
+    <value>saveAsJPEG</value>
+  </data>
+  <data name="&gt;&gt;saveAsJPEG.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveAsBitmap.Name" xml:space="preserve">
+    <value>saveAsBitmap</value>
+  </data>
+  <data name="&gt;&gt;saveAsBitmap.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;saveAsPNG.Name" xml:space="preserve">
+    <value>saveAsPNG</value>
+  </data>
+  <data name="&gt;&gt;saveAsPNG.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;optionsButton.Name" xml:space="preserve">
+    <value>optionsButton</value>
+  </data>
+  <data name="&gt;&gt;optionsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;aboutButton.Name" xml:space="preserve">
+    <value>aboutButton</value>
+  </data>
+  <data name="&gt;&gt;aboutButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;printButton.Name" xml:space="preserve">
+    <value>printButton</value>
+  </data>
+  <data name="&gt;&gt;printButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;exitButton.Name" xml:space="preserve">
+    <value>exitButton</value>
+  </data>
+  <data name="&gt;&gt;exitButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;editButton.Name" xml:space="preserve">
+    <value>editButton</value>
+  </data>
+  <data name="&gt;&gt;editButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;undoButton.Name" xml:space="preserve">
+    <value>undoButton</value>
+  </data>
+  <data name="&gt;&gt;undoButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;redoButton.Name" xml:space="preserve">
+    <value>redoButton</value>
+  </data>
+  <data name="&gt;&gt;redoButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cutButton.Name" xml:space="preserve">
+    <value>cutButton</value>
+  </data>
+  <data name="&gt;&gt;cutButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;copyButton.Name" xml:space="preserve">
+    <value>copyButton</value>
+  </data>
+  <data name="&gt;&gt;copyButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pasteButton.Name" xml:space="preserve">
+    <value>pasteButton</value>
+  </data>
+  <data name="&gt;&gt;pasteButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;transformButton.Name" xml:space="preserve">
+    <value>transformButton</value>
+  </data>
+  <data name="&gt;&gt;transformButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;zoomInToolStripMenuItem.Name" xml:space="preserve">
+    <value>zoomInToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;zoomInToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;zoomOutToolStripMenuItem.Name" xml:space="preserve">
+    <value>zoomOutToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;zoomOutToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;effectsButton.Name" xml:space="preserve">
+    <value>effectsButton</value>
+  </data>
+  <data name="&gt;&gt;effectsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;sepiaEffect.Name" xml:space="preserve">
+    <value>sepiaEffect</value>
+  </data>
+  <data name="&gt;&gt;sepiaEffect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;invertEffect.Name" xml:space="preserve">
+    <value>invertEffect</value>
+  </data>
+  <data name="&gt;&gt;invertEffect.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;transparencyToolStripMenuItem.Name" xml:space="preserve">
+    <value>transparencyToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;transparencyToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;increaseToolStripMenuItem.Name" xml:space="preserve">
+    <value>increaseToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;increaseToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;decreaseToolStripMenuItem.Name" xml:space="preserve">
+    <value>decreaseToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;decreaseToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bWToolStripMenuItem.Name" xml:space="preserve">
+    <value>bWToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;bWToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;hueToolStripMenuItem.Name" xml:space="preserve">
+    <value>hueToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;hueToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;brightnessToolStripMenuItem.Name" xml:space="preserve">
+    <value>brightnessToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;brightnessToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;increaseToolStripMenuItem1.Name" xml:space="preserve">
+    <value>increaseToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;increaseToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;decreaseToolStripMenuItem1.Name" xml:space="preserve">
+    <value>decreaseToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;decreaseToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolsButton.Name" xml:space="preserve">
+    <value>toolsButton</value>
+  </data>
+  <data name="&gt;&gt;toolsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;selectToolButton.Name" xml:space="preserve">
+    <value>selectToolButton</value>
+  </data>
+  <data name="&gt;&gt;selectToolButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;penToolButton.Name" xml:space="preserve">
+    <value>penToolButton</value>
+  </data>
+  <data name="&gt;&gt;penToolButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;shapesToolButton.Name" xml:space="preserve">
+    <value>shapesToolButton</value>
+  </data>
+  <data name="&gt;&gt;shapesToolButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;circleToolButton.Name" xml:space="preserve">
+    <value>circleToolButton</value>
+  </data>
+  <data name="&gt;&gt;circleToolButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;squareToolButton.Name" xml:space="preserve">
+    <value>squareToolButton</value>
+  </data>
+  <data name="&gt;&gt;squareToolButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lineToolButton.Name" xml:space="preserve">
+    <value>lineToolButton</value>
+  </data>
+  <data name="&gt;&gt;lineToolButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;triangleToolButton.Name" xml:space="preserve">
+    <value>triangleToolButton</value>
+  </data>
+  <data name="&gt;&gt;triangleToolButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;deselectButton.Name" xml:space="preserve">
+    <value>deselectButton</value>
+  </data>
+  <data name="&gt;&gt;deselectButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;moveToolStripMenuItem.Name" xml:space="preserve">
+    <value>moveToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;moveToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;memeToolStripMenuItem.Name" xml:space="preserve">
+    <value>memeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;memeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flipToolStripMenuItem.Name" xml:space="preserve">
+    <value>flipToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;flipToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;verticalToolStripMenuItem.Name" xml:space="preserve">
+    <value>verticalToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;verticalToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;horizontalToolStripMenuItem.Name" xml:space="preserve">
+    <value>horizontalToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;horizontalToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rotateToolStripMenuItem.Name" xml:space="preserve">
+    <value>rotateToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;rotateToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;forwardToolStripMenuItem.Name" xml:space="preserve">
+    <value>forwardToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;forwardToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;backwardToolStripMenuItem.Name" xml:space="preserve">
+    <value>backwardToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;backwardToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;resizeToolStripMenuItem.Name" xml:space="preserve">
+    <value>resizeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;resizeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;selectColorToolStripMenuItem.Name" xml:space="preserve">
+    <value>selectColorToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;selectColorToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fillColorToolStripMenuItem.Name" xml:space="preserve">
+    <value>fillColorToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;fillColorToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxToolStripMenuItem.Name" xml:space="preserve">
+    <value>textBoxToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;textBoxToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colorToolStripMenuItem.Name" xml:space="preserve">
+    <value>colorToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;colorToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;selectColorToolStripMenuItem1.Name" xml:space="preserve">
+    <value>selectColorToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;selectColorToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fillColorToolStripMenuItem1.Name" xml:space="preserve">
+    <value>fillColorToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;fillColorToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;availableColors.Name" xml:space="preserve">
+    <value>availableColors</value>
+  </data>
+  <data name="&gt;&gt;availableColors.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColorDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Tabula</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

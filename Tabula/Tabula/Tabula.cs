@@ -386,7 +386,7 @@ namespace Tabula {
          */
         private void zoomInToolStripMenuItem_Click(object sender, EventArgs e) {
             Zoom zoo = new Zoom();
-            Paste((Bitmap)zoo.Scale(baseCanvas, new Rectangle(0, 0, 50, 50)), baseCanvas.Image);
+            Paste((Bitmap)zoo.Scale(baseCanvas.Image, new Rectangle(SelectRect.Left, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height))), baseCanvas.Image);
         }
 
         /**

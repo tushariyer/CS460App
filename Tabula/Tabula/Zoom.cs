@@ -2,20 +2,18 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Tabula
-{
-    class Zoom
-    {
+namespace Tabula {
+    class Zoom {
         Image CopiedImage;
-        public Zoom()
-        {
+        public Zoom() {
 
         }
 
-        public Image Scale(PictureBox pb, Rectangle rectum)
-        {
-            Bitmap bmp = (Bitmap)pb.Image.Clone();
-            CopiedImage = bmp.Clone(new Rectangle(rectum.Left, rectum.Top, Math.Abs(rectum.Width), Math.Abs(rectum.Height)), bmp.PixelFormat);
+        public Image Scale(Image pb, Rectangle rectum) {
+            Bitmap bmp = (Bitmap)pb.Clone();
+            CopiedImage = bmp.Clone(new Rectangle(rectum.Left, rectum.Top, rectum.Width - 100, rectum.Height - 100), bmp.PixelFormat);
+            bmp.Dispose();
+            pb.Dispose();
             return CopiedImage;
         }
     }

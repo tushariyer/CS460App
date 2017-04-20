@@ -1,26 +1,22 @@
 ﻿using System.Drawing;
 
-namespace Tabula
-{
-    class ResizeMedia : MultiTool
-    {
+namespace Tabula {
+    class ResizeMedia : MultiTool {
         //Private fields
         private Image target;
         private Bitmap bm;
 
         //Takes in an Image and converts it to bitmap for scaling purposes
-        public ResizeMedia(Image current)
-        {
+        public ResizeMedia(Image current) {
             target = current;
             bm = (Bitmap)target;
             ActivateTool();
         }
 
         //Takes in a new height for the Image in this object
-        public Image Scale(int width,int height)
-        {
+        public Image Scale(int width, int height) {
             //Bitmap to be returned as an image
-            Bitmap scaled = new Bitmap(bm,width,height);
+            Bitmap scaled = new Bitmap(bm, width, height);
             //Returns the newly scaled image
             return (Image)bm;
         }

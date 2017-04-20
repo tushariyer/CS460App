@@ -7,17 +7,14 @@ using System.Windows.Forms;
 using System.Windows;
 using System.Drawing;
 
-namespace Tabula
-{
-    class Meme
-    {
-        private string userInput1,userInput2;
+namespace Tabula {
+    class Meme {
+        private string userInput1, userInput2;
         private PictureBox imageOnCanvas;
         private Font textFont;
 
         //Takes in image from the main form and sets up meme(TM) text
-        public Meme(PictureBox image)
-        {
+        public Meme(PictureBox image) {
             imageOnCanvas = image;
 
             //Checks if user wants a pre done meme
@@ -26,8 +23,7 @@ namespace Tabula
             MessageBoxButtons button = MessageBoxButtons.YesNoCancel;
             DialogResult result = MessageBox.Show(messageBoxText, caption, button);
 
-            switch (result)
-            {
+            switch (result) {
                 case DialogResult.Yes:
                     ImportMeme();
                     break;
@@ -45,8 +41,7 @@ namespace Tabula
             button = MessageBoxButtons.YesNoCancel;
             result = MessageBox.Show(messageBoxText, caption, button);
 
-            switch(result)
-            {
+            switch (result) {
                 case DialogResult.Yes:
                     SetTextUser();
                     break;
@@ -66,24 +61,20 @@ namespace Tabula
         }
 
         //Method to handle setting default text
-        private void SetTextDefault()
-        {
-            DrawText("Impact",50);
+        private void SetTextDefault() {
+            DrawText("Impact", 50);
         }
 
 
         //Method to handle setting user text
-        private void SetTextUser()
-        {
+        private void SetTextUser() {
             FontDialog userFont = new FontDialog();
-            if(userFont.ShowDialog() == DialogResult.OK)
-            {
-                DrawText(userFont.Font.ToString(),(int)userFont.Font.Size);
-            }    
+            if (userFont.ShowDialog() == DialogResult.OK) {
+                DrawText(userFont.Font.ToString(), (int)userFont.Font.Size);
+            }
         }
 
-        private void DrawText(String fontStyle, int fontSize)
-        {
+        private void DrawText(String fontStyle, int fontSize) {
             //Takes in user input for top and bottom text
             userInput1 = TextInput.TextDialog("Top Text", "Enter your text");
             userInput2 = TextInput.TextDialog("Bottom Text", "Enter your text");
@@ -110,15 +101,13 @@ namespace Tabula
             imageOnCanvas.Refresh();
         }
 
-        private void ImportMeme()
-        {
+        private void ImportMeme() {
             OpenFileDialog memeDia = new OpenFileDialog();
             memeDia.Title = "Choose a meme";
             memeDia.Filter = "All Files (*.*)|*.*";
             memeDia.InitialDirectory = "Tabula/Tabula/Resources";
-            
-            if(memeDia.ShowDialog() == DialogResult.OK)
-            {
+
+            if (memeDia.ShowDialog() == DialogResult.OK) {
                 imageOnCanvas.Image = Image.FromFile(memeDia.FileName);
             }
 

@@ -5,12 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Tabula
-{
-    class RotateMedia : MultiTool
-    {
-        public RotateMedia()
-        {
+namespace Tabula {
+    class RotateMedia : MultiTool {
+        public RotateMedia() {
             this.ToolTitle = "Rotater";
             this.IsActive = false;
         }

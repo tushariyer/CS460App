@@ -18,7 +18,7 @@ namespace Tabula {
             pictureBox.Size = Properties.Resources.Blank.Size;
             pictureBox.Image = Properties.Resources.Blank;
         }
-        
+
         /**
          * Check File Extention
          */

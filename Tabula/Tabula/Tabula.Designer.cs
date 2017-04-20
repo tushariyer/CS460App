@@ -288,6 +288,7 @@
             this.effectsButton.Name = "effectsButton";
             this.effectsButton.Size = new System.Drawing.Size(88, 33);
             this.effectsButton.Text = "Effects";
+            this.effectsButton.Click += new System.EventHandler(this.effectsButton_Click);
             // 
             // sepiaEffect
             // 

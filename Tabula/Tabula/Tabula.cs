@@ -46,6 +46,19 @@ namespace Tabula {
          **/
         public Tabula() {
             InitializeComponent();
+            setFalse();
+        }
+
+        private void setFalse() {
+            effectsButton.Enabled = false;
+            toolsButton.Enabled = false;
+            editButton.Enabled = false;
+        }
+
+        private void setTrue() {
+            effectsButton.Enabled = true;
+            toolsButton.Enabled = true;
+            editButton.Enabled = true;
         }
 
         /**--------------------------
@@ -75,6 +88,7 @@ namespace Tabula {
                     defaultSelect();
                     baseCanvas.SizeMode = PictureBoxSizeMode.AutoSize;
                     baseCanvas.Refresh();
+                    setTrue();
                 }
             }
             else {
@@ -82,6 +96,7 @@ namespace Tabula {
                 defaultSelect();
                 baseCanvas.SizeMode = PictureBoxSizeMode.AutoSize;
                 baseCanvas.Refresh();
+                setTrue();
             }
         }
 
@@ -101,6 +116,7 @@ namespace Tabula {
                     baseCanvas.Refresh();
                     newPic.importImage(baseCanvas); //Use the importImage method to assign a picture to the PictureBox
                     defaultSelect();
+                    setTrue();
                 }
             }
             else {
@@ -109,6 +125,7 @@ namespace Tabula {
                 baseCanvas.Refresh();
                 newPic.importImage(baseCanvas); //Use the importImage method to assign a picture to the PictureBox
                 defaultSelect();
+                setTrue();
             }
         }
 
@@ -875,6 +892,10 @@ namespace Tabula {
         private void selectColorToolStripMenuItem_Click(object sender, EventArgs e) {
             ColorSelector colorGrid = new ColorSelector();
             selectedColor = colorGrid.displayShades(availableColors);
+        }
+
+        private void effectsButton_Click(object sender, EventArgs e) {
+            //Keep empty
         }
     }
 }

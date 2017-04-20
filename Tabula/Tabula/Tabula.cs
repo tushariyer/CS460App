@@ -496,7 +496,10 @@ namespace Tabula {
                         Equations.DrawCircle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, true);
                         break;
                     case (EShapes.Square):
-                        Equations.DrawSquare(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, true);
+                        DrawSelectArea(e.X, e.Y);
+                        //Equations.DrawSquare(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, true);
+                        baseCanvas.Invalidate();
+                        SelectRect = new Rectangle(0, 0, 0, 0);
                         break;
                     case (EShapes.Triangle):
                         Equations.DrawTriangle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, true);

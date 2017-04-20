@@ -85,23 +85,39 @@ namespace Tabula {
             pen.Color = toUse;
 
             //checks whether to create a temp shape, so real shape that will draw onto the image, not the picture box
-            if (!btemp) {
+            if (btemp) {
                 //Creates a graphic object to use on the base canvas
-                using (Graphics G = Graphics.FromImage(baseCanvas.Image)) {
+                using (SelectionArea = baseCanvas.CreateGraphics()) {
                     //draws the shape on the IMAGE
-                    G.DrawRectangle(pen, startX, startY, endX - startX, endY - startY);
-                    G.Dispose();
+                    SelectionArea.DrawRectangle(pen, startX, startY, endX - startX, endY - startY);
+                    SelectionArea.Dispose();
                 }
             }
             else {
-                using (SelectionArea = baseCanvas.CreateGraphics()) {
-                    //draws the shape on the PICTURE BOX
-                    SelectionArea.DrawRectangle(pen, startX, startY, endX - startX, endY - startY);
-                    SelectionArea.Dispose();
-                    //deletes it from the picture box, creates the moving preview effect.
-                    baseCanvas.Invalidate();
+                using (Graphics G = Graphics.FromImage(baseCanvas.Image)) {
+                    if (endX > startX && endY > startY) {  //Quadrant [+ -]
+                        recty = new Rectangle(endX, startY, startX - endX, endY - startY);
+                        G.DrawRectangle(pen, recty);
+                    }
+                    else if (endX < startX && endY < startY) {  //Quadrant [- +]
+                        recty = new Rectangle(endX, endY, startX - endX, startY - endY);
+                        G.DrawRectangle(pen, recty);
+                    }
+                    else if (endX > startX && endY < startY) {  //Quadrant [+ +]
+                        recty = new Rectangle(startX, endY, endX - startX, startY - endY);
+                        G.DrawRectangle(pen, recty);
+                    }
+                    else {  //Quadrant [- -]
+                        recty = new Rectangle(endX, startY, startX - endX, endY - startY);
+                        G.DrawRectangle(pen, recty);
+                    }
+                    recty = new Rectangle(startX, startY, endX - startX, endY - startY);
+                    G.DrawRectangle(pen, recty);
                 }
             }
+
+
+
             baseCanvas.Refresh();
         }
 

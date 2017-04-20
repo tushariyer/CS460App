@@ -45,7 +45,7 @@ namespace Tabula
         //Current tool/shape selected
         private ETools CurrentTool;
         private EShapes shapeSelected;
-
+        bool    bCanDrawShape;
 
         public int CurrentPictureAngle = 0;
 
@@ -450,6 +450,7 @@ namespace Tabula
          */
         private void baseCanvas_MouseDown(object sender, MouseEventArgs e)
         {
+
             BeginningMousePos[0] = e.Location.X;
             BeginningMousePos[1] = e.Location.Y;
             switch (CurrentTool)
@@ -470,7 +471,11 @@ namespace Tabula
                     else
                     {
                         bInSelectedRect = false;
-                    }
+                    }                  
+                    break;
+                    //makes it so the shapes will only draw after a mouse down event
+                case (ETools.Shapes):
+                    bCanDrawShape = true;
                     break;
                 default:
                     break;
@@ -498,7 +503,7 @@ namespace Tabula
             if (CurrentTool == ETools.Move)
             {
                 //Copied the selected image to the "clipboard"
-                CropImage();
+                CutImage();
 
                 //set the current copied image to the mouse position.
                 Paste(CopiedImage, baseCanvas.Image, e.X, e.Y);
@@ -513,20 +518,22 @@ namespace Tabula
             }
             else if (CurrentTool == ETools.Shapes)
             {
+                bCanDrawShape = false;
                 savePrevImage();
+                //draws the shpae that has been selected. DRAWS ONTO IMAGE
                 switch (shapeSelected)
                 {
                     case (EShapes.Line):
-                        Equations.DrawLine(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea, selectedColor, SelectRect);
+                        Equations.DrawLine(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, false);
                         break;
                     case (EShapes.Circle):
-                        Equations.DrawCircle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea, selectedColor, SelectRect);
+                        Equations.DrawCircle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, false);
                         break;
                     case (EShapes.Square):
-                        Equations.DrawSquare(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea, selectedColor, SelectRect);
+                        Equations.DrawSquare(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, false);
                         break;
                     case (EShapes.Triangle):
-                        Equations.DrawTriangle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea, selectedColor, SelectRect);
+                        Equations.DrawTriangle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, false);
                         break;
                     default:
                         break;
@@ -566,6 +573,29 @@ namespace Tabula
                 //clear the base can
                 baseCanvas.Invalidate();
             }
+
+            if (bCanDrawShape)
+            {
+                switch (shapeSelected)
+                {
+                    case (EShapes.Line):
+                        Equations.DrawLine(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, true);
+                        baseCanvas.Invalidate();
+                        break;
+                    case (EShapes.Circle):
+                        Equations.DrawCircle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, true);
+                        break;
+                    case (EShapes.Square):
+                        Equations.DrawSquare(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, true);
+                        break;
+                    case (EShapes.Triangle):
+                        Equations.DrawTriangle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, true);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
             BeforeLocation[0] = e.X;
             BeforeLocation[1] = e.Y;
         }
@@ -584,8 +614,6 @@ namespace Tabula
                 case (EShapes.Line):
                     CurrentTool = ETools.Shapes;
                     BrushSizeBar.Visible = false; //Hide the bar if its not in use
-                    break;
-                case (EShapes.Circle):
                     break;
             }
         }

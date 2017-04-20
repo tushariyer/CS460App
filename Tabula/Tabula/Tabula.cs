@@ -386,7 +386,7 @@ namespace Tabula {
          */
         private void zoomInToolStripMenuItem_Click(object sender, EventArgs e) {
             Zoom zoo = new Zoom();
-            Paste((Bitmap)zoo.Scale(baseCanvas.Image, new Rectangle(SelectRect.Left, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height))), baseCanvas.Image);
+            Paste((Bitmap)zoo.ScaleIn(baseCanvas.Image, new Rectangle(SelectRect.Left, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height))), baseCanvas.Image);
         }
 
         /**
@@ -898,6 +898,11 @@ namespace Tabula {
 
         private void effectsButton_Click(object sender, EventArgs e) {
             //Keep empty
+        }
+
+        private void zoomOutToolStripMenuItem_Click(object sender, EventArgs e) {
+            Zoom zoo = new Zoom();
+            Paste((Bitmap)zoo.Scale(baseCanvas.Image, new Rectangle(SelectRect.Left, SelectRect.Top, Math.Abs(SelectRect.Width), Math.Abs(SelectRect.Height))), baseCanvas.Image);
         }
     }
 }

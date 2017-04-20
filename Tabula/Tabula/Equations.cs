@@ -27,48 +27,80 @@ namespace Tabula {
         /**
          * Draw Line
          */
-        public static void DrawLine(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea, Color toUse, Rectangle recty) {
-            using (Graphics g = Graphics.FromImage(baseCanvas.Image)) {
+        public static void DrawLine(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea, Color toUse, Rectangle recty, bool btemp) {
 
-                g.DrawLine(pen, startX, startY, endX, endY);
-                baseCanvas.Refresh();
+            pen.Color = toUse;
+
+            //checks whether to create a temp shape, so real shape that will draw onto the image, not the picture box
+            if (!btemp) {
+                using (Graphics g = Graphics.FromImage(baseCanvas.Image)) {
+                    //draws the shape on the IMAGE
+                    g.DrawLine(pen, startX, startY, endX, endY);
+                    baseCanvas.Refresh();
+                }
+            }
+            else {
+                using (SelectionArea = baseCanvas.CreateGraphics()) {
+                    //draws the shape on the PICTURE BOX
+                    SelectionArea.DrawLine(pen, startX, startY, endX, endY);
+                    SelectionArea.Dispose();
+                    //deletes it from the picture box, creates the moving preview effect.
+                    baseCanvas.Invalidate();
+                }
             }
         }
 
         /**
          * Draw Circle
          */
-        public static void DrawCircle(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea, Color toUse, Rectangle recty) {
+
+        public static void DrawCircle(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea, Color toUse, Rectangle recty, bool btemp) {
             pen.Color = toUse;
-            Image pastImage = (Image)baseCanvas.Image.Clone();
             int radius = (int)Math.Round(Math.Sqrt(Math.Pow(endY - startY, 2) + Math.Pow(endX - startX, 2)));
-            using (var G = Graphics.FromImage(pastImage)) {
-                G.DrawEllipse(pen, startX - (radius), startY - (radius), 2 * radius, 2 * radius);
-
-                G.DrawImage(pastImage, 0, 0);
-                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel);
-                G.Dispose();
-
-                baseCanvas.Image = pastImage;
+            //checks whether to create a temp shape, so real shape that will draw onto the image, not the picture box
+            if (!btemp) {
+                //creates a graphic object to use on the base canvas.
+                using (Graphics G = Graphics.FromImage(baseCanvas.Image)) {
+                    //draws the shape on the IMAGE
+                    G.DrawEllipse(pen, startX - (radius), startY - (radius), 2 * radius, 2 * radius);
+                    G.Dispose();
+                }
+            }
+            else {
+                using (SelectionArea = baseCanvas.CreateGraphics()) {
+                    //draws the shape on the PICTURE BOX
+                    SelectionArea.DrawEllipse(pen, startX - (radius), startY - (radius), 2 * radius, 2 * radius);
+                    SelectionArea.Dispose();
+                    //deletes it from the picture box, creates the moving preview effect.
+                    baseCanvas.Invalidate();
+                }
             }
             baseCanvas.Refresh();
-
         }
 
         /**
          * Draw Square
          */
-        public static void DrawSquare(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea, Color toUse, Rectangle recty) {
+        public static void DrawSquare(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea, Color toUse, Rectangle recty, bool btemp) {
             pen.Color = toUse;
-            Image pastImage = (Image)baseCanvas.Image.Clone();
-            using (var G = Graphics.FromImage(pastImage)) {
-                G.DrawRectangle(pen, startX, startY, endX - startX, endY - startY);
 
-                G.DrawImage(pastImage, 0, 0);
-                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel);
-                G.Dispose();
-
-                baseCanvas.Image = pastImage;
+            //checks whether to create a temp shape, so real shape that will draw onto the image, not the picture box
+            if (!btemp) {
+                //Creates a graphic object to use on the base canvas
+                using (Graphics G = Graphics.FromImage(baseCanvas.Image)) {
+                    //draws the shape on the IMAGE
+                    G.DrawRectangle(pen, startX, startY, endX - startX, endY - startY);
+                    G.Dispose();
+                }
+            }
+            else {
+                using (SelectionArea = baseCanvas.CreateGraphics()) {
+                    //draws the shape on the PICTURE BOX
+                    SelectionArea.DrawRectangle(pen, startX, startY, endX - startX, endY - startY);
+                    SelectionArea.Dispose();
+                    //deletes it from the picture box, creates the moving preview effect.
+                    baseCanvas.Invalidate();
+                }
             }
             baseCanvas.Refresh();
         }
@@ -76,20 +108,39 @@ namespace Tabula {
         /**
          * Draw Triangle
          */
-        public static void DrawTriangle(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea, Color toUse, Rectangle recty) {
+        public static void DrawTriangle(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea, Color toUse, Rectangle recty, bool btemp) {
             pen.Color = toUse;
             Image pastImage = (Image)baseCanvas.Image.Clone();
-            using (var G = Graphics.FromImage(pastImage)) {
-                G.DrawLine(pen, startX, startY, endX, endY);
-                G.DrawLine(pen, endX, endY * 2, endX, endY);
-                G.DrawLine(pen, startX, startY, endX, endY * 2);
 
-                G.DrawImage(pastImage, 0, 0);
-                G.DrawImage(baseCanvas.Image, recty, recty.Left, recty.Top, recty.Right - recty.Left, recty.Bottom - recty.Top, GraphicsUnit.Pixel);
-                G.Dispose();
-
-                baseCanvas.Image = pastImage;
+            //checks whether to create a temp shape, so real shape that will draw onto the image, not the picture box
+            if (!btemp) {
+                using (var G = Graphics.FromImage(pastImage)) {
+                    //draws the line from the mouse click to the mouse position
+                    G.DrawLine(pen, startX, startY, endX, endY);
+                    //flips that point over the Y axis that is where the mouse click is one
+                    G.DrawLine(pen, startX, startY, endX - (endX - startX) * 2, endY);
+                    //connects the two
+                    G.DrawLine(pen, endX - (endX - startX) * 2, endY, endX, endY);
+                    G.Dispose();
+                    //deletes it from the picture box, creates the moving preview effect.
+                    baseCanvas.Image = pastImage;
+                }
             }
+            else {
+                using (SelectionArea = baseCanvas.CreateGraphics()) {
+                    //draws the line from the mouse click to the mouse position
+                    SelectionArea.DrawLine(pen, startX, startY, endX, endY);
+                    //flips that point over the Y axis that is where the mouse click is one
+                    SelectionArea.DrawLine(pen, startX, startY, endX - (endX - startX) * 2, endY);
+                    //connects the two
+                    SelectionArea.DrawLine(pen, endX - (endX - startX) * 2, endY, endX, endY);
+                    SelectionArea.Dispose();
+                    //deletes it from the picture box, creates the moving preview effect.
+                    baseCanvas.Invalidate();
+                }
+
+            }
+            //refreshes the canvas so the draw changes show
             baseCanvas.Refresh();
         }
 

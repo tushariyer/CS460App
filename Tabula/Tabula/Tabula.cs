@@ -39,6 +39,7 @@ namespace Tabula {
         private bool bInSelectedRect; //Checking booleans
         public bool bSelected;
         public bool bCanDraw;
+        public bool bCanDrawShape;
 
         /**
          * App Constructor
@@ -405,6 +406,10 @@ namespace Tabula {
                     break;
                 case (ETools.Pen):
                     bCanDraw = true;
+                    savePrevImage();
+                    break;
+                case (ETools.Shapes):
+                    bCanDrawShape = true;
                     break;
                 case (ETools.Move):
                     if (SelectRect.Contains(new Point(e.X, e.Y))) {
@@ -449,18 +454,19 @@ namespace Tabula {
             }
             else if (CurrentTool == ETools.Shapes) {
                 savePrevImage();
+                bCanDrawShape = false;
                 switch (shapeSelected) {
                     case (EShapes.Line):
-                        Equations.DrawLine(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea, selectedColor, SelectRect);
+                        Equations.DrawLine(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, false);
                         break;
                     case (EShapes.Circle):
-                        Equations.DrawCircle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea, selectedColor, SelectRect);
+                        Equations.DrawCircle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, false);
                         break;
                     case (EShapes.Square):
-                        Equations.DrawSquare(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea, selectedColor, SelectRect);
+                        Equations.DrawSquare(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, false);
                         break;
                     case (EShapes.Triangle):
-                        Equations.DrawTriangle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], EndMousePos[0], EndMousePos[1], SelectionArea, selectedColor, SelectRect);
+                        Equations.DrawTriangle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, false);
                         break;
                     default:
                         break;
@@ -481,6 +487,24 @@ namespace Tabula {
                 DrawSelectArea(e.X, e.Y);
                 baseCanvas.Invalidate();
             }
+            if (bCanDrawShape) {
+                switch (shapeSelected) {
+                    case (EShapes.Line):
+                        Equations.DrawLine(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, true);
+                        break;
+                    case (EShapes.Circle):
+                        Equations.DrawCircle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, true);
+                        break;
+                    case (EShapes.Square):
+                        Equations.DrawSquare(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, true);
+                        break;
+                    case (EShapes.Triangle):
+                        Equations.DrawTriangle(baseCanvas, pen, BeginningMousePos[0], BeginningMousePos[1], e.X, e.Y, SelectionArea, selectedColor, SelectRect, true);
+                        break;
+                    default:
+                        break;
+                }
+            }
 
             if (bCanDraw) {
                 Pen p = new Pen(selectedColor);
@@ -492,6 +516,9 @@ namespace Tabula {
                 TempMoving.Move(baseCanvas, SelectRect, pen, e.X, e.Y); //move the object based on the mouse
                 baseCanvas.Invalidate(); //clear the base can
             }
+            //if (CurrentTool != ETools.None) {
+
+            //}
             BeforeLocation[0] = e.X;
             BeforeLocation[1] = e.Y;
         }

@@ -39,7 +39,7 @@ namespace Tabula {
 
         public bool isImageType(string dir) {
             //Check for image format. 
-            return (dir.EndsWith(".png") || dir.EndsWith(".jpg") || dir.EndsWith(".jpeg") || dir.EndsWith(".ico") || dir.EndsWith(".bmp") || dir.EndsWith(".gif") || dir.EndsWith(".pdf"));
+            return (dir.EndsWith(".png") || dir.EndsWith(".gif") || dir.EndsWith(".jpg") || dir.EndsWith(".jpeg") || dir.EndsWith(".ico") || dir.EndsWith(".bmp") || dir.EndsWith(".gif") || dir.EndsWith(".pdf"));
         }
     }
 }

@@ -870,7 +870,7 @@ namespace Tabula {
          * Rotate Tool
          */
         private void rotateToolStripMenuItem_Click(object sender, EventArgs e) { } //Should now call the methods based on the arrow keys. Don't delete this methos
-
+        
         /**
          * Rotate Forward
          */

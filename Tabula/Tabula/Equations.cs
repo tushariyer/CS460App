@@ -52,7 +52,6 @@ namespace Tabula {
         /**
          * Draw Circle
          */
-
         public static void DrawCircle(PictureBox baseCanvas, System.Drawing.Pen pen, int startX, int startY, int endX, int endY, Graphics SelectionArea, Color toUse, Rectangle recty, bool btemp) {
             pen.Color = toUse;
             int radius = (int)Math.Round(Math.Sqrt(Math.Pow(endY - startY, 2) + Math.Pow(endX - startX, 2)));

@@ -129,7 +129,7 @@
     <value>Ctrl+N</value>
   </data>
   <data name="newFileButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
+    <value>281, 38</value>
   </data>
   <data name="newFileButton.Text" xml:space="preserve">
     <value>New File</value>
@@ -138,43 +138,43 @@
     <value>Ctrl+O</value>
   </data>
   <data name="openFileButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
+    <value>281, 38</value>
   </data>
   <data name="openFileButton.Text" xml:space="preserve">
     <value>Open File</value>
   </data>
   <data name="saveAsJPEG.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 22</value>
+    <value>182, 38</value>
   </data>
   <data name="saveAsJPEG.Text" xml:space="preserve">
     <value>JPEG</value>
   </data>
   <data name="saveAsBitmap.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 22</value>
+    <value>182, 38</value>
   </data>
   <data name="saveAsBitmap.Text" xml:space="preserve">
     <value>Bitmap</value>
   </data>
   <data name="saveAsPNG.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 22</value>
+    <value>182, 38</value>
   </data>
   <data name="saveAsPNG.Text" xml:space="preserve">
     <value>PNG</value>
   </data>
   <data name="saveFileSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
+    <value>281, 38</value>
   </data>
   <data name="saveFileSave.Text" xml:space="preserve">
     <value>Save File</value>
   </data>
   <data name="optionsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
+    <value>281, 38</value>
   </data>
   <data name="optionsButton.Text" xml:space="preserve">
     <value>Options</value>
   </data>
   <data name="aboutButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
+    <value>281, 38</value>
   </data>
   <data name="aboutButton.Text" xml:space="preserve">
     <value>About</value>
@@ -183,7 +183,7 @@
     <value>Ctrl+P</value>
   </data>
   <data name="printButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
+    <value>281, 38</value>
   </data>
   <data name="printButton.Text" xml:space="preserve">
     <value>Print</value>
@@ -192,13 +192,13 @@
     <value>Ctrl+Q</value>
   </data>
   <data name="exitButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
+    <value>281, 38</value>
   </data>
   <data name="exitButton.Text" xml:space="preserve">
     <value>Exit</value>
   </data>
   <data name="fileButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 22</value>
+    <value>60, 38</value>
   </data>
   <data name="fileButton.Text" xml:space="preserve">
     <value>File</value>
@@ -207,7 +207,7 @@
     <value>Ctrl+Z</value>
   </data>
   <data name="undoButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+    <value>281, 38</value>
   </data>
   <data name="undoButton.Text" xml:space="preserve">
     <value>Undo</value>
@@ -216,7 +216,7 @@
     <value>Ctrl+Y</value>
   </data>
   <data name="redoButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+    <value>281, 38</value>
   </data>
   <data name="redoButton.Text" xml:space="preserve">
     <value>Redo</value>
@@ -225,7 +225,7 @@
     <value>Ctrl+X</value>
   </data>
   <data name="cutButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+    <value>281, 38</value>
   </data>
   <data name="cutButton.Text" xml:space="preserve">
     <value>Cut</value>
@@ -234,7 +234,7 @@
     <value>Ctrl+C</value>
   </data>
   <data name="copyButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+    <value>281, 38</value>
   </data>
   <data name="copyButton.Text" xml:space="preserve">
     <value>Copy</value>
@@ -243,7 +243,7 @@
     <value>Ctrl+V</value>
   </data>
   <data name="pasteButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+    <value>281, 38</value>
   </data>
   <data name="pasteButton.Text" xml:space="preserve">
     <value>Paste</value>
@@ -252,7 +252,7 @@
     <value>Ctrl+T</value>
   </data>
   <data name="transformButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+    <value>281, 38</value>
   </data>
   <data name="transformButton.Text" xml:space="preserve">
     <value>Translate</value>
@@ -261,7 +261,7 @@
     <value>Ctrl+3</value>
   </data>
   <data name="zoomInToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+    <value>281, 38</value>
   </data>
   <data name="zoomInToolStripMenuItem.Text" xml:space="preserve">
     <value>Zoom In</value>
@@ -270,13 +270,13 @@
     <value>Ctrl+4</value>
   </data>
   <data name="zoomOutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 22</value>
+    <value>281, 38</value>
   </data>
   <data name="zoomOutToolStripMenuItem.Text" xml:space="preserve">
     <value>Zoom Out</value>
   </data>
   <data name="editButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 22</value>
+    <value>64, 38</value>
   </data>
   <data name="editButton.Text" xml:space="preserve">
     <value>Edit</value>
@@ -285,7 +285,7 @@
     <value>Ctrl+Shift+S</value>
   </data>
   <data name="sepiaEffect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 22</value>
+    <value>338, 38</value>
   </data>
   <data name="sepiaEffect.Text" xml:space="preserve">
     <value>Sepia</value>
@@ -294,7 +294,7 @@
     <value>Ctrl+Shift+I</value>
   </data>
   <data name="invertEffect.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 22</value>
+    <value>338, 38</value>
   </data>
   <data name="invertEffect.Text" xml:space="preserve">
     <value>Invert</value>
@@ -303,7 +303,7 @@
     <value>Ctrl+Shift+1</value>
   </data>
   <data name="increaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
+    <value>330, 38</value>
   </data>
   <data name="increaseToolStripMenuItem.Text" xml:space="preserve">
     <value>Increase</value>
@@ -312,13 +312,13 @@
     <value>Ctrl+Shift+2</value>
   </data>
   <data name="decreaseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
+    <value>330, 38</value>
   </data>
   <data name="decreaseToolStripMenuItem.Text" xml:space="preserve">
     <value>Decrease</value>
   </data>
   <data name="transparencyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 22</value>
+    <value>338, 38</value>
   </data>
   <data name="transparencyToolStripMenuItem.Text" xml:space="preserve">
     <value>Transparency</value>
@@ -327,7 +327,7 @@
     <value>Ctrl+Shift+G</value>
   </data>
   <data name="bWToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 22</value>
+    <value>338, 38</value>
   </data>
   <data name="bWToolStripMenuItem.Text" xml:space="preserve">
     <value>Grayscale</value>
@@ -336,7 +336,7 @@
     <value>Ctrl+Shift+H</value>
   </data>
   <data name="hueToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 22</value>
+    <value>338, 38</value>
   </data>
   <data name="hueToolStripMenuItem.Text" xml:space="preserve">
     <value>Hue</value>
@@ -345,7 +345,7 @@
     <value>Ctrl+Shift+3</value>
   </data>
   <data name="increaseToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
+    <value>330, 38</value>
   </data>
   <data name="increaseToolStripMenuItem1.Text" xml:space="preserve">
     <value>Increase</value>
@@ -354,19 +354,19 @@
     <value>Ctrl+Shift+4</value>
   </data>
   <data name="decreaseToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 22</value>
+    <value>330, 38</value>
   </data>
   <data name="decreaseToolStripMenuItem1.Text" xml:space="preserve">
     <value>Decrease</value>
   </data>
   <data name="brightnessToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 22</value>
+    <value>338, 38</value>
   </data>
   <data name="brightnessToolStripMenuItem.Text" xml:space="preserve">
     <value>Brightness</value>
   </data>
   <data name="effectsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 22</value>
+    <value>88, 38</value>
   </data>
   <data name="effectsButton.Text" xml:space="preserve">
     <value>Effects</value>
@@ -375,7 +375,7 @@
     <value>Alt+S</value>
   </data>
   <data name="selectToolButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
+    <value>294, 38</value>
   </data>
   <data name="selectToolButton.Text" xml:space="preserve">
     <value>Select</value>
@@ -384,37 +384,37 @@
     <value>Alt+P</value>
   </data>
   <data name="penToolButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
+    <value>294, 38</value>
   </data>
   <data name="penToolButton.Text" xml:space="preserve">
     <value>Pen</value>
   </data>
   <data name="circleToolButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 22</value>
+    <value>190, 38</value>
   </data>
   <data name="circleToolButton.Text" xml:space="preserve">
     <value>Circle</value>
   </data>
   <data name="squareToolButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 22</value>
+    <value>190, 38</value>
   </data>
   <data name="squareToolButton.Text" xml:space="preserve">
     <value>Square</value>
   </data>
   <data name="lineToolButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 22</value>
+    <value>190, 38</value>
   </data>
   <data name="lineToolButton.Text" xml:space="preserve">
     <value>Line</value>
   </data>
   <data name="triangleToolButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 22</value>
+    <value>190, 38</value>
   </data>
   <data name="triangleToolButton.Text" xml:space="preserve">
     <value>Triangle</value>
   </data>
   <data name="shapesToolButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
+    <value>294, 38</value>
   </data>
   <data name="shapesToolButton.Text" xml:space="preserve">
     <value>Shapes</value>
@@ -423,13 +423,13 @@
     <value>Alt+D</value>
   </data>
   <data name="deselectButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
+    <value>294, 38</value>
   </data>
   <data name="deselectButton.Text" xml:space="preserve">
     <value>Deselect All</value>
   </data>
   <data name="moveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
+    <value>294, 38</value>
   </data>
   <data name="moveToolStripMenuItem.Text" xml:space="preserve">
     <value>Move</value>
@@ -438,7 +438,7 @@
     <value>Ctrl+M</value>
   </data>
   <data name="memeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
+    <value>294, 38</value>
   </data>
   <data name="memeToolStripMenuItem.Text" xml:space="preserve">
     <value>Meme</value>
@@ -447,7 +447,7 @@
     <value>Ctrl+Shift+V</value>
   </data>
   <data name="verticalToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
+    <value>345, 38</value>
   </data>
   <data name="verticalToolStripMenuItem.Text" xml:space="preserve">
     <value>Vertical</value>
@@ -456,13 +456,13 @@
     <value>Ctrl+Shift+H</value>
   </data>
   <data name="horizontalToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
+    <value>345, 38</value>
   </data>
   <data name="horizontalToolStripMenuItem.Text" xml:space="preserve">
     <value>Horizontal</value>
   </data>
   <data name="flipToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
+    <value>294, 38</value>
   </data>
   <data name="flipToolStripMenuItem.Text" xml:space="preserve">
     <value>Flip</value>
@@ -471,7 +471,7 @@
     <value>Ctrl+Right</value>
   </data>
   <data name="forwardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+    <value>304, 38</value>
   </data>
   <data name="forwardToolStripMenuItem.Text" xml:space="preserve">
     <value>Forward</value>
@@ -480,19 +480,19 @@
     <value>Ctrl+Left</value>
   </data>
   <data name="backwardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+    <value>304, 38</value>
   </data>
   <data name="backwardToolStripMenuItem.Text" xml:space="preserve">
     <value>Backward</value>
   </data>
   <data name="rotateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
+    <value>294, 38</value>
   </data>
   <data name="rotateToolStripMenuItem.Text" xml:space="preserve">
     <value>Rotate</value>
   </data>
   <data name="resizeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
+    <value>294, 38</value>
   </data>
   <data name="resizeToolStripMenuItem.Text" xml:space="preserve">
     <value>Resize</value>
@@ -501,7 +501,7 @@
     <value>Alt+C</value>
   </data>
   <data name="selectColorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
+    <value>294, 38</value>
   </data>
   <data name="selectColorToolStripMenuItem.Text" xml:space="preserve">
     <value>Select Color</value>
@@ -510,13 +510,13 @@
     <value>Alt+F</value>
   </data>
   <data name="fillColorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
+    <value>294, 38</value>
   </data>
   <data name="fillColorToolStripMenuItem.Text" xml:space="preserve">
     <value>Fill Color</value>
   </data>
   <data name="textBoxToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
+    <value>294, 38</value>
   </data>
   <data name="textBoxToolStripMenuItem.Text" xml:space="preserve">
     <value>Text Box</value>
@@ -525,7 +525,7 @@
     <value>Alt+C</value>
   </data>
   <data name="selectColorToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>294, 38</value>
   </data>
   <data name="selectColorToolStripMenuItem1.Text" xml:space="preserve">
     <value>Select Color</value>
@@ -534,19 +534,19 @@
     <value>Alt+F</value>
   </data>
   <data name="fillColorToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>294, 38</value>
   </data>
   <data name="fillColorToolStripMenuItem1.Text" xml:space="preserve">
     <value>Fill Color</value>
   </data>
   <data name="colorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 22</value>
+    <value>294, 38</value>
   </data>
   <data name="colorToolStripMenuItem.Text" xml:space="preserve">
     <value>Color</value>
   </data>
   <data name="toolsButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 22</value>
+    <value>76, 38</value>
   </data>
   <data name="toolsButton.Text" xml:space="preserve">
     <value>Tools</value>
@@ -555,10 +555,10 @@
     <value>0, 0</value>
   </data>
   <data name="topMenuBar.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 1, 0, 1</value>
+    <value>7, 2, 0, 2</value>
   </data>
   <data name="topMenuBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>751, 24</value>
+    <value>1652, 42</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="topMenuBar.TabIndex" type="System.Int32, mscorlib">
@@ -993,13 +993,13 @@
 </value>
   </data>
   <data name="baseCanvas.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
+    <value>0, 42</value>
   </data>
   <data name="baseCanvas.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 2, 1, 2</value>
+    <value>2, 4, 2, 4</value>
   </data>
   <data name="baseCanvas.Size" type="System.Drawing.Size, System.Drawing">
-    <value>751, 490</value>
+    <value>1652, 986</value>
   </data>
   <data name="baseCanvas.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
@@ -1029,13 +1029,13 @@
     <value>True</value>
   </data>
   <data name="MousePos.Location" type="System.Drawing.Point, System.Drawing">
-    <value>671, 6</value>
+    <value>1476, 12</value>
   </data>
   <data name="MousePos.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 0, 1, 0</value>
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="MousePos.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 13</value>
+    <value>64, 26</value>
   </data>
   <data name="MousePos.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1059,13 +1059,13 @@
     <value>Top, Right</value>
   </data>
   <data name="BrushSizeBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>649, 14</value>
+    <value>1428, 28</value>
   </data>
   <data name="BrushSizeBar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 2, 1, 2</value>
+    <value>2, 4, 2, 4</value>
   </data>
   <data name="BrushSizeBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 45</value>
+    <value>227, 90</value>
   </data>
   <data name="BrushSizeBar.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1092,13 +1092,13 @@
     <value>True</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>588, 4</value>
+    <value>1294, 8</value>
   </data>
   <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 0, 1, 0</value>
+    <value>2, 0, 2, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 13</value>
+    <value>177, 26</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1125,10 +1125,10 @@
     <value>45</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>5, 13</value>
+    <value>11, 26</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>751, 514</value>
+    <value>1652, 1028</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Calibri, 7.875pt</value>
@@ -2911,7 +2911,7 @@
 </value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 2, 1, 2</value>
+    <value>2, 4, 2, 4</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Tabula</value>

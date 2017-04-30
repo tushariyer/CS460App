@@ -11,6 +11,29 @@ Installation Guide:
  * Double click the application to begin
  * Enjoy!
 
+Program features:
+
+ * Importing/Exporting images
+ * Creating new images (blank projects)
+ * Undo, and redo
+ * MEME TOOL
+ * plain easy to use UI
+ * Free draw on the pictures with a pen
+ * Draw shapes on the images
+ * Fill a selected area with the color of your choice
+ * Choose the color of other drawing tools
+ * Zoom in/out
+ * Move the image around
+ * Select part of the image
+ * Move the selected part of the image around
+ * Rotate image around
+ * Rotate the selected portion of the image around
+ * Print your MASTERPIECE
+ * Save you new MASTERPIECE as the picture file extension of your choice
+ * Text tool
+ * Change the thickness of the pen tool
+ * Flip the image horizontally, and vertically
+
 
 Application User Interface:
 

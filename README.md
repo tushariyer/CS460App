@@ -80,7 +80,8 @@ This is on the [CS Gitlab](https://git.cs.hartford.edu/tiyer/CS460App/tree/maste
 * [Repository Network App](https://git.cs.hartford.edu/tiyer/CS460App/network/master)
 * [Commits](https://git.cs.hartford.edu/tiyer/CS460App/commits/master)
 
-#### MIT License
+MIT License
+    
     The MIT License (MIT)
     Copyright (c) 2017 Tushar Iyer
     Permission is hereby granted, free of charge, to any person obtaining a copy
